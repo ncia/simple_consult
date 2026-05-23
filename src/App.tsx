@@ -258,7 +258,7 @@ export default function App() {
                 </p>
               </div>
 
-              <form onSubmit={handleFormSubmit} className="bg-neutral-bg rounded-2xl p-5 sm:p-6 border border-neutral-border space-y-5 max-w-md mx-0">
+              <form onSubmit={handleFormSubmit} className="bg-neutral-bg rounded-2xl p-5 sm:p-6 border border-neutral-border space-y-5 w-full">
                 <p className="text-xs font-semibold text-neutral-medium border-b border-neutral-border pb-2 flex items-center gap-1.5">
                   <Smartphone size={14} className="text-brand-blue" />
                   <span>상담 필수 정보 입력</span>
