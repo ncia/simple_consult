@@ -523,7 +523,7 @@ export default function App() {
               </div>
 
               {/* Infographic with shadow */}
-              <div className="max-w-md mx-auto bg-white rounded-2xl overflow-hidden border border-neutral-border shadow-md select-none mt-6 hover:scale-[1.01] transition-transform">
+              <div className="w-full bg-white rounded-2xl overflow-hidden border border-neutral-border shadow-md select-none mt-6 hover:scale-[1.01] transition-transform">
                 <img 
                   src="https://lh3.googleusercontent.com/aida/ADBb0ugA-ufdGQzGixT_Tx5CdPw5XgtOrh7a35wJyBF7AoFs5I1r64P6c2VqcWZCcZpEoMOsU-OIhAB1dwFTQfUVJs5ZPGRFHkWuQhe_46QaAYEbKauOTbHxuFo6fCjulB1e_oxjy5KmtsDisitRegIgmsn9gsGDoG5_6fHPIF6HeznG5a4yKcVp9xDJi9GTy6cBrgg5hUPjkxRG0xxnmN4qkQ0OvWDWi4fQt0QoQKN5mWO6gSFSFzaPqJw" 
                   alt="보험 보장의 누출 경로 분석 구도" 
