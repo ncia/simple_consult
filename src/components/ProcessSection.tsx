@@ -102,7 +102,7 @@ export function ProcessSection() {
           </div>
         ) : (
           /* Interactive Quadrant Panel */
-          <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto animate-fade-in font-sans">
+          <div className="grid grid-cols-2 gap-4 w-full animate-fade-in font-sans">
             {steps.map((item, idx) => {
               const isSelected = activeStep === idx;
               return (
@@ -143,7 +143,7 @@ export function ProcessSection() {
 
         {/* Selected Details Display Card (When not in raw state) */}
         {!showProcessRaw && (
-          <div className="bg-white/5 border border-white/10 p-5 rounded-2xl text-left max-w-lg mx-auto animate-fade-in font-sans">
+          <div className="bg-white/5 border border-white/10 p-5 rounded-2xl text-left w-full animate-fade-in font-sans">
             <div className="flex items-center gap-2 mb-3">
               <div className="w-2.5 h-2.5 rounded-full bg-brand-green-neon"></div>
               <strong className="text-xs text-brand-green-light font-bold">

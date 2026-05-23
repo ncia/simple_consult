@@ -45,7 +45,7 @@ export function BeforeAfterSection() {
         </div>
 
         {/* Mode Toggle Layout */}
-        <div className="flex justify-end max-w-lg mx-auto">
+        <div className="flex justify-end w-full">
           <button
             onClick={() => setShowRawImages(!showRawImages)}
             className="flex items-center gap-1.5 text-xs text-brand-blue hover:underline bg-brand-blue-pale px-3 py-1.5 rounded-lg font-semibold transition"
@@ -56,7 +56,7 @@ export function BeforeAfterSection() {
         </div>
 
         {/* Comparison Display */}
-        <div className="max-w-lg mx-auto">
+        <div className="w-full">
           {showRawImages ? (
             /* Render official hotlinked images requested by the user */
             <div className="space-y-4 animate-fade-in">
@@ -199,7 +199,7 @@ export function BeforeAfterSection() {
         </div>
         
         {/* Helper Note */}
-        <div className="p-3.5 rounded-lg bg-neutral-bg text-center max-w-lg mx-auto">
+        <div className="p-3.5 rounded-lg bg-neutral-bg text-center w-full">
           <p className="text-[10px] text-neutral-muted leading-relaxed">
             * 해당 내용은 고객의 이해를 돕기 위한 보장 제안 시뮬레이션 예시로 고객님의 성별, 연령, 직종, 질병 이력 및 보유 이력에 따라 진단 결과와 절감액은 달라질 수 있습니다.
           </p>
