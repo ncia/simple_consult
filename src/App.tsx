@@ -490,7 +490,7 @@ export default function App() {
               </div>
 
               {/* Bento informational block structure */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-xl mx-auto text-left font-sans">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full text-left font-sans">
                 <div className="bg-white p-4.5 rounded-xl border border-neutral-border shadow-sm flex gap-3.5 items-start">
                   <div className="w-9 h-9 rounded-full bg-brand-blue-pale text-brand-blue flex items-center justify-center font-bold text-xs shrink-0">
                     01
