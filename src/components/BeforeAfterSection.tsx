@@ -24,7 +24,7 @@ export function BeforeAfterSection() {
         <div className="flex bg-neutral-bg p-1.5 rounded-2xl max-w-[340px] mx-auto border border-neutral-border">
           <button
             onClick={() => setActiveTab('before')}
-            className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all ${
+            className={`flex-1 py-3 text-xs font-bold rounded-xl transition-all ${
               activeTab === 'before'
                 ? 'bg-white shadow-sm text-red-600'
                 : 'text-neutral-gray hover:text-neutral-dark'
@@ -34,7 +34,7 @@ export function BeforeAfterSection() {
           </button>
           <button
             onClick={() => setActiveTab('after')}
-            className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all ${
+            className={`flex-1 py-3 text-xs font-bold rounded-xl transition-all ${
               activeTab === 'after'
                 ? 'bg-brand-blue shadow-sm text-white'
                 : 'text-neutral-gray hover:text-neutral-dark'
