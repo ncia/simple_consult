@@ -244,6 +244,25 @@ export default function App() {
               </div>
             </section>
 
+            {/* EVENT BANNER AD */}
+            <section className="event-banner-ad py-10 px-5 bg-yellow-50/60 text-center flex flex-col items-center justify-center border-b border-neutral-border">
+              <div className="max-w-xs w-full flex flex-col items-center gap-4">
+                <div className="w-full rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white hover:scale-[1.02] transition-transform duration-300">
+                  {/* 첨부된 이미지가 위치할 경로입니다. 실제 파일명/경로로 변경해 주세요. */}
+                  <img 
+                    src="/assets/mega-coffee-event.png" 
+                    alt="보드미 메가커피 이벤트" 
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+                <h3 className="font-sans font-extrabold text-neutral-dark text-[17px] leading-snug break-keep">
+                  보드미와 보험 상담 받으시고<br />
+                  <span className="text-[#3E80E5] font-black">시원한 메가커피 아이스 아메리카노</span><br />
+                  한잔하세요!
+                </h3>
+              </div>
+            </section>
+
             {/* LIVE APPLICATION FORM SECTION */}
             <section id="signup-form-anchor" className="py-12 px-6 bg-white space-y-6">
               <div className="text-center space-y-1.5 max-w-sm mx-auto">
