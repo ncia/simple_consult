@@ -3,17 +3,8 @@ import {
   ShieldCheck, 
   Check, 
   Smartphone, 
-  Plus, 
-  Phone, 
-  ExternalLink, 
-  ShieldAlert, 
   Sparkles, 
   ArrowRight, 
-  Lock, 
-  X, 
-  Flame, 
-  Award,
-  ChevronRight,
   Info
 } from 'lucide-react';
 
