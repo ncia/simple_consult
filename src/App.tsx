@@ -206,9 +206,9 @@ export default function App() {
           /* Main Interactive Landing Content */
           <>
             {/* HERO HERO-BG WITH PARALLAX IMPACT */}
-            <section className="relative h-[480px] bg-brand-blue text-white flex flex-col items-center justify-center text-center px-5 relative overflow-hidden">
+            <section className="relative h-[480px] bg-slate-950 text-white flex flex-col items-center justify-center text-center px-5 relative overflow-hidden">
               {/* background graphic overlays to match sparkles and lights */}
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-blue-hover/60 via-brand-blue to-brand-blue-dark opacity-90"></div>
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-700/60 via-slate-900 to-black opacity-95"></div>
               
               {/* Dynamic light spot */}
               <div className="absolute -left-16 -top-16 w-80 h-80 bg-brand-green-neon/20 rounded-full blur-3xl animate-pulse-slow"></div>
