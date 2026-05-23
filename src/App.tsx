@@ -218,7 +218,7 @@ export default function App() {
               <div className="absolute left-8 top-12 opacity-40 animate-bounce">
                 <Sparkles size={24} className="text-white" />
               </div>
-              <div className="absolute right-12 bottom-[140px] opacity-30 animate-pulse">
+              <div className="absolute right-12 bottom-[140px] opacity-30 animate-bounce delay-150">
                 <Sparkles size={18} className="text-brand-green-light" />
               </div>
 
