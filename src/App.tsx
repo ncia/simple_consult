@@ -37,12 +37,12 @@ export default function App() {
   // Main form state
   const [formData, setFormData] = useState<InquiryFormState>({
     name: '',
-    gender: 'male', // default active selection
+    gender: null, // default active selection
     birthdate: '',
     phone: '',
     verificationCode: '',
     isVerified: false,
-    selectedItems: ['item1', 'item3'], // default selection
+    selectedItems: [], // default selection
     termAll: false,
     termPrivacy: false,
     termMarketing: false
@@ -85,6 +85,7 @@ export default function App() {
 
   const handleGenderToggle = (gender: 'male' | 'female') => {
     setFormData({ ...formData, gender });
+    setValidationErrors({ ...validationErrors, gender: '' });
   };
 
   const handleChipToggle = (itemId: string) => {
@@ -153,6 +154,9 @@ export default function App() {
     }
     if (!formData.isVerified) {
       errors.phone = '휴대전화 본인인증(7777인증)을 완료해 주세요.';
+    }
+    if (!formData.gender) {
+      errors.gender = '성별을 선택해 주세요.';
     }
     if (!formData.termPrivacy) {
       errors.terms = '필수 개인정보 수집 및 활용 동의서에 체크해 주세요.';
@@ -375,6 +379,9 @@ export default function App() {
                       <span>여성</span>
                     </button>
                   </div>
+                  {validationErrors.gender && (
+                    <p className="text-[11px] text-red-500 font-medium">{validationErrors.gender}</p>
+                  )}
                 </div>
 
                 {/* Checklist chips selection block */}
