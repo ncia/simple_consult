@@ -221,7 +221,7 @@ export default function App() {
       const year = parseInt(formData.birthdate.substring(0, 4), 10);
       if (!isNaN(year)) return `${2026 - year}세 ${formData.name || '고객'}님`;
     }
-    return "38세 홍길동님";
+    return "38세 박*검님";
   };
 
   return (
