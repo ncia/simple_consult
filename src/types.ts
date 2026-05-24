@@ -28,8 +28,8 @@ export interface PartnerCompany {
 
 export const CHECK_ITEMS: CheckItem[] = [
   { id: 'item1', label: '📊 보험분석 상담', description: '현재 보유하신 보험의 보장 내역을 종합적으로 분석하고 상담해 드립니다.' },
-  { id: 'item2', label: '🔄 보험 리모델링', description: '불필요한 특약을 줄이고 부족한 보장을 채워 실속 있게 재구성합니다.' },
   { id: 'item3', label: '🧾 보험금 청구', description: '복잡하고 번거로운 보험금 청구 절차를 간편하게 대행하거나 안내해 드립니다.' },
+  { id: 'item2', label: '🔄 보험 리모델링', description: '불필요한 특약을 줄이고 부족한 보장을 채워 실속 있게 재구성합니다.' },
   { id: 'item4', label: '🔍 내보험 점검', description: '놓치고 있는 숨은 보장이나 중복 가입된 항목이 없는지 정밀하게 점검합니다.' },
 ];
 

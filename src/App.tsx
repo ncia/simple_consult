@@ -314,9 +314,6 @@ export default function App() {
                               : 'bg-white border-neutral-border text-neutral-gray hover:bg-neutral-bg'
                           }`}
                         >
-                          <div className={`w-3 h-3 rounded-full border flex items-center justify-center shrink-0 ${selected ? 'border-brand-blue bg-white' : 'border-neutral-border bg-white'}`}>
-                            {selected && <div className="w-1.5 h-1.5 rounded-full bg-brand-blue" />}
-                          </div>
                           <span className="truncate">{item.label}</span>
                         </button>
                       );
