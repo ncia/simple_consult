@@ -356,7 +356,7 @@ export default function App() {
                           key={item.id}
                           type="button"
                           onClick={() => handleChipToggle(item.id)}
-                          className={`h-11 px-2 rounded-lg text-xs font-medium border flex items-center justify-center gap-1.5 transition-all ${
+                          className={`h-11 px-2 rounded-lg text-sm font-medium border flex items-center justify-center gap-1.5 transition-all ${
                             selected
                               ? 'bg-brand-blue-pale border-brand-blue text-brand-blue font-bold shadow-sm'
                               : 'bg-white border-neutral-border text-neutral-gray hover:bg-neutral-bg'
