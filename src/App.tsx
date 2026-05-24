@@ -5,7 +5,8 @@ import {
   Smartphone, 
   Sparkles, 
   ArrowRight, 
-  Info
+  Info,
+  User
 } from 'lucide-react';
 
 import { Header } from './components/Header';
@@ -468,7 +469,7 @@ export default function App() {
                           : 'bg-white border-neutral-border text-neutral-gray hover:bg-neutral-bg'
                       }`}
                     >
-                      <Check size={14} className={formData.gender === 'male' ? 'opacity-100' : 'opacity-0'} />
+                      <User size={16} className={formData.gender === 'male' ? 'text-brand-blue' : 'text-neutral-400'} />
                       <span>남성</span>
                     </button>
                     <button
@@ -476,11 +477,11 @@ export default function App() {
                       onClick={() => handleGenderToggle('female')}
                       className={`flex-1 h-12 rounded-xl text-sm font-semibold border transition-all active:scale-95 flex items-center justify-center gap-1.5 ${
                         formData.gender === 'female'
-                          ? 'bg-brand-blue-pale border-brand-blue text-brand-blue'
+                          ? 'bg-red-50 border-red-500 text-red-600'
                           : 'bg-white border-neutral-border text-neutral-gray hover:bg-neutral-bg'
                       }`}
                     >
-                      <Check size={14} className={formData.gender === 'female' ? 'opacity-100' : 'opacity-0'} />
+                      <User size={16} className={formData.gender === 'female' ? 'text-red-500' : 'text-neutral-400'} />
                       <span>여성</span>
                     </button>
                   </div>
