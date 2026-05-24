@@ -6,12 +6,7 @@ import {
   Sparkles, 
   ArrowRight, 
   Info,
-  User,
-  Car,
-  Home,
-  Heart,
-  Zap,
-  FileText
+  User
 } from 'lucide-react';
 
 import { Header } from './components/Header';
@@ -94,7 +89,6 @@ export default function App() {
 
   // Modal tracking states
   const [isSMSOtpOpen, setIsSMSOtpOpen] = useState(false);
-  const [isDashboardFlipped, setIsDashboardFlipped] = useState(false);
   const [activeTermModal, setActiveTermModal] = useState<{ isOpen: boolean; title: string; type: 'privacy' | 'marketing' | 'terms' }>({
     isOpen: false,
     title: '',
@@ -685,8 +679,8 @@ export default function App() {
                     </div>
                     <strong className="text-[11px] font-bold text-white block">보드미 최적화</strong>
                     <p className="text-[10px] text-white/80 mt-1 leading-relaxed break-keep">중복 제거 후 필수 보장만 튼튼하고 저렴하게</p>
-                    </div>
                   </div>
+
                 </div>
               </div>
             </section>
@@ -696,67 +690,35 @@ export default function App() {
 
             {/* FINAL CONVERSION PERSUADE WRAPPER */}
             <section className="py-14 px-5 bg-white text-center space-y-6">
-              {/* Tab Selector Buttons (Added Back) */}
-              <div className="flex bg-neutral-bg p-1.5 rounded-2xl max-w-[340px] mx-auto border border-neutral-border mb-8">
-                <button
-                  type="button"
-                  onClick={() => setIsDashboardFlipped(false)}
-                  className={`flex-1 py-3 text-xs font-bold rounded-xl transition-all ${
-                    !isDashboardFlipped
-                      ? 'bg-brand-blue shadow-sm text-white'
-                      : 'text-neutral-gray hover:text-neutral-dark'
-                  }`}
-                >
-                  보험분석 결과
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setIsDashboardFlipped(true)}
-                  className={`flex-1 py-3 text-xs font-bold rounded-xl transition-all ${
-                    isDashboardFlipped
-                      ? 'bg-brand-green shadow-sm text-white'
-                      : 'text-neutral-gray hover:text-neutral-dark'
-                  }`}
-                >
-                  보험금 청구 조회
-                </button>
+              <div className="space-y-2 text-center max-w-sm mx-auto">
+                <h2 className="font-sans font-extrabold text-2xl text-neutral-dark leading-tight">
+                  보험분석 결과를<br />
+                  눈으로 직접 확인하세요.
+                </h2>
+                <p className="text-xs text-neutral-gray leading-relaxed">
+                  신청 즉시 가입 보고가 생성되며, 카카오 등기를 거쳐 담당 수석의 안심 유선 코디가 무상으로 병행 지원됩니다.
+                </p>
               </div>
 
-              {/* FLIP CONTAINER containing BOTH text and mobile layout */}
-              <div className="max-w-[400px] mx-auto">
-                <div className="grid w-full select-none flip-container">
+              {/* Animated Mobile Dashboard Mockup */}
+              <div className="max-w-[280px] mx-auto mt-8 relative select-none group">
+                {/* Phone Frame */}
+                <div className="w-full bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 relative z-10 overflow-hidden transform group-hover:-translate-y-2 transition-transform duration-500">
+                  {/* Speaker Notch */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
                   
-                  {/* FRONT FACE (Text + Original Dashboard) */}
-                  <div 
-                    className={`col-start-1 row-start-1 w-full flip-card flex flex-col items-center ${!isDashboardFlipped ? 'flip-front-active' : 'flip-front-inactive'}`}
-                  >
-                    {/* Front Text */}
-                    <div className="space-y-2 text-center mb-8">
-                      <h2 className="font-sans font-extrabold text-2xl text-neutral-dark leading-tight">
-                        보험분석 결과를<br />눈으로 직접 확인하세요.
-                      </h2>
-                      <p className="text-xs text-neutral-gray leading-relaxed">
-                        신청 즉시 가입 보고가 생성되며, 카카오 등기를 거쳐 담당 수석의 안심 유선 코디가 무상으로 병행 지원됩니다.
-                      </p>
-                    </div>
-
-                    <div className="max-w-[280px] w-full">
-                      <div className="bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 h-full relative">
-                        {/* Speaker Notch */}
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
-                        
-                        {/* Screen Content */}
-                        <div className="bg-slate-50 w-full h-[400px] rounded-[1.8rem] overflow-hidden flex flex-col font-sans border border-neutral-100 relative">
+                  {/* Screen Content */}
+                  <div className="bg-slate-50 w-full h-[400px] rounded-[1.8rem] overflow-hidden flex flex-col font-sans border border-neutral-100 relative">
                     
                     {/* Header */}
                     <div className="bg-brand-blue pt-8 pb-5 px-4 text-left relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/3"></div>
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/3 animate-pulse-slow"></div>
                       <span className="text-white/80 text-[10px] font-medium">보드미 AI 리포트</span>
                       <h4 className="text-white font-extrabold text-sm mt-0.5">홍길동님의<br/>종합 보장 점수</h4>
                       
                       {/* Animated Score */}
                       <div className="absolute right-4 bottom-4 flex items-baseline gap-0.5">
-                        <span className="text-3xl font-black text-white">85</span>
+                        <span className="text-3xl font-black text-white group-hover:scale-110 transition-transform origin-bottom duration-300">85</span>
                         <span className="text-white/80 text-xs font-bold">점</span>
                       </div>
                     </div>
@@ -768,11 +730,11 @@ export default function App() {
                       <div className="bg-white p-3 rounded-xl shadow-sm border border-neutral-100 group-hover:border-brand-blue/30 transition-colors">
                         <div className="flex justify-between items-center mb-2">
                           <span className="text-[10px] font-bold text-neutral-dark">보장 충분도</span>
-                          <span className="text-[10px] font-bold text-brand-blue">우수해요</span>
+                          <span className="text-[10px] font-bold text-brand-blue animate-pulse">우수해요</span>
                         </div>
                         <div className="w-full bg-neutral-100 rounded-full h-2 overflow-hidden">
                           <div className="bg-brand-blue h-full rounded-full w-[85%] relative overflow-hidden">
-                            <div className="absolute top-0 bottom-0 -left-10 w-20 bg-white/20 -skew-x-12 translate-x-32"></div>
+                            <div className="absolute top-0 bottom-0 -left-10 w-20 bg-white/20 -skew-x-12 translate-x-32 group-hover:translate-x-64 transition-transform duration-1000 ease-in-out delay-100"></div>
                           </div>
                         </div>
                       </div>
@@ -801,7 +763,7 @@ export default function App() {
                               <div className="bg-brand-green h-full rounded-full w-[65%]"></div>
                             </div>
                             {/* Animated Saving Badge */}
-                            <div className="absolute -right-2 -top-6 bg-brand-green text-white text-[9px] font-bold px-1.5 py-0.5 rounded shadow-sm">
+                            <div className="absolute -right-2 -top-6 bg-brand-green text-white text-[9px] font-bold px-1.5 py-0.5 rounded shadow-sm animate-bounce">
                               ▼ 6.5만
                             </div>
                           </div>
@@ -822,147 +784,10 @@ export default function App() {
 
                     </div>
                   </div>
-                    </div>
-                  </div>
-
-                  {/* BACK FACE (Claim Mockup Image) */}
-                  <div 
-                    className={`col-start-1 row-start-1 w-full flip-card ${isDashboardFlipped ? 'flip-back-active' : 'flip-back-inactive'}`}
-                  >
-                    <div className="bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 h-full relative">
-                      {/* Speaker Notch */}
-                      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
-                      
-                      {/* Screen Content - BACK FACE UI */}
-                      <div className="bg-[#f8f9fa] w-full h-[400px] rounded-[1.8rem] flex flex-col font-sans border border-neutral-100 relative overflow-y-auto scrollbar-hide">
-                        <div className="p-3 space-y-3 pb-8">
-                          
-                          {/* TOP WIDGETS */}
-                          <div className="flex gap-2">
-                            {/* Left Widget */}
-                            <div className="flex-1 bg-gradient-to-br from-[#6b4cfa] to-[#5136e0] rounded-xl p-3 text-white relative overflow-hidden shadow-sm">
-                              {/* Shield Watermark */}
-                              <div className="absolute -right-2 -top-2 opacity-20">
-                                <ShieldCheck size={64} />
-                              </div>
-                              <p className="text-[9px] font-bold opacity-90 mb-1">보험금 청구 내역</p>
-                              <div className="flex items-baseline gap-0.5 relative z-10">
-                                <span className="text-2xl font-black">1</span>
-                                <span className="text-[10px] opacity-90">건 접수됨</span>
-                              </div>
-                              <div className="flex gap-1.5 mt-3 relative z-10">
-                                <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm"><Car size={10} /></div>
-                                <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm"><Home size={10} /></div>
-                                <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm"><Heart size={10} /></div>
-                              </div>
-                            </div>
-
-                            {/* Right Widget */}
-                            <div className="flex-1 bg-[#0055d3] rounded-xl p-3 flex flex-col items-center justify-center text-center shadow-sm">
-                              <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-white mb-2 backdrop-blur-sm">
-                                <Zap size={16} fill="currentColor" />
-                              </div>
-                              <p className="text-[10px] font-bold text-white leading-tight">전문가 실시간 상담</p>
-                              <p className="text-[8px] text-white/80 mt-1 leading-tight">전문가와 실시간 상담을 받아<br/>보세요!</p>
-                            </div>
-                          </div>
-
-                          {/* 진행 프로세스 Title */}
-                          <h3 className="text-xs font-black text-neutral-dark pt-1">진행 프로세스</h3>
-
-                          {/* Process Card */}
-                          <div className="bg-white rounded-xl border border-neutral-border p-3 shadow-sm">
-                            {/* Header */}
-                            <div className="flex justify-between items-start mb-4">
-                              <div className="flex gap-2">
-                                <div className="w-8 h-8 rounded-lg bg-[#eef3f9] flex items-center justify-center text-[#0055d3]">
-                                  <Car size={16} />
-                                </div>
-                                <div>
-                                  <h4 className="text-[11px] font-bold text-neutral-dark">보험금 청구 진행 단계</h4>
-                                  <p className="text-[9px] text-neutral-gray mt-0.5">신청날짜: 2026-05-03</p>
-                                </div>
-                              </div>
-                              <div className="bg-[#e6f8ef] text-[#1ebf00] px-2 py-0.5 rounded-full text-[9px] font-bold border border-[#bbf0d4]">
-                                승인
-                              </div>
-                            </div>
-
-                            {/* Stepper */}
-                            <div className="relative px-2 mb-4">
-                              <div className="absolute top-2.5 left-4 right-4 h-0.5 bg-neutral-200 -z-10"></div>
-                              {/* Blue completed line */}
-                              <div className="absolute top-2.5 left-4 w-[60%] h-0.5 bg-[#0055d3] -z-10"></div>
-                              
-                              <div className="flex justify-between">
-                                {['접수', '진행', '심사', '조사', '승인', '입금'].map((step, idx) => {
-                                  const isCompleted = idx < 4;
-                                  const isCurrent = idx === 4;
-                                  return (
-                                    <div key={idx} className="flex flex-col items-center gap-1.5 bg-white">
-                                      {isCompleted ? (
-                                        <div className="w-5 h-5 rounded-full bg-[#0055d3] text-white flex items-center justify-center z-10">
-                                          <Check size={10} strokeWidth={3} />
-                                        </div>
-                                      ) : isCurrent ? (
-                                        <div className="w-5 h-5 rounded-full bg-[#1ebf00] text-white flex items-center justify-center font-bold text-[10px] z-10">
-                                          {idx + 1}
-                                        </div>
-                                      ) : (
-                                        <div className="w-5 h-5 rounded-full bg-white border border-neutral-300 text-neutral-400 flex items-center justify-center font-bold text-[10px] z-10">
-                                          {idx + 1}
-                                        </div>
-                                      )}
-                                      <span className={`text-[8px] font-bold ${isCurrent ? 'text-[#1ebf00]' : isCompleted ? 'text-[#0055d3]' : 'text-neutral-500'}`}>
-                                        {step}
-                                      </span>
-                                    </div>
-                                  );
-                                })}
-                              </div>
-                            </div>
-
-                            {/* Footer Info */}
-                            <div className="border-t border-neutral-100 pt-2 flex justify-between text-[9px] text-neutral-dark">
-                              <span>• 신청자: <strong>유동근</strong></span>
-                              <span>• 생년월일: <strong>19771024</strong></span>
-                              <span>• 성별: <strong>남성</strong></span>
-                            </div>
-                          </div>
-
-                          {/* 연동 Status Card */}
-                          <div className="bg-white rounded-xl border border-neutral-border p-3 shadow-sm flex items-center gap-2.5">
-                            <div className="w-8 h-8 rounded-lg bg-[#f4f5f7] flex items-center justify-center text-neutral-600">
-                              <FileText size={16} />
-                            </div>
-                            <div>
-                              <h4 className="text-[11px] font-bold text-neutral-dark">보험금 청구 조회 연동</h4>
-                              <div className="flex items-center gap-1 mt-0.5">
-                                <div className="w-2 h-2 rounded-full bg-gradient-to-br from-green-400 to-green-600"></div>
-                                <span className="text-[9px] font-bold text-[#1ebf00]">정상적으로 연결되었습니다.</span>
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* 누락 서류 Box */}
-                          <div className="bg-[#eaf1fb] rounded-xl p-3 border border-[#d6e3f5]">
-                            <h4 className="text-[11px] font-bold text-[#0055d3] mb-1">누락된 서류가 있나요?</h4>
-                            <p className="text-[9px] text-neutral-600 leading-relaxed mb-3">
-                              보험금 청구 신청 정보의 카카오톡 알림톡을 통해 누락 서류 제출 및 보완 요청이 신속히 안내됩니다.
-                            </p>
-                            <button className="w-full bg-white text-[#0055d3] font-bold text-[10px] py-2 rounded-lg border border-[#d6e3f5] shadow-sm active:scale-95 transition-transform">
-                              안내 문서 확인하기
-                            </button>
-                          </div>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
 
                 {/* Decorative background blobs */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-brand-blue/5 to-transparent rounded-full blur-3xl -z-10 pointer-events-none"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-brand-blue/5 to-transparent rounded-full blur-3xl -z-10"></div>
               </div>
 
               <div className="pt-4">
