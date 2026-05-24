@@ -644,8 +644,8 @@ export default function App() {
                     <div className="w-12 h-12 bg-white/20 rounded-full mx-auto flex items-center justify-center mb-3 backdrop-blur-sm shadow-inner text-white group-hover:scale-110 transition-transform">
                       <span className="text-xl">📄</span>
                     </div>
-                    <strong className="text-[12px] font-bold text-white block relative z-10">무분별한 중복 가입</strong>
-                    <p className="text-[11px] text-white/80 mt-1.5 leading-relaxed break-keep relative z-10">비슷한 보장이 겹쳐 의미 없는 지출 발생</p>
+                    <strong className="text-sm font-bold text-white block relative z-10">무분별한 중복 가입</strong>
+                    <p className="text-xs text-white/80 mt-1.5 leading-relaxed break-keep relative z-10">비슷한 보장이 겹쳐 의미 없는 지출 발생</p>
                   </div>
 
                   {/* Step 2: Leakage */}
@@ -654,8 +654,8 @@ export default function App() {
                     <div className="w-12 h-12 bg-white/20 rounded-full mx-auto flex items-center justify-center mb-3 backdrop-blur-sm shadow-inner text-white">
                       <span className="text-xl">💧</span>
                     </div>
-                    <strong className="text-[12px] font-bold text-white block relative z-10">과도한 보험료 누수</strong>
-                    <p className="text-[11px] text-white/80 mt-1.5 leading-relaxed break-keep relative z-10">월평균 <strong className="text-white font-extrabold">약 5~10만원</strong> 불필요한 비용 증발</p>
+                    <strong className="text-sm font-bold text-white block relative z-10">과도한 보험료 누수</strong>
+                    <p className="text-xs text-white/80 mt-1.5 leading-relaxed break-keep relative z-10">월평균 <strong className="text-white font-extrabold">약 5~10만원</strong> 불필요한 비용 증발</p>
                   </div>
 
                   {/* Step 3: Resolution */}
@@ -664,8 +664,8 @@ export default function App() {
                     <div className="w-12 h-12 bg-white/20 rounded-full mx-auto flex items-center justify-center text-white mb-3 backdrop-blur-sm group-hover:rotate-12 transition-transform shadow-inner">
                       <ShieldCheck size={24} />
                     </div>
-                    <strong className="text-[12px] font-bold text-white block">보드미 최적화</strong>
-                    <p className="text-[11px] text-white/80 mt-1.5 leading-relaxed break-keep">중복 제거 후 필수 보장만 튼튼하고 저렴하게</p>
+                    <strong className="text-sm font-bold text-white block">보드미 최적화</strong>
+                    <p className="text-xs text-white/80 mt-1.5 leading-relaxed break-keep">중복 제거 후 필수 보장만 튼튼하고 저렴하게</p>
                   </div>
 
                 </div>
