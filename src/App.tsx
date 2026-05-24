@@ -600,7 +600,7 @@ export default function App() {
                     02
                   </div>
                   <div className="space-y-1">
-                    <strong className="text-xs font-bold text-neutral-dark block leading-normal">29개 보험사망<br />공식 가격대비 비교</strong>
+                    <strong className="text-xs font-bold text-neutral-dark block leading-normal">32개 보험사<br />공식 가격대비 비교</strong>
                     <p className="text-[10px] text-neutral-gray leading-relaxed">생보사 및 손보사 전체 약관을 대조해 같은 지급 대비 부담을 최소한으로 고착</p>
                   </div>
                 </div>
