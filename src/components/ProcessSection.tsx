@@ -139,9 +139,14 @@ export function ProcessSection() {
                   <span className="text-[10px] text-neutral-muted">터치해서 상세 정보 조회</span>
                   
                   {isSelected && (
-                    <div className="absolute right-2 bottom-2 text-brand-green-light">
-                      <Sparkles size={14} className="animate-spin-slow" />
-                    </div>
+                    <>
+                      <div className="absolute right-0 top-0 opacity-10 font-display font-black text-7xl translate-x-3 translate-y-3 pointer-events-none">
+                        {React.cloneElement(item.icon as React.ReactElement, { size: '1em' })}
+                      </div>
+                      <div className="absolute right-2 bottom-2 text-brand-green-light">
+                        <Sparkles size={14} className="animate-spin-slow" />
+                      </div>
+                    </>
                   )}
                 </button>
               );
