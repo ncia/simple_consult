@@ -639,21 +639,10 @@ export default function App() {
                     <p className="text-[10px] text-neutral-gray mt-1 leading-relaxed break-keep">비슷한 보장이 겹쳐 의미 없는 지출 발생</p>
                   </div>
 
-                  {/* Arrow with leaking coins */}
+                  {/* Simple Arrow Emoji */}
                   <div className="flex flex-col items-center justify-center shrink-0 py-2 sm:py-0 relative">
-                    <div className="hidden sm:flex items-center">
-                      <div className="w-4 border-t-2 border-dashed border-red-300"></div>
-                      <ArrowRight size={16} className="text-red-400 -ml-1.5" />
-                    </div>
-                    <div className="sm:hidden flex flex-col items-center">
-                      <div className="h-4 border-l-2 border-dashed border-red-300"></div>
-                      <ArrowRight size={16} className="text-red-400 rotate-90 -mt-1.5" />
-                    </div>
-                    {/* Leaking animation */}
-                    <div className="absolute -top-3 sm:-top-5 flex gap-0.5">
-                      <span className="text-[10px] animate-bounce" style={{ animationDelay: '0ms' }}>💸</span>
-                      <span className="text-[10px] animate-bounce" style={{ animationDelay: '150ms' }}>💸</span>
-                    </div>
+                    <span className="text-lg hidden sm:block">➡️</span>
+                    <span className="text-lg sm:hidden">⬇️</span>
                   </div>
 
                   {/* Step 2: Leakage */}
