@@ -696,42 +696,57 @@ export default function App() {
 
             {/* FINAL CONVERSION PERSUADE WRAPPER */}
             <section className="py-14 px-5 bg-white text-center space-y-6">
-              <div className="space-y-2 text-center max-w-sm mx-auto">
-                <h2 className="font-sans font-extrabold text-2xl text-neutral-dark leading-tight transition-opacity duration-300">
-                  {isDashboardFlipped ? (
-                    <>보험금 청구 조회를<br />눈으로 직접 확인하세요.</>
-                  ) : (
-                    <>보험분석 결과를<br />눈으로 직접 확인하세요.</>
-                  )}
-                </h2>
-                <p className="text-xs text-neutral-gray leading-relaxed transition-opacity duration-300">
-                  {isDashboardFlipped ? (
-                    '흩어진 청구 내역을 한곳에 모아 실시간 진행 상태를 확인하고, 누락된 서류나 추가 보상 가능성까지 전문가가 꼼꼼하게 점검해 드립니다.'
-                  ) : (
-                    '신청 즉시 가입 보고가 생성되며, 카카오 등기를 거쳐 담당 수석의 안심 유선 코디가 무상으로 병행 지원됩니다.'
-                  )}
-                </p>
+              {/* Tab Selector Buttons (Added Back) */}
+              <div className="flex bg-neutral-bg p-1.5 rounded-2xl max-w-[340px] mx-auto border border-neutral-border mb-8">
+                <button
+                  type="button"
+                  onClick={() => setIsDashboardFlipped(false)}
+                  className={`flex-1 py-3 text-xs font-bold rounded-xl transition-all ${
+                    !isDashboardFlipped
+                      ? 'bg-brand-blue shadow-sm text-white'
+                      : 'text-neutral-gray hover:text-neutral-dark'
+                  }`}
+                >
+                  보험분석 결과
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsDashboardFlipped(true)}
+                  className={`flex-1 py-3 text-xs font-bold rounded-xl transition-all ${
+                    isDashboardFlipped
+                      ? 'bg-brand-green shadow-sm text-white'
+                      : 'text-neutral-gray hover:text-neutral-dark'
+                  }`}
+                >
+                  보험금 청구 조회
+                </button>
               </div>
 
-
-
-              {/* Animated Mobile Dashboard Mockup */}
-              <div className="max-w-[280px] mx-auto mt-8">
-                <div 
-                  className="grid w-full select-none cursor-pointer flip-container"
-                  onClick={() => setIsDashboardFlipped(!isDashboardFlipped)}
-                >
+              {/* FLIP CONTAINER containing BOTH text and mobile layout */}
+              <div className="max-w-[400px] mx-auto">
+                <div className="grid w-full select-none flip-container">
                   
-                  {/* FRONT FACE (Original Dashboard) */}
+                  {/* FRONT FACE (Text + Original Dashboard) */}
                   <div 
-                    className={`col-start-1 row-start-1 w-full flip-card ${!isDashboardFlipped ? 'flip-front-active' : 'flip-front-inactive'}`}
+                    className={`col-start-1 row-start-1 w-full flip-card flex flex-col items-center ${!isDashboardFlipped ? 'flip-front-active' : 'flip-front-inactive'}`}
                   >
-                    <div className="bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 h-full relative">
-                      {/* Speaker Notch */}
-                      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
-                      
-                      {/* Screen Content */}
-                      <div className="bg-slate-50 w-full h-[400px] rounded-[1.8rem] overflow-hidden flex flex-col font-sans border border-neutral-100 relative">
+                    {/* Front Text */}
+                    <div className="space-y-2 text-center mb-8">
+                      <h2 className="font-sans font-extrabold text-2xl text-neutral-dark leading-tight">
+                        보험분석 결과를<br />눈으로 직접 확인하세요.
+                      </h2>
+                      <p className="text-xs text-neutral-gray leading-relaxed">
+                        신청 즉시 가입 보고가 생성되며, 카카오 등기를 거쳐 담당 수석의 안심 유선 코디가 무상으로 병행 지원됩니다.
+                      </p>
+                    </div>
+
+                    <div className="max-w-[280px] w-full">
+                      <div className="bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 h-full relative">
+                        {/* Speaker Notch */}
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
+                        
+                        {/* Screen Content */}
+                        <div className="bg-slate-50 w-full h-[400px] rounded-[1.8rem] overflow-hidden flex flex-col font-sans border border-neutral-100 relative">
                     
                     {/* Header */}
                     <div className="bg-brand-blue pt-8 pb-5 px-4 text-left relative overflow-hidden">
@@ -947,7 +962,7 @@ export default function App() {
                 </div>
 
                 {/* Decorative background blobs */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-brand-blue/5 to-transparent rounded-full blur-3xl -z-10"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-brand-blue/5 to-transparent rounded-full blur-3xl -z-10 pointer-events-none"></div>
               </div>
 
               <div className="pt-4">
