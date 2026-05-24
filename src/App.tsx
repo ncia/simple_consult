@@ -283,6 +283,33 @@ export default function App() {
                   <span>상담 필수 정보 입력</span>
                 </p>
 
+                {/* Checklist chips selection block */}
+                <div className="space-y-2.5 pt-2">
+                  <p className="text-xs font-semibold text-neutral-medium">
+                    점검 희망 항목 선택 (중복 가능)
+                  </p>
+                  
+                  <div className="grid grid-cols-3 gap-2">
+                    {CHECK_ITEMS.map((item) => {
+                      const selected = formData.selectedItems.includes(item.id);
+                      return (
+                        <button
+                          key={item.id}
+                          type="button"
+                          onClick={() => handleChipToggle(item.id)}
+                          className={`h-11 rounded-lg text-xs font-medium border flex items-center justify-center transition-all ${
+                            selected
+                              ? 'bg-brand-blue-pale border-brand-blue text-brand-blue font-bold shadow-sm'
+                              : 'bg-white border-neutral-border text-neutral-gray hover:bg-neutral-bg'
+                          }`}
+                        >
+                          {item.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
                 {/* Input Name field */}
                 <div className="space-y-1.5">
                   <label className="text-xs font-semibold text-slate-700 block">이름</label>
@@ -392,33 +419,6 @@ export default function App() {
                   {validationErrors.gender && (
                     <p className="text-[11px] text-red-500 font-medium">{validationErrors.gender}</p>
                   )}
-                </div>
-
-                {/* Checklist chips selection block */}
-                <div className="space-y-2.5 pt-2">
-                  <p className="text-xs font-semibold text-neutral-medium">
-                    점검 희망 항목 선택 (중복 가능)
-                  </p>
-                  
-                  <div className="grid grid-cols-3 gap-2">
-                    {CHECK_ITEMS.map((item) => {
-                      const selected = formData.selectedItems.includes(item.id);
-                      return (
-                        <button
-                          key={item.id}
-                          type="button"
-                          onClick={() => handleChipToggle(item.id)}
-                          className={`h-11 rounded-lg text-xs font-medium border flex items-center justify-center transition-all ${
-                            selected
-                              ? 'bg-brand-blue-pale border-brand-blue text-brand-blue font-bold shadow-sm'
-                              : 'bg-white border-neutral-border text-neutral-gray hover:bg-neutral-bg'
-                          }`}
-                        >
-                          {item.label}
-                        </button>
-                      );
-                    })}
-                  </div>
                 </div>
 
                 {/* Agreement contracts */}
