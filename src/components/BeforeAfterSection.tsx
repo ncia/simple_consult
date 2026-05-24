@@ -75,19 +75,24 @@ export function BeforeAfterSection() {
                   </p>
                   <div className="space-y-2.5">
                     {[
-                      { name: 'A사 실비보험', price: '38,500원', tag: '중복 가입 누수', bad: true },
-                      { name: 'B사 암보험', price: '54,200원', tag: '보장 범위 부족(소액암 미달)', bad: true },
-                      { name: 'C사 건강보험', price: '135,000원', tag: '불필요 고액 적립료 포함', bad: true },
-                      { name: 'D사 운전자보험', price: '25,100원', tag: '민사 벌금 한도 미정비', bad: true },
-                      { name: 'E사 변액보험', price: '210,000원', tag: '원금 손실 방치 / 정기이율 미비', bad: true },
-                      { name: 'F사 운전자보험', price: '17,500원', tag: 'D사 중복 가입 쓰레기 특약', bad: true },
+                      { name: 'A사 실비보험', price: '38,500원', badge: '중복 가입 누수', desc: '다른 보험과 보장이 겹쳐 불필요한 보험료가 지출되고 있습니다.' },
+                      { name: 'B사 암보험', price: '54,200원', badge: '보장 범위 부족', desc: '가장 빈번한 소액암에 대한 보장 한도가 크게 미달됩니다.' },
+                      { name: 'C사 건강보험', price: '135,000원', badge: '고액 적립료', desc: '소멸성 대비 무의미하고 비싼 적립 보험료가 포함되어 있습니다.' },
+                      { name: 'D사 운전자보험', price: '25,100원', badge: '한도 미정비', desc: '강화된 법률에 맞지 않는 민사 벌금 한도로 위험이 존재합니다.' },
+                      { name: 'E사 변액보험', price: '210,000원', badge: '원금 손실', desc: '낮은 정기이율과 원금 손실 방치로 투자 가치가 떨어집니다.' },
+                      { name: 'F사 운전자보험', price: '17,500원', badge: '중복 특약', desc: 'D사 운전자보험과 완전히 중복되는 불필요한 특약입니다.' },
                     ].map((item, idx) => (
-                      <div key={idx} className="flex justify-between items-center text-xs pb-2 border-b border-dashed border-neutral-border/60">
+                      <div key={idx} className="flex justify-between items-start text-xs pb-2 border-b border-dashed border-neutral-border/60">
                         <div>
-                          <strong className="text-neutral-dark text-sm block">{item.name}</strong>
-                          <span className="text-[10px] text-red-500 font-semibold">{item.tag}</span>
+                          <div className="flex items-center gap-1.5">
+                            <strong className="text-neutral-dark text-sm block">{item.name}</strong>
+                            <span className="text-[9px] text-red-600 bg-red-100 font-bold px-1.5 py-0.5 rounded">
+                              {item.badge}
+                            </span>
+                          </div>
+                          <span className="text-[10px] text-neutral-gray leading-normal">{item.desc}</span>
                         </div>
-                        <span className="font-display font-extrabold text-neutral-dark">{item.price}</span>
+                        <span className="font-display font-extrabold text-neutral-dark text-sm shrink-0">{item.price}</span>
                       </div>
                     ))}
                   </div>

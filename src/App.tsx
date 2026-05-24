@@ -637,7 +637,7 @@ export default function App() {
 
               {/* Nonlife Insu Grid */}
               <div className="space-y-3 font-sans">
-                <p className="text-xs font-bold text-brand-green text-center font-bold">손해/화재보험사</p>
+                <p className="text-xs font-bold text-brand-green text-center font-bold">손해보험사</p>
                 <div className="bg-white rounded-xl p-4.5 grid grid-cols-4 gap-2.5 items-center border border-neutral-border">
                   {PARTNERS_NONLIFE.map((p) => (
                     <button
