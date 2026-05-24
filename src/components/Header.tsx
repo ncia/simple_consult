@@ -22,13 +22,13 @@ export function Header({ onContactClick }: HeaderProps) {
           </span>
         </div>
         
-        <button
-          onClick={onContactClick}
-          className="flex items-center gap-1.5 font-sans font-semibold text-xs text-brand-blue hover:text-brand-blue-dark hover:bg-neutral-bg border border-brand-blue/30 px-3.5 py-2 rounded-full transition-all active:scale-95"
+        <a
+          href="tel:01026277771"
+          className="flex items-center gap-1.5 font-sans font-semibold text-xs bg-white text-brand-blue hover:text-brand-blue-dark hover:bg-neutral-bg border border-brand-blue/30 px-3.5 py-2 rounded-full transition-all active:scale-95 shadow-sm"
         >
           <Phone size={13} />
-          <span>Contact</span>
-        </button>
+          <span>빠른상담</span>
+        </a>
       </div>
     </header>
   );
