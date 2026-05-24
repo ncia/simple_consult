@@ -886,12 +886,13 @@ export default function App() {
                               </div>
 
                               {/* Right Widget */}
-                              <div className="flex-1 bg-[#0055d3] rounded-xl p-3 flex flex-col items-center justify-center text-center shadow-sm">
-                                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-white mb-2 backdrop-blur-sm">
-                                  <Zap size={16} fill="currentColor" />
+                              <div className="flex-1 bg-[#0055d3] rounded-xl p-3 flex flex-col items-center justify-center text-center shadow-sm relative overflow-hidden">
+                                {/* Zap Watermark */}
+                                <div className="absolute -right-3 -bottom-3 opacity-20">
+                                  <Zap size={64} fill="currentColor" className="text-white" />
                                 </div>
-                                <p className="text-[10px] font-bold text-white leading-tight">전문가 실시간 상담</p>
-                                <p className="text-[8px] text-white/80 mt-1 leading-tight">전문가와 실시간 상담을 받아<br/>보세요!</p>
+                                <p className="text-[10px] font-bold text-white leading-tight relative z-10">전문가 실시간 상담</p>
+                                <p className="text-[8px] text-white/80 mt-1 leading-tight relative z-10">전문가와 실시간 상담을 받아<br/>보세요!</p>
                               </div>
                             </div>
 
