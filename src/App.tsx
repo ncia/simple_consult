@@ -89,6 +89,7 @@ export default function App() {
 
   // Modal tracking states
   const [isSMSOtpOpen, setIsSMSOtpOpen] = useState(false);
+  const [isDashboardFlipped, setIsDashboardFlipped] = useState(false);
   const [activeTermModal, setActiveTermModal] = useState<{ isOpen: boolean; title: string; type: 'privacy' | 'marketing' | 'terms' }>({
     isOpen: false,
     title: '',
@@ -691,24 +692,38 @@ export default function App() {
             {/* FINAL CONVERSION PERSUADE WRAPPER */}
             <section className="py-14 px-5 bg-white text-center space-y-6">
               <div className="space-y-2 text-center max-w-sm mx-auto">
-                <h2 className="font-sans font-extrabold text-2xl text-neutral-dark leading-tight">
-                  보험분석 결과를<br />
-                  눈으로 직접 확인하세요.
+                <h2 className="font-sans font-extrabold text-2xl text-neutral-dark leading-tight transition-opacity duration-300">
+                  {isDashboardFlipped ? (
+                    <>보험금 청구 조회를<br />눈으로 직접 확인하세요.</>
+                  ) : (
+                    <>보험분석 결과를<br />눈으로 직접 확인하세요.</>
+                  )}
                 </h2>
-                <p className="text-xs text-neutral-gray leading-relaxed">
-                  신청 즉시 가입 보고가 생성되며, 카카오 등기를 거쳐 담당 수석의 안심 유선 코디가 무상으로 병행 지원됩니다.
+                <p className="text-xs text-neutral-gray leading-relaxed transition-opacity duration-300">
+                  {isDashboardFlipped ? (
+                    '흩어진 청구 내역을 한곳에 모아 실시간 진행 상태를 확인하고, 누락된 서류나 추가 보상 가능성까지 전문가가 꼼꼼하게 점검해 드립니다.'
+                  ) : (
+                    '신청 즉시 가입 보고가 생성되며, 카카오 등기를 거쳐 담당 수석의 안심 유선 코디가 무상으로 병행 지원됩니다.'
+                  )}
                 </p>
               </div>
 
               {/* Animated Mobile Dashboard Mockup */}
-              <div className="max-w-[280px] mx-auto mt-8 relative select-none group">
-                {/* Phone Frame */}
-                <div className="w-full bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 relative z-10 overflow-hidden transform group-hover:-translate-y-2 transition-transform duration-500">
-                  {/* Speaker Notch */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
-                  
-                  {/* Screen Content */}
-                  <div className="bg-slate-50 w-full h-[400px] rounded-[1.8rem] overflow-hidden flex flex-col font-sans border border-neutral-100 relative">
+              <div 
+                className="max-w-[280px] mx-auto mt-8 relative select-none group cursor-pointer"
+                style={{ perspective: '1000px' }}
+                onClick={() => setIsDashboardFlipped(!isDashboardFlipped)}
+              >
+                <div 
+                  className={`w-full relative transition-transform duration-700 ease-in-out [transform-style:preserve-3d] ${isDashboardFlipped ? '[transform:rotateY(180deg)]' : ''}`}
+                >
+                  {/* FRONT FACE (Original Dashboard) */}
+                  <div className="w-full bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 relative z-10 overflow-hidden transform group-hover:-translate-y-2 transition-transform duration-500 [backface-visibility:hidden]">
+                    {/* Speaker Notch */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
+                    
+                    {/* Screen Content */}
+                    <div className="bg-slate-50 w-full h-[400px] rounded-[1.8rem] overflow-hidden flex flex-col font-sans border border-neutral-100 relative">
                     
                     {/* Header */}
                     <div className="bg-brand-blue pt-8 pb-5 px-4 text-left relative overflow-hidden">
