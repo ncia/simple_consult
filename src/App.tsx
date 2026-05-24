@@ -631,12 +631,13 @@ export default function App() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 relative z-10">
                   
                   {/* Step 1: Duplication */}
-                  <div className="bg-white p-6 rounded-xl border border-neutral-border shadow-sm w-full flex-1 text-center relative group">
-                    <div className="w-12 h-12 bg-neutral-bg rounded-full mx-auto flex items-center justify-center text-neutral-dark mb-3 border border-neutral-border group-hover:scale-110 transition-transform">
+                  <div className="bg-purple-600 border border-purple-700 p-6 rounded-xl shadow-lg w-full flex-1 text-center relative overflow-hidden group">
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/20 to-transparent opacity-50"></div>
+                    <div className="w-12 h-12 bg-white/20 rounded-full mx-auto flex items-center justify-center mb-3 backdrop-blur-sm shadow-inner text-white group-hover:scale-110 transition-transform">
                       <span className="text-xl">📄</span>
                     </div>
-                    <strong className="text-[12px] font-bold text-neutral-dark block">무분별한 중복 가입</strong>
-                    <p className="text-[11px] text-neutral-gray mt-1.5 leading-relaxed break-keep">비슷한 보장이 겹쳐 의미 없는 지출 발생</p>
+                    <strong className="text-[12px] font-bold text-white block relative z-10">무분별한 중복 가입</strong>
+                    <p className="text-[11px] text-white/80 mt-1.5 leading-relaxed break-keep relative z-10">비슷한 보장이 겹쳐 의미 없는 지출 발생</p>
                   </div>
 
                   {/* Step 2: Leakage */}
