@@ -733,7 +733,7 @@ export default function App() {
                           <div className="bg-brand-blue pt-8 pb-5 px-4 text-left relative overflow-hidden">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/3 animate-pulse-slow"></div>
                             <span className="text-white/80 text-[10px] font-medium">보드미 AI 리포트</span>
-                            <h4 className="text-white font-extrabold text-sm mt-0.5">홍길동님의<br/>종합 보장 점수</h4>
+                            <h4 className="text-white font-extrabold text-sm mt-0.5">38세 박*검님의<br/>종합 보장 점수</h4>
                             
                             {/* Animated Score */}
                             <div className="absolute right-4 bottom-4 flex items-baseline gap-0.5">
