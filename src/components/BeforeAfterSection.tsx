@@ -166,7 +166,7 @@ export function BeforeAfterSection() {
                   <div className="bg-brand-blue-pale p-3.5 rounded-xl border border-brand-blue-light flex items-start gap-2">
                     <Check size={16} className="text-brand-blue shrink-0 mt-0.5" />
                     <p className="text-xs text-brand-blue-dark leading-normal">
-                      불필요 변액 자산을 해약 및 통합하여 자산 안정을 잡았습니다. <strong>체험 특화 리밸런싱</strong>을 통해 매월 약 31만 원 상당의 가계부 유동성을 영구 회생했습니다!
+                      불필요 변액 자산을 해약 및 통합하여 자산 안정을 잡았습니다. <strong>보험 리밸런싱</strong>을 통해 매월 약 31만원 상당의 보험료를 절감하면서 필요한 핵심 보장은 든든하게 점검해 드렸습니다!
                     </p>
                   </div>
                 </div>
