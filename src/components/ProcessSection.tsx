@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, Sparkles, MessageCircle, FileText, Database, ShieldCheck, Eye, Image as ImageIcon } from 'lucide-react';
 
 interface ProcessStep {
@@ -12,6 +12,14 @@ interface ProcessStep {
 export function ProcessSection() {
   const [activeStep, setActiveStep] = useState<number>(0);
   const [showProcessRaw, setShowProcessRaw] = useState(false);
+
+  useEffect(() => {
+    if (showProcessRaw) return;
+    const interval = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % 4);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [showProcessRaw]);
 
   const steps: ProcessStep[] = [
     {
@@ -71,8 +79,8 @@ export function ProcessSection() {
           <span className="text-brand-green-light bg-white/10 text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
             Analysis Method
           </span>
-          <h2 className="font-sans font-bold text-2xl text-white mt-2">
-            보험분석, 이렇게 진행됩니다
+          <h2 className="font-sans font-bold text-2xl text-white mt-2 flex items-center justify-center gap-1.5">
+            <span className="text-3xl">📋</span> 보험분석, 이렇게 진행됩니다
           </h2>
           <p className="text-xs text-neutral-muted mt-1">
             간결하고 투명한 절차에 기반하여 복잡한 세부 약관까지 깔끔하게 검검해 드립니다.
