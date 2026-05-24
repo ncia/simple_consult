@@ -364,7 +364,7 @@ export default function App() {
                       <button
                         type="button"
                         onClick={requestVerification}
-                        className="flex-1 h-12 bg-white hover:bg-neutral-bg border border-brand-blue text-brand-blue rounded-xl text-xs font-bold transition-all shrink-0 active:scale-95"
+                        className="flex-1 h-12 bg-white hover:bg-brand-blue border border-brand-blue text-brand-blue hover:text-white rounded-xl text-xs font-bold transition-colors duration-300 shrink-0 active:scale-95"
                       >
                         인증요청
                       </button>
@@ -495,7 +495,7 @@ export default function App() {
                 {/* Main Action submit button */}
                 <button
                   type="submit"
-                  className="w-full h-14 bg-brand-blue text-white rounded-xl font-bold text-sm tracking-wide shadow-lg shadow-brand-blue/15 hover:bg-brand-blue-hover active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 mt-2 cursor-pointer"
+                  className="w-1/2 mx-auto h-14 bg-brand-blue text-white rounded-xl font-bold text-sm tracking-wide shadow-lg shadow-brand-blue/15 hover:bg-brand-blue-hover active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 mt-2 cursor-pointer"
                 >
                   <ShieldCheck size={18} />
                   <span>실시간 무료 분석 신청하기</span>
@@ -667,7 +667,7 @@ export default function App() {
                 <div className="flex justify-between items-end flex-wrap gap-4 border-b border-neutral-border pb-4">
                   <span className="font-display text-xl font-black text-neutral-dark tracking-tight">InsureAnalysis.</span>
                   <div className="flex gap-4.5 text-xs">
-                    <span className="font-bold text-neutral-medium">(주)바이츠</span>
+                    <span className="font-bold text-neutral-medium">(주)핀토스</span>
                     <button 
                       onClick={() => setActiveTermModal({ isOpen: true, title: '개인정보 처리 위탁 방침 가이드', type: 'privacy' })}
                       className="font-bold text-brand-blue underline"
@@ -686,7 +686,7 @@ export default function App() {
 
                 <div className="bg-white/70 p-3.5 rounded-xl text-center border border-neutral-border/85">
                   <p className="text-[10px] text-neutral-medium leading-relaxed">
-                    * (주)바이츠는 본 랜딩 분석 페이지 유지 관리 및 대행 보조를 업무로 하며, 연계 대리 상담 판매에 직접 관여하거나 수수료를 고객에게 전가 수취하지 않는 안전한 간접 플랫폼입니다.
+                    * (주)핀토스는 본 랜딩 분석 페이지 유지 관리 및 대행 보조를 업무로 하며, 연계 대리 상담 판매에 직접 관여하거나 수수료를 고객에게 전가 수취하지 않는 안전한 간접 플랫폼입니다.
                   </p>
                 </div>
               </div>
