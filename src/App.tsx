@@ -475,7 +475,11 @@ export default function App() {
                           : 'bg-white border-neutral-border text-neutral-gray hover:bg-neutral-bg'
                       }`}
                     >
-                      <span className={`text-base leading-none ${formData.gender !== 'male' ? 'opacity-40 grayscale' : ''}`}>👨</span>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={`transition-all ${formData.gender !== 'male' ? 'opacity-40 grayscale' : ''}`}>
+                        <circle cx="12" cy="12" r="12" fill="#3b82f6"/>
+                        <circle cx="9.5" cy="14.5" r="4" stroke="white" strokeWidth="2"/>
+                        <path d="M12.5 11.5L17 7M14 7H17V10" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
                       <span>남성</span>
                     </button>
                     <button
@@ -487,7 +491,11 @@ export default function App() {
                           : 'bg-white border-neutral-border text-neutral-gray hover:bg-neutral-bg'
                       }`}
                     >
-                      <span className={`text-base leading-none ${formData.gender !== 'female' ? 'opacity-40 grayscale' : ''}`}>👩</span>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={`transition-all ${formData.gender !== 'female' ? 'opacity-40 grayscale' : ''}`}>
+                        <circle cx="12" cy="12" r="12" fill="#ef4444"/>
+                        <circle cx="12" cy="9.5" r="4.5" stroke="white" strokeWidth="2"/>
+                        <path d="M12 14V19M9.5 16.5H14.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
                       <span>여성</span>
                     </button>
                   </div>
