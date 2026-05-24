@@ -1060,7 +1060,7 @@ export default function App() {
             {/* MANDATORY COMPLIANCE DISCLAIMER */}
             <section className="bg-neutral-dark text-white/50 p-6 font-sans text-[10px] space-y-2 border-t border-white/5">
               <strong className="text-white text-xs font-extrabold block mb-2">필수 준법 안내 사항</strong>
-              <p>1. <strong>법인 대리점 인증 정보:</strong> (주)핀토스서비스 보험 법인 보험 대리점 (생보/손보 제휴 협회 공식 등록 정식 일련번호 : 제2012118012호)</p>
+              <p>1. <strong>법인 대리점 인증 정보:</strong> (주)핀토스서비스 법인 보험 대리점 (생보/손보 제휴 협회 공식 등록 정식 일련번호 : 제2012118012호)</p>
               <p>2. <strong>준법 감시팀 심의 필증:</strong> 핀토스 준법감시팀-준법심의필2026-733(유효 검증 심의일자: 2026-05-18 ~ 2027-05-17)</p>
               <p>3. <strong>유효기간:</strong> 본 온라인 광고는 업계 정식 광고 심의 규정을 정확히 준수하였으며, 해당 유효기간은 정식 심의 완료일로부터 명확히 1년입니다.</p>
               <p>4. <strong>가입 및 해지 중요주의:</strong> 기존 체결된 적격 계약을 정당한 사유 없이 도중에 강제 해약하고 신설 포트폴리오를 체결하시는 일련의 과정에서, (1) 고의 누락이나 상해 질병 신체 연령 이력 증가로 인수 제안이 전면 취소 거절되거나 표준 요율이 할증 상승할 수 있습니다. (2) 개개 세부 상품 편구에 따라 신규 3대 성인 질환 면책 기한 적용 및 부분 지급 유예 등 부가 불이익 사항이 따를 수 있는 만큼 면밀한 진단과 사전 협의를 부탁드립니다.</p>
