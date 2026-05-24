@@ -640,12 +640,13 @@ export default function App() {
                   </div>
 
                   {/* Step 2: Leakage */}
-                  <div className="bg-white p-6 rounded-xl border border-red-200 shadow-md w-full flex-1 text-center relative ring-2 ring-red-500/20 animate-pulse-slow">
-                    <div className="w-12 h-12 bg-red-500 text-white rounded-full mx-auto flex items-center justify-center mb-3 shadow-lg shadow-red-500/30">
+                  <div className="bg-red-600 border border-red-700 p-6 rounded-xl shadow-lg w-full flex-1 text-center relative overflow-hidden ring-2 ring-red-500/20 animate-pulse-slow">
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/20 to-transparent opacity-50"></div>
+                    <div className="w-12 h-12 bg-white/20 rounded-full mx-auto flex items-center justify-center mb-3 backdrop-blur-sm shadow-inner text-white">
                       <span className="text-xl">💧</span>
                     </div>
-                    <strong className="text-[12px] font-bold text-red-600 block">과도한 보험료 누수</strong>
-                    <p className="text-[11px] text-red-400/90 mt-1.5 leading-relaxed break-keep">월평균 <strong className="text-red-500">약 5~10만원</strong> 불필요한 비용 증발</p>
+                    <strong className="text-[12px] font-bold text-white block relative z-10">과도한 보험료 누수</strong>
+                    <p className="text-[11px] text-white/80 mt-1.5 leading-relaxed break-keep relative z-10">월평균 <strong className="text-white font-extrabold">약 5~10만원</strong> 불필요한 비용 증발</p>
                   </div>
 
                   {/* Step 3: Resolution */}
