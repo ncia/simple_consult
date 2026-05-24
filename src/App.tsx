@@ -6,7 +6,12 @@ import {
   Sparkles, 
   ArrowRight, 
   Info,
-  User
+  User,
+  Car,
+  Home,
+  Heart,
+  Zap,
+  FileText
 } from 'lucide-react';
 
 import { Header } from './components/Header';
@@ -813,9 +818,129 @@ export default function App() {
                       {/* Speaker Notch */}
                       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
                       
-                      {/* Screen Content */}
-                      <div className="bg-slate-50 w-full h-[400px] rounded-[1.8rem] overflow-hidden flex flex-col font-sans border border-neutral-100 relative">
-                        <img src="/assets/claim-mockup.png" alt="보험금 청구 조회 시안" className="w-full h-full object-cover object-top" />
+                      {/* Screen Content - BACK FACE UI */}
+                      <div className="bg-[#f8f9fa] w-full h-[400px] rounded-[1.8rem] flex flex-col font-sans border border-neutral-100 relative overflow-y-auto scrollbar-hide">
+                        <div className="p-3 space-y-3 pb-8">
+                          
+                          {/* TOP WIDGETS */}
+                          <div className="flex gap-2">
+                            {/* Left Widget */}
+                            <div className="flex-1 bg-gradient-to-br from-[#6b4cfa] to-[#5136e0] rounded-xl p-3 text-white relative overflow-hidden shadow-sm">
+                              {/* Shield Watermark */}
+                              <div className="absolute -right-2 -top-2 opacity-20">
+                                <ShieldCheck size={64} />
+                              </div>
+                              <p className="text-[9px] font-bold opacity-90 mb-1">보험금 청구 내역</p>
+                              <div className="flex items-baseline gap-0.5 relative z-10">
+                                <span className="text-2xl font-black">1</span>
+                                <span className="text-[10px] opacity-90">건 접수됨</span>
+                              </div>
+                              <div className="flex gap-1.5 mt-3 relative z-10">
+                                <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm"><Car size={10} /></div>
+                                <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm"><Home size={10} /></div>
+                                <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm"><Heart size={10} /></div>
+                              </div>
+                            </div>
+
+                            {/* Right Widget */}
+                            <div className="flex-1 bg-[#0055d3] rounded-xl p-3 flex flex-col items-center justify-center text-center shadow-sm">
+                              <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center text-white mb-2 backdrop-blur-sm">
+                                <Zap size={16} fill="currentColor" />
+                              </div>
+                              <p className="text-[10px] font-bold text-white leading-tight">전문가 실시간 상담</p>
+                              <p className="text-[8px] text-white/80 mt-1 leading-tight">전문가와 실시간 상담을 받아<br/>보세요!</p>
+                            </div>
+                          </div>
+
+                          {/* 진행 프로세스 Title */}
+                          <h3 className="text-xs font-black text-neutral-dark pt-1">진행 프로세스</h3>
+
+                          {/* Process Card */}
+                          <div className="bg-white rounded-xl border border-neutral-border p-3 shadow-sm">
+                            {/* Header */}
+                            <div className="flex justify-between items-start mb-4">
+                              <div className="flex gap-2">
+                                <div className="w-8 h-8 rounded-lg bg-[#eef3f9] flex items-center justify-center text-[#0055d3]">
+                                  <Car size={16} />
+                                </div>
+                                <div>
+                                  <h4 className="text-[11px] font-bold text-neutral-dark">보험금 청구 진행 단계</h4>
+                                  <p className="text-[9px] text-neutral-gray mt-0.5">신청날짜: 2026-05-03</p>
+                                </div>
+                              </div>
+                              <div className="bg-[#e6f8ef] text-[#1ebf00] px-2 py-0.5 rounded-full text-[9px] font-bold border border-[#bbf0d4]">
+                                승인
+                              </div>
+                            </div>
+
+                            {/* Stepper */}
+                            <div className="relative px-2 mb-4">
+                              <div className="absolute top-2.5 left-4 right-4 h-0.5 bg-neutral-200 -z-10"></div>
+                              {/* Blue completed line */}
+                              <div className="absolute top-2.5 left-4 w-[60%] h-0.5 bg-[#0055d3] -z-10"></div>
+                              
+                              <div className="flex justify-between">
+                                {['접수', '진행', '심사', '조사', '승인', '입금'].map((step, idx) => {
+                                  const isCompleted = idx < 4;
+                                  const isCurrent = idx === 4;
+                                  return (
+                                    <div key={idx} className="flex flex-col items-center gap-1.5 bg-white">
+                                      {isCompleted ? (
+                                        <div className="w-5 h-5 rounded-full bg-[#0055d3] text-white flex items-center justify-center z-10">
+                                          <Check size={10} strokeWidth={3} />
+                                        </div>
+                                      ) : isCurrent ? (
+                                        <div className="w-5 h-5 rounded-full bg-[#1ebf00] text-white flex items-center justify-center font-bold text-[10px] z-10">
+                                          {idx + 1}
+                                        </div>
+                                      ) : (
+                                        <div className="w-5 h-5 rounded-full bg-white border border-neutral-300 text-neutral-400 flex items-center justify-center font-bold text-[10px] z-10">
+                                          {idx + 1}
+                                        </div>
+                                      )}
+                                      <span className={`text-[8px] font-bold ${isCurrent ? 'text-[#1ebf00]' : isCompleted ? 'text-[#0055d3]' : 'text-neutral-500'}`}>
+                                        {step}
+                                      </span>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </div>
+
+                            {/* Footer Info */}
+                            <div className="border-t border-neutral-100 pt-2 flex justify-between text-[9px] text-neutral-dark">
+                              <span>• 신청자: <strong>유동근</strong></span>
+                              <span>• 생년월일: <strong>19771024</strong></span>
+                              <span>• 성별: <strong>남성</strong></span>
+                            </div>
+                          </div>
+
+                          {/* 연동 Status Card */}
+                          <div className="bg-white rounded-xl border border-neutral-border p-3 shadow-sm flex items-center gap-2.5">
+                            <div className="w-8 h-8 rounded-lg bg-[#f4f5f7] flex items-center justify-center text-neutral-600">
+                              <FileText size={16} />
+                            </div>
+                            <div>
+                              <h4 className="text-[11px] font-bold text-neutral-dark">보험금 청구 조회 연동</h4>
+                              <div className="flex items-center gap-1 mt-0.5">
+                                <div className="w-2 h-2 rounded-full bg-gradient-to-br from-green-400 to-green-600"></div>
+                                <span className="text-[9px] font-bold text-[#1ebf00]">정상적으로 연결되었습니다.</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* 누락 서류 Box */}
+                          <div className="bg-[#eaf1fb] rounded-xl p-3 border border-[#d6e3f5]">
+                            <h4 className="text-[11px] font-bold text-[#0055d3] mb-1">누락된 서류가 있나요?</h4>
+                            <p className="text-[9px] text-neutral-600 leading-relaxed mb-3">
+                              보험금 청구 신청 정보의 카카오톡 알림톡을 통해 누락 서류 제출 및 보완 요청이 신속히 안내됩니다.
+                            </p>
+                            <button className="w-full bg-white text-[#0055d3] font-bold text-[10px] py-2 rounded-lg border border-[#d6e3f5] shadow-sm active:scale-95 transition-transform">
+                              안내 문서 확인하기
+                            </button>
+                          </div>
+
+                        </div>
                       </div>
                     </div>
                   </div>
