@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
 import { 
   ShieldCheck, 
   Check, 
@@ -709,31 +708,7 @@ export default function App() {
                 </p>
               </div>
 
-              {/* Tab Selector */}
-              <div className="flex bg-neutral-bg p-1.5 rounded-2xl max-w-[340px] mx-auto border border-neutral-border mt-6">
-                <button
-                  type="button"
-                  onClick={() => setIsDashboardFlipped(false)}
-                  className={`flex-1 py-3 text-xs font-bold rounded-xl transition-all ${
-                    !isDashboardFlipped
-                      ? 'bg-brand-blue shadow-sm text-white'
-                      : 'text-neutral-gray hover:text-neutral-dark'
-                  }`}
-                >
-                  보드미 AI 리포트
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setIsDashboardFlipped(true)}
-                  className={`flex-1 py-3 text-xs font-bold rounded-xl transition-all ${
-                    isDashboardFlipped
-                      ? 'bg-brand-green shadow-sm text-white'
-                      : 'text-neutral-gray hover:text-neutral-dark'
-                  }`}
-                >
-                  보험금 청구 조회
-                </button>
-              </div>
+
 
               {/* Animated Mobile Dashboard Mockup */}
               <div className="max-w-[280px] mx-auto mt-8">
@@ -743,17 +718,8 @@ export default function App() {
                 >
                   
                   {/* FRONT FACE (Original Dashboard) */}
-                  <motion.div 
-                    initial={false}
-                    animate={{ rotateY: isDashboardFlipped ? 180 : 0 }}
-                    transition={{ duration: 0.7, ease: 'easeInOut' }}
-                    className="col-start-1 row-start-1 w-full"
-                    style={{ 
-                      transformStyle: 'preserve-3d', WebkitTransformStyle: 'preserve-3d',
-                      backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden',
-                      zIndex: !isDashboardFlipped ? 10 : 0,
-                      pointerEvents: !isDashboardFlipped ? 'auto' : 'none'
-                    }}
+                  <div 
+                    className={`col-start-1 row-start-1 w-full transition-transform duration-700 ease-in-out [transform-style:preserve-3d] [backface-visibility:hidden] ${!isDashboardFlipped ? '[transform:rotateY(0deg)] z-10' : '[transform:rotateY(180deg)] z-0 pointer-events-none'}`}
                   >
                     <div className="bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 h-full relative">
                       {/* Speaker Notch */}
@@ -764,13 +730,13 @@ export default function App() {
                     
                     {/* Header */}
                     <div className="bg-brand-blue pt-8 pb-5 px-4 text-left relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/3 animate-pulse-slow"></div>
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/3"></div>
                       <span className="text-white/80 text-[10px] font-medium">보드미 AI 리포트</span>
                       <h4 className="text-white font-extrabold text-sm mt-0.5">홍길동님의<br/>종합 보장 점수</h4>
                       
                       {/* Animated Score */}
                       <div className="absolute right-4 bottom-4 flex items-baseline gap-0.5">
-                        <span className="text-3xl font-black text-white group-hover:scale-110 transition-transform origin-bottom duration-300">85</span>
+                        <span className="text-3xl font-black text-white">85</span>
                         <span className="text-white/80 text-xs font-bold">점</span>
                       </div>
                     </div>
@@ -782,11 +748,11 @@ export default function App() {
                       <div className="bg-white p-3 rounded-xl shadow-sm border border-neutral-100 group-hover:border-brand-blue/30 transition-colors">
                         <div className="flex justify-between items-center mb-2">
                           <span className="text-[10px] font-bold text-neutral-dark">보장 충분도</span>
-                          <span className="text-[10px] font-bold text-brand-blue animate-pulse">우수해요</span>
+                          <span className="text-[10px] font-bold text-brand-blue">우수해요</span>
                         </div>
                         <div className="w-full bg-neutral-100 rounded-full h-2 overflow-hidden">
                           <div className="bg-brand-blue h-full rounded-full w-[85%] relative overflow-hidden">
-                            <div className="absolute top-0 bottom-0 -left-10 w-20 bg-white/20 -skew-x-12 translate-x-32 group-hover:translate-x-64 transition-transform duration-1000 ease-in-out delay-100"></div>
+                            <div className="absolute top-0 bottom-0 -left-10 w-20 bg-white/20 -skew-x-12 translate-x-32"></div>
                           </div>
                         </div>
                       </div>
@@ -815,7 +781,7 @@ export default function App() {
                               <div className="bg-brand-green h-full rounded-full w-[65%]"></div>
                             </div>
                             {/* Animated Saving Badge */}
-                            <div className="absolute -right-2 -top-6 bg-brand-green text-white text-[9px] font-bold px-1.5 py-0.5 rounded shadow-sm animate-bounce">
+                            <div className="absolute -right-2 -top-6 bg-brand-green text-white text-[9px] font-bold px-1.5 py-0.5 rounded shadow-sm">
                               ▼ 6.5만
                             </div>
                           </div>
@@ -837,20 +803,11 @@ export default function App() {
                     </div>
                   </div>
                     </div>
-                  </motion.div>
+                  </div>
 
                   {/* BACK FACE (Claim Mockup Image) */}
-                  <motion.div 
-                    initial={false}
-                    animate={{ rotateY: isDashboardFlipped ? 0 : -180 }}
-                    transition={{ duration: 0.7, ease: 'easeInOut' }}
-                    className="col-start-1 row-start-1 w-full"
-                    style={{ 
-                      transformStyle: 'preserve-3d', WebkitTransformStyle: 'preserve-3d',
-                      backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden',
-                      zIndex: isDashboardFlipped ? 10 : 0,
-                      pointerEvents: isDashboardFlipped ? 'auto' : 'none'
-                    }}
+                  <div 
+                    className={`col-start-1 row-start-1 w-full transition-transform duration-700 ease-in-out [transform-style:preserve-3d] [backface-visibility:hidden] ${isDashboardFlipped ? '[transform:rotateY(0deg)] z-10' : '[transform:rotateY(-180deg)] z-0 pointer-events-none'}`}
                   >
                     <div className="bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 h-full relative">
                       {/* Speaker Notch */}
@@ -861,7 +818,7 @@ export default function App() {
                         <img src="/assets/claim-mockup.png" alt="보험금 청구 조회 시안" className="w-full h-full object-cover object-top" />
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
 
                 {/* Decorative background blobs */}
