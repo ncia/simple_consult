@@ -577,11 +577,13 @@ export default function App() {
 
                   {/* Arrow with leaking coins */}
                   <div className="flex flex-col items-center justify-center shrink-0 py-2 sm:py-0 relative">
-                    <div className="hidden sm:block w-6 border-t-2 border-dashed border-red-300 relative">
-                      <ArrowRight size={14} className="text-red-400 absolute -right-2 -top-[9px]" />
+                    <div className="hidden sm:flex items-center">
+                      <div className="w-4 border-t-2 border-dashed border-red-300"></div>
+                      <ArrowRight size={16} className="text-red-400 -ml-1.5" />
                     </div>
-                    <div className="sm:hidden h-6 border-l-2 border-dashed border-red-300 relative">
-                      <ArrowRight size={14} className="text-red-400 absolute -bottom-2 -left-[9px] rotate-90" />
+                    <div className="sm:hidden flex flex-col items-center">
+                      <div className="h-4 border-l-2 border-dashed border-red-300"></div>
+                      <ArrowRight size={16} className="text-red-400 rotate-90 -mt-1.5" />
                     </div>
                     {/* Leaking animation */}
                     <div className="absolute -top-3 sm:-top-5 flex gap-0.5">
@@ -601,11 +603,13 @@ export default function App() {
 
                   {/* Arrow to resolution */}
                   <div className="flex items-center justify-center shrink-0 py-2 sm:py-0">
-                    <div className="hidden sm:block w-6 border-t-2 border-dashed border-brand-green-light relative">
-                      <ArrowRight size={14} className="text-brand-green-light absolute -right-2 -top-[9px]" />
+                    <div className="hidden sm:flex items-center">
+                      <div className="w-4 border-t-2 border-dashed border-brand-green-light"></div>
+                      <ArrowRight size={16} className="text-brand-green-light -ml-1.5" />
                     </div>
-                    <div className="sm:hidden h-6 border-l-2 border-dashed border-brand-green-light relative">
-                      <ArrowRight size={14} className="text-brand-green-light absolute -bottom-2 -left-[9px] rotate-90" />
+                    <div className="sm:hidden flex flex-col items-center">
+                      <div className="h-4 border-l-2 border-dashed border-brand-green-light"></div>
+                      <ArrowRight size={16} className="text-brand-green-light rotate-90 -mt-1.5" />
                     </div>
                   </div>
 
