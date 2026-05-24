@@ -737,7 +737,7 @@ export default function App() {
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
                         
                         {/* Screen Content */}
-                        <div className="bg-slate-50 w-full h-[485px] rounded-[1.8rem] overflow-hidden flex flex-col font-sans border border-neutral-100 relative">
+                        <div className="bg-slate-50 w-full h-[600px] rounded-[1.8rem] overflow-hidden flex flex-col font-sans border border-neutral-100 relative">
                           
                           {/* Header */}
                           <div className="bg-brand-blue pt-8 pb-5 px-4 text-left relative overflow-hidden">
@@ -840,7 +840,7 @@ export default function App() {
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
                         
                         {/* Screen Content - BACK FACE UI */}
-                        <div className="bg-[#f8f9fa] w-full h-[485px] rounded-[1.8rem] flex flex-col font-sans border border-neutral-100 relative overflow-y-auto text-left">
+                        <div className="bg-[#f8f9fa] w-full h-[600px] rounded-[1.8rem] flex flex-col font-sans border border-neutral-100 relative overflow-hidden text-left">
                           <div className="p-3 space-y-3 pb-8">
                             
                             {/* TOP WIDGETS */}
