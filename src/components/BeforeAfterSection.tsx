@@ -46,7 +46,6 @@ export function BeforeAfterSection() {
 
         {/* Comparison Display */}
         <div className="w-full">
-            /* Premium Styled Diagnostic Interactive Visualizations */
             <div 
               className="grid cursor-pointer w-full text-left animate-fade-in font-sans [perspective:1500px]"
               onClick={() => setActiveTab(activeTab === 'before' ? 'after' : 'before')}
