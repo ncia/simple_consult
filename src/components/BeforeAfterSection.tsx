@@ -30,7 +30,7 @@ export function BeforeAfterSection() {
                 : 'text-neutral-gray hover:text-neutral-dark'
             }`}
           >
-            보험분석 Before (기존)
+            보험분석 전 기존보험
           </button>
           <button
             onClick={() => setActiveTab('after')}
@@ -40,7 +40,7 @@ export function BeforeAfterSection() {
                 : 'text-neutral-gray hover:text-neutral-dark'
             }`}
           >
-            보험분석 After (추천)
+            보험분석 후 추천플랜
           </button>
         </div>
 
