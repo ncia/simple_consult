@@ -32,3 +32,38 @@
   animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
+/* 3D Flip Utilities - Guaranteed to bypass any Tailwind JIT issues */
+.flip-container {
+  perspective: 1500px;
+  -webkit-perspective: 1500px;
+}
+
+.flip-card {
+  transition: transform 0.7s ease-in-out;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-front-active {
+  transform: rotateY(0deg);
+  z-index: 10;
+}
+
+.flip-front-inactive {
+  transform: rotateY(180deg);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.flip-back-active {
+  transform: rotateY(0deg);
+  z-index: 10;
+}
+
+.flip-back-inactive {
+  transform: rotateY(-180deg);
+  z-index: 0;
+  pointer-events: none;
+}

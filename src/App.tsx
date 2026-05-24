@@ -718,13 +718,13 @@ export default function App() {
               {/* Animated Mobile Dashboard Mockup */}
               <div className="max-w-[280px] mx-auto mt-8">
                 <div 
-                  className="grid w-full select-none cursor-pointer [perspective:1500px]"
+                  className="grid w-full select-none cursor-pointer flip-container"
                   onClick={() => setIsDashboardFlipped(!isDashboardFlipped)}
                 >
                   
                   {/* FRONT FACE (Original Dashboard) */}
                   <div 
-                    className={`col-start-1 row-start-1 w-full transition-transform duration-700 ease-in-out [transform-style:preserve-3d] [backface-visibility:hidden] ${!isDashboardFlipped ? '[transform:rotateY(0deg)] z-10' : '[transform:rotateY(180deg)] z-0 pointer-events-none'}`}
+                    className={`col-start-1 row-start-1 w-full flip-card ${!isDashboardFlipped ? 'flip-front-active' : 'flip-front-inactive'}`}
                   >
                     <div className="bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 h-full relative">
                       {/* Speaker Notch */}
@@ -812,7 +812,7 @@ export default function App() {
 
                   {/* BACK FACE (Claim Mockup Image) */}
                   <div 
-                    className={`col-start-1 row-start-1 w-full transition-transform duration-700 ease-in-out [transform-style:preserve-3d] [backface-visibility:hidden] ${isDashboardFlipped ? '[transform:rotateY(0deg)] z-10' : '[transform:rotateY(-180deg)] z-0 pointer-events-none'}`}
+                    className={`col-start-1 row-start-1 w-full flip-card ${isDashboardFlipped ? 'flip-back-active' : 'flip-back-inactive'}`}
                   >
                     <div className="bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 h-full relative">
                       {/* Speaker Notch */}
