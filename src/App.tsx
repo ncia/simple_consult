@@ -6,7 +6,12 @@ import {
   Sparkles, 
   ArrowRight, 
   Info,
-  User
+  User,
+  Car,
+  Home,
+  Heart,
+  Zap,
+  FileText
 } from 'lucide-react';
 
 import { Header } from './components/Header';
@@ -89,6 +94,7 @@ export default function App() {
 
   // Modal tracking states
   const [isSMSOtpOpen, setIsSMSOtpOpen] = useState(false);
+  const [isDashboardFlipped, setIsDashboardFlipped] = useState(false);
   const [activeTermModal, setActiveTermModal] = useState<{ isOpen: boolean; title: string; type: 'privacy' | 'marketing' | 'terms' }>({
     isOpen: false,
     title: '',
