@@ -626,9 +626,6 @@ export default function App() {
             {/* Before / After section modular */}
             <BeforeAfterSection />
 
-            {/* Process Section modular */}
-            <ProcessSection />
-
             {/* FINAL CONVERSION PERSUADE WRAPPER */}
             <section className="py-14 px-5 bg-white text-center space-y-6">
               <div className="space-y-2 text-center max-w-sm mx-auto">
@@ -745,6 +742,9 @@ export default function App() {
                 </button>
               </div>
             </section>
+
+            {/* Process Section modular */}
+            <ProcessSection />
 
             {/* PARTNER NETWORKS / EXPERT BRAND GRID */}
             <section className="py-12 px-5 bg-neutral-bg border-t border-neutral-border space-y-7">
