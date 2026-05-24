@@ -475,12 +475,7 @@ export default function App() {
                           : 'bg-white border-neutral-border text-neutral-gray hover:bg-neutral-bg'
                       }`}
                     >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={formData.gender === 'male' ? 'text-brand-blue' : 'text-neutral-400'}>
-                        <circle cx="10" cy="14" r="5"></circle>
-                        <line x1="13.5" y1="10.5" x2="21" y2="3"></line>
-                        <line x1="16" y1="3" x2="21" y2="3"></line>
-                        <line x1="21" y1="3" x2="21" y2="8"></line>
-                      </svg>
+                      <span className={`text-base leading-none ${formData.gender !== 'male' ? 'opacity-40 grayscale' : ''}`}>👨</span>
                       <span>남성</span>
                     </button>
                     <button
@@ -492,11 +487,7 @@ export default function App() {
                           : 'bg-white border-neutral-border text-neutral-gray hover:bg-neutral-bg'
                       }`}
                     >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={formData.gender === 'female' ? 'text-red-500' : 'text-neutral-400'}>
-                        <circle cx="12" cy="10" r="5"></circle>
-                        <line x1="12" y1="15" x2="12" y2="22"></line>
-                        <line x1="9" y1="19" x2="15" y2="19"></line>
-                      </svg>
+                      <span className={`text-base leading-none ${formData.gender !== 'female' ? 'opacity-40 grayscale' : ''}`}>👩</span>
                       <span>여성</span>
                     </button>
                   </div>
