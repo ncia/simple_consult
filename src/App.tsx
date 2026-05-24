@@ -735,7 +735,7 @@ export default function App() {
               </div>
 
               {/* Animated Mobile Dashboard Mockup */}
-              <div className="max-w-[280px] mx-auto mt-8 transform hover:-translate-y-2 transition-transform duration-500">
+              <div className="max-w-[280px] mx-auto mt-8">
                 <div 
                   className="grid w-full select-none cursor-pointer [perspective:1500px]"
                   onClick={() => setIsDashboardFlipped(!isDashboardFlipped)}
@@ -743,7 +743,12 @@ export default function App() {
                   
                   {/* FRONT FACE (Original Dashboard) */}
                   <div 
-                    className={`col-start-1 row-start-1 w-full transition-transform duration-700 ease-in-out [transform-style:preserve-3d] [backface-visibility:hidden] ${!isDashboardFlipped ? '[transform:rotateY(0deg)] z-10' : '[transform:rotateY(180deg)] z-0 pointer-events-none'}`}
+                    className={`col-start-1 row-start-1 w-full transition-transform duration-700 ease-in-out ${!isDashboardFlipped ? 'z-10' : 'z-0 pointer-events-none'}`}
+                    style={{ 
+                      transformStyle: 'preserve-3d', WebkitTransformStyle: 'preserve-3d',
+                      backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden',
+                      transform: !isDashboardFlipped ? 'rotateY(0deg)' : 'rotateY(180deg)'
+                    }}
                   >
                     <div className="bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 h-full relative">
                       {/* Speaker Notch */}
@@ -829,7 +834,12 @@ export default function App() {
 
                   {/* BACK FACE (Claim Mockup Image) */}
                   <div 
-                    className={`col-start-1 row-start-1 w-full transition-transform duration-700 ease-in-out [transform-style:preserve-3d] [backface-visibility:hidden] ${isDashboardFlipped ? '[transform:rotateY(0deg)] z-10' : '[transform:rotateY(-180deg)] z-0 pointer-events-none'}`}
+                    className={`col-start-1 row-start-1 w-full transition-transform duration-700 ease-in-out ${isDashboardFlipped ? 'z-10' : 'z-0 pointer-events-none'}`}
+                    style={{ 
+                      transformStyle: 'preserve-3d', WebkitTransformStyle: 'preserve-3d',
+                      backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden',
+                      transform: isDashboardFlipped ? 'rotateY(0deg)' : 'rotateY(-180deg)'
+                    }}
                   >
                     <div className="bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 h-full relative">
                       {/* Speaker Notch */}
