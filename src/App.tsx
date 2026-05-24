@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { 
   ShieldCheck, 
   Check, 
@@ -742,12 +743,16 @@ export default function App() {
                 >
                   
                   {/* FRONT FACE (Original Dashboard) */}
-                  <div 
-                    className={`col-start-1 row-start-1 w-full transition-transform duration-700 ease-in-out ${!isDashboardFlipped ? 'z-10' : 'z-0 pointer-events-none'}`}
+                  <motion.div 
+                    initial={false}
+                    animate={{ rotateY: isDashboardFlipped ? 180 : 0 }}
+                    transition={{ duration: 0.7, ease: 'easeInOut' }}
+                    className="col-start-1 row-start-1 w-full"
                     style={{ 
                       transformStyle: 'preserve-3d', WebkitTransformStyle: 'preserve-3d',
                       backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden',
-                      transform: !isDashboardFlipped ? 'rotateY(0deg)' : 'rotateY(180deg)'
+                      zIndex: !isDashboardFlipped ? 10 : 0,
+                      pointerEvents: !isDashboardFlipped ? 'auto' : 'none'
                     }}
                   >
                     <div className="bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 h-full relative">
@@ -831,14 +836,20 @@ export default function App() {
 
                     </div>
                   </div>
+                    </div>
+                  </motion.div>
 
                   {/* BACK FACE (Claim Mockup Image) */}
-                  <div 
-                    className={`col-start-1 row-start-1 w-full transition-transform duration-700 ease-in-out ${isDashboardFlipped ? 'z-10' : 'z-0 pointer-events-none'}`}
+                  <motion.div 
+                    initial={false}
+                    animate={{ rotateY: isDashboardFlipped ? 0 : -180 }}
+                    transition={{ duration: 0.7, ease: 'easeInOut' }}
+                    className="col-start-1 row-start-1 w-full"
                     style={{ 
                       transformStyle: 'preserve-3d', WebkitTransformStyle: 'preserve-3d',
                       backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden',
-                      transform: isDashboardFlipped ? 'rotateY(0deg)' : 'rotateY(-180deg)'
+                      zIndex: isDashboardFlipped ? 10 : 0,
+                      pointerEvents: isDashboardFlipped ? 'auto' : 'none'
                     }}
                   >
                     <div className="bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 h-full relative">
@@ -850,7 +861,7 @@ export default function App() {
                         <img src="/assets/claim-mockup.png" alt="보험금 청구 조회 시안" className="w-full h-full object-cover object-top" />
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Decorative background blobs */}
