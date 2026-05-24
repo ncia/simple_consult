@@ -888,7 +888,7 @@ export default function App() {
                               {/* Right Widget */}
                               <div className="flex-1 bg-[#0055d3] rounded-xl p-3 flex flex-col items-center justify-center text-center shadow-sm relative overflow-hidden">
                                 {/* Zap Watermark */}
-                                <div className="absolute -right-3 -bottom-3 opacity-20">
+                                <div className="absolute -right-2 -top-2 opacity-20">
                                   <Zap size={64} fill="currentColor" className="text-white" />
                                 </div>
                                 <p className="text-[10px] font-bold text-white leading-tight relative z-10">전문가 실시간 상담</p>
