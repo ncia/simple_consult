@@ -736,7 +736,10 @@ export default function App() {
 
               {/* Animated Mobile Dashboard Mockup */}
               <div className="max-w-[280px] mx-auto mt-8 transform hover:-translate-y-2 transition-transform duration-500">
-                <div className="grid w-full select-none [perspective:1500px]">
+                <div 
+                  className="grid w-full select-none cursor-pointer [perspective:1500px]"
+                  onClick={() => setIsDashboardFlipped(!isDashboardFlipped)}
+                >
                   
                   {/* FRONT FACE (Original Dashboard) */}
                   <div 
