@@ -166,7 +166,7 @@ export function BeforeAfterSection() {
                   <div className="bg-brand-blue-pale p-3.5 rounded-xl border border-brand-blue-light flex items-start gap-2">
                     <Check size={16} className="text-brand-blue shrink-0 mt-0.5" />
                     <p className="text-xs text-brand-blue-dark leading-normal">
-                      보험 리모델링을 통해 매월 약 31만원 상당의 보험료 절감하면서 필요한 핵심 보장은 든든하게 점검해 드렸습니다.
+                      보험 리모델링을 통해 매월 약 31만원 상당의 보험료를 절감하면서 필요한 핵심 보장은 든든하게 점검해 드렸습니다.
                     </p>
                   </div>
                 </div>
