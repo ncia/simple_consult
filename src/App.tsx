@@ -446,9 +446,10 @@ export default function App() {
                   {formData.birthdate.length === 8 && !validationErrors.birthdate && (() => {
                     const info = getInsuranceInfo(formData.birthdate);
                     if (!info) return null;
+                    const nameStr = formData.name.trim() || '고객';
                     return (
-                      <p className="text-xs text-red-600 font-bold mt-1">
-                        현재 보험 나이는 {info.insuranceAge}세이며 다음 상령일까지 {info.diffDays}일 남았습니다.
+                      <p className="text-xs text-slate-400 font-medium mt-1">
+                        {nameStr}님의 보험 나이는 <span className="text-red-500 font-bold">{info.insuranceAge}세</span>이며 다음 상령일까지 <span className="text-red-500 font-bold">{info.diffDays}일</span> 남았습니다.
                       </p>
                     );
                   })()}
