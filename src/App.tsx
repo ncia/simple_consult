@@ -668,8 +668,8 @@ export default function App() {
                 </div>
 
                 <div className="grid grid-cols-1 gap-1.5 text-[11px] text-neutral-gray leading-relaxed">
-                  <p><strong>공동 사업체 상호:</strong> (주)바이츠  |  <strong>본사 사업자등록번호:</strong> 805-87-00838  |  <strong>대표 연락 유선:</strong> 02-2038-8603</p>
-                  <p><strong>페이지 실무 보호책임:</strong> 개인정보관리담당 임원 민인환 수석 (유선 메일 문의: amcoms@naver.com)</p>
+                  <p><strong>공동 사업체 상호:</strong> (주)핀토스  |  <strong>본사 사업자등록번호:</strong> 123-45-67890  |  <strong>대표 고객 센터:</strong> 032-999-0119</p>
+                  <p><strong>페이지 실무 보호책임:</strong> 개인정보관리담당 임원 유영환 수석 (메일 문의: security@insucare.net)</p>
                   <p><strong>소재지 주소:</strong> 서울특별시 영등포구 당산로35길 4-3, 5층 상설 법인부스</p>
                   <p className="text-[10px] text-neutral-muted mt-2">© 2026 InsureAnalysis Co., Ltd. All rights reserved. Our values and technologies prioritize the financial security of our client base.</p>
                 </div>
