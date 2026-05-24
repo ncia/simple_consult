@@ -100,7 +100,7 @@ export function BeforeAfterSection() {
                   <div className="bg-red-50/50 p-3.5 rounded-xl border border-red-100/80 flex items-start gap-2">
                     <BadgeAlert size={16} className="text-red-500 shrink-0 mt-0.5" />
                     <p className="text-xs text-red-800 leading-normal">
-                      보험료가 과하게 책정되어 있으며, 실비와 운전자 보험이 불필요하게 중복 가입되어있어 매월 소중한 생활 자금이 불필요하게 낭비되는 원인입니다.
+                      보험료가 과다하게 책정되어 있으며, 실비와 운전자 보험이 불필요하게 중복 가입되어있어 매월 소중한 생활 자금이 불필요하게 낭비되는 원인입니다.
                     </p>
                   </div>
                 </div>
