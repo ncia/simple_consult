@@ -731,13 +731,13 @@ export default function App() {
                       </p>
                     </div>
 
-                    <div className="max-w-[280px] w-full relative select-none group">
+                    <div className="max-w-[340px] w-full relative select-none group">
                       <div className="w-full bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 relative z-10 overflow-hidden transform group-hover:-translate-y-2 transition-transform duration-500">
                         {/* Speaker Notch */}
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
                         
                         {/* Screen Content */}
-                        <div className="bg-slate-50 w-full h-[400px] rounded-[1.8rem] overflow-hidden flex flex-col font-sans border border-neutral-100 relative">
+                        <div className="bg-slate-50 w-full h-[485px] rounded-[1.8rem] overflow-hidden flex flex-col font-sans border border-neutral-100 relative">
                           
                           {/* Header */}
                           <div className="bg-brand-blue pt-8 pb-5 px-4 text-left relative overflow-hidden">
@@ -834,13 +834,13 @@ export default function App() {
                       </p>
                     </div>
 
-                    <div className="max-w-[280px] w-full relative select-none group">
+                    <div className="max-w-[340px] w-full relative select-none group">
                       <div className="w-full bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 relative z-10 overflow-hidden transform group-hover:-translate-y-2 transition-transform duration-500">
                         {/* Speaker Notch */}
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
                         
                         {/* Screen Content - BACK FACE UI */}
-                        <div className="bg-[#f8f9fa] w-full h-[400px] rounded-[1.8rem] flex flex-col font-sans border border-neutral-100 relative overflow-y-auto text-left">
+                        <div className="bg-[#f8f9fa] w-full h-[485px] rounded-[1.8rem] flex flex-col font-sans border border-neutral-100 relative overflow-y-auto text-left">
                           <div className="p-3 space-y-3 pb-8">
                             
                             {/* TOP WIDGETS */}
