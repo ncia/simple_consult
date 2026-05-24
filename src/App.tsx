@@ -496,7 +496,7 @@ export default function App() {
                 {/* Main Action submit button */}
                 <button
                   type="submit"
-                  className="w-1/2 mx-auto h-14 bg-brand-blue text-white rounded-xl font-bold text-sm tracking-wide shadow-lg shadow-brand-blue/15 hover:bg-brand-blue-hover active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 mt-2 cursor-pointer"
+                  className="w-full md:w-1/2 mx-auto h-14 bg-brand-blue text-white rounded-xl font-bold text-sm tracking-wide shadow-lg shadow-brand-blue/15 hover:bg-brand-blue-hover active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 mt-2 cursor-pointer"
                 >
                   <ShieldCheck size={18} />
                   <span>실시간 무료 분석 신청하기</span>
