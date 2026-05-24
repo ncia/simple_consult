@@ -943,7 +943,7 @@ export default function App() {
                               </div>
 
                               <div className="border-t border-neutral-100 pt-3 mt-1 flex justify-between text-[9px] text-neutral-gray">
-                                <span><span className="text-neutral-400 mr-0.5">•</span>신청자: <strong className="text-neutral-dark">유동근</strong></span>
+                                <span><span className="text-neutral-400 mr-0.5">•</span>신청자: <strong className="text-neutral-dark">박*검</strong></span>
                                 <span><span className="text-neutral-400 mr-0.5">•</span>생년월일: <strong className="text-neutral-dark">19771024</strong></span>
                                 <span><span className="text-neutral-400 mr-0.5">•</span>성별: <strong className="text-neutral-dark">남성</strong></span>
                               </div>
