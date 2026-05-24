@@ -197,10 +197,10 @@ export function ProcessSection() {
         {/* bottom subtext */}
         <div className="pt-6 border-t border-white/10 max-w-md mx-auto text-center space-y-1 flex flex-col items-center">
           <p className="text-brand-blue-light text-xs font-bold">🎯 불편하고 복잡한 청구절차는 이제 그만!</p>
-          <h3 className="text-base font-extrabold text-white">청구지원서비스까지 함께 완벽하게 받아보세요</h3>
+          <h3 className="text-base font-extrabold text-white">청구지원 서비스까지 함께 완벽하게 받아보세요</h3>
           
           <button className="relative z-10 mt-4 w-full max-w-[320px] mx-auto h-12 bg-white/15 hover:bg-white/25 text-white rounded-xl font-bold text-sm backdrop-blur-md border border-white/20 shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer">
-            🔍 보험금 청구 조회
+            🧾 보험금 청구 하기
           </button>
         </div>
       </div>
