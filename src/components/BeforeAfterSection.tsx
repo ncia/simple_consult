@@ -93,7 +93,7 @@ export function BeforeAfterSection() {
               <div 
                 className={`col-start-1 row-start-1 w-full transition-transform duration-700 ease-in-out [transform-style:preserve-3d] [backface-visibility:hidden] ${activeTab === 'before' ? '[transform:rotateY(0deg)] z-10' : '[transform:rotateY(180deg)] z-0 pointer-events-none'}`}
               >
-                <div className="bg-white border border-red-200 shadow-md rounded-2xl p-6 space-y-4 h-full hover:shadow-lg transition-shadow">
+                <div className="bg-white border-2 border-red-200 shadow-md rounded-2xl p-6 space-y-4 h-full hover:shadow-lg transition-shadow">
                   {/* Summary Box */}
                   <div className="flex justify-between items-center bg-red-50 p-4 rounded-xl border border-red-100">
                     <div>
