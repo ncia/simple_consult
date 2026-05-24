@@ -736,24 +736,18 @@ export default function App() {
 
               {/* Animated Mobile Dashboard Mockup */}
               <div className="max-w-[280px] mx-auto mt-8 transform hover:-translate-y-2 transition-transform duration-500">
-                <div 
-                  className="grid w-full select-none"
-                  style={{ perspective: '1500px', WebkitPerspective: '1500px' }}
-                >
+                <div className="grid w-full select-none [perspective:1500px]">
+                  
                   {/* FRONT FACE (Original Dashboard) */}
                   <div 
-                    className={`col-start-1 row-start-1 w-full transition-transform duration-700 ease-in-out bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 ${!isDashboardFlipped ? 'z-10' : 'z-0 pointer-events-none'}`}
-                    style={{ 
-                      transformStyle: 'preserve-3d', WebkitTransformStyle: 'preserve-3d',
-                      backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden',
-                      transform: !isDashboardFlipped ? 'rotateY(0deg)' : 'rotateY(180deg)'
-                    }}
+                    className={`col-start-1 row-start-1 w-full transition-transform duration-700 ease-in-out [transform-style:preserve-3d] [backface-visibility:hidden] ${!isDashboardFlipped ? '[transform:rotateY(0deg)] z-10' : '[transform:rotateY(180deg)] z-0 pointer-events-none'}`}
                   >
-                    {/* Speaker Notch */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
-                    
-                    {/* Screen Content */}
-                    <div className="bg-slate-50 w-full h-[400px] rounded-[1.8rem] overflow-hidden flex flex-col font-sans border border-neutral-100 relative">
+                    <div className="bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 h-full relative">
+                      {/* Speaker Notch */}
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
+                      
+                      {/* Screen Content */}
+                      <div className="bg-slate-50 w-full h-[400px] rounded-[1.8rem] overflow-hidden flex flex-col font-sans border border-neutral-100 relative">
                     
                     {/* Header */}
                     <div className="bg-brand-blue pt-8 pb-5 px-4 text-left relative overflow-hidden">
@@ -832,19 +826,16 @@ export default function App() {
 
                   {/* BACK FACE (Claim Mockup Image) */}
                   <div 
-                    className={`col-start-1 row-start-1 w-full transition-transform duration-700 ease-in-out bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 ${isDashboardFlipped ? 'z-10' : 'z-0 pointer-events-none'}`}
-                    style={{ 
-                      transformStyle: 'preserve-3d', WebkitTransformStyle: 'preserve-3d',
-                      backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden',
-                      transform: isDashboardFlipped ? 'rotateY(0deg)' : 'rotateY(-180deg)'
-                    }}
+                    className={`col-start-1 row-start-1 w-full transition-transform duration-700 ease-in-out [transform-style:preserve-3d] [backface-visibility:hidden] ${isDashboardFlipped ? '[transform:rotateY(0deg)] z-10' : '[transform:rotateY(-180deg)] z-0 pointer-events-none'}`}
                   >
-                    {/* Speaker Notch */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
-                    
-                    {/* Screen Content */}
-                    <div className="bg-slate-50 w-full h-[400px] rounded-[1.8rem] overflow-hidden flex flex-col font-sans border border-neutral-100 relative">
-                      <img src="/assets/claim-mockup.png" alt="보험금 청구 조회 시안" className="w-full h-full object-cover object-top" />
+                    <div className="bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 h-full relative">
+                      {/* Speaker Notch */}
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
+                      
+                      {/* Screen Content */}
+                      <div className="bg-slate-50 w-full h-[400px] rounded-[1.8rem] overflow-hidden flex flex-col font-sans border border-neutral-100 relative">
+                        <img src="/assets/claim-mockup.png" alt="보험금 청구 조회 시안" className="w-full h-full object-cover object-top" />
+                      </div>
                     </div>
                   </div>
                 </div>
