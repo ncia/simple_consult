@@ -254,10 +254,10 @@ export default function App() {
               </button>
             </section>
 
-            {/* EVENT BANNER AD (Cold Glass & Water Drops Background) */}
+            {/* EVENT BANNER AD (Beach Background) */}
             <section 
               className="event-banner-ad relative py-12 px-5 text-center flex flex-col items-center justify-center border-b border-neutral-border overflow-hidden bg-cover bg-center"
-              style={{ backgroundImage: "url('/assets/event-glass-bg.jpg')" }}
+              style={{ backgroundImage: "url('/assets/event-beach-bg.jpg')" }}
             >
               {/* 투명 글라스 느낌을 내는 오버레이 레이어 */}
               <div className="absolute inset-0 bg-blue-50/20 backdrop-blur-[2px] shadow-inner"></div>
