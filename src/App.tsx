@@ -811,6 +811,30 @@ export default function App() {
                               </div>
                             </div>
 
+                            {/* AI Expert Recommendation Box (Fills the new empty space) */}
+                            <div className="bg-[#eef3f9] rounded-xl p-4 shadow-sm border border-[#d1e0f0] relative overflow-hidden">
+                              <div className="absolute -right-4 -bottom-4 opacity-10">
+                                <Sparkles size={64} />
+                              </div>
+                              <div className="relative z-10">
+                                <div className="flex items-center gap-1.5 mb-2">
+                                  <div className="w-5 h-5 bg-[#0055d3] text-white rounded-full flex items-center justify-center">
+                                    <Sparkles size={10} />
+                                  </div>
+                                  <h5 className="text-[11px] font-black text-[#0055d3]">AI 솔루션 제안</h5>
+                                </div>
+                                <p className="text-[10px] text-neutral-dark font-bold leading-relaxed mb-1">
+                                  보장 범위는 넓히고, 보험료는 가볍게!
+                                </p>
+                                <p className="text-[9px] text-neutral-gray leading-relaxed">
+                                  수석 코디가 1:1 맞춤형 리모델링 리포트를 준비하고 있습니다.
+                                </p>
+                                <button className="mt-3 w-full bg-white text-[#0055d3] font-bold text-[10px] py-2 rounded-lg shadow-sm border border-[#0055d3]/20 hover:bg-[#0055d3] hover:text-white transition-colors">
+                                  상세 리포트 확인하기
+                                </button>
+                              </div>
+                            </div>
+
                           </div>
                         </div>
                       </div>
