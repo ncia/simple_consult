@@ -798,7 +798,7 @@ export default function App() {
             <section className="bg-neutral-dark text-white/50 p-6 font-sans text-[10px] space-y-2 border-t border-white/5">
               <strong className="text-white text-xs font-extrabold block mb-2">필수 준법 안내 사항</strong>
               <p>1. <strong>법인 대리점 인증 정보:</strong> (주)에즈금융서비스 보험 법인 보험 대리점 (생/손보 제휴 협회 공식 등록 정식 일련번호 : 제2012118012호)</p>
-              <p>2. <strong>준법 감시팀 심의 필증:</strong> AZ-준법감시팀-준법심의필2026-733(유효 검증 심의일자: 2026-05-18 ~ 2027-05-17)</p>
+              <p>2. <strong>준법 감시팀 심의 필증:</strong> 핀토스 준법감시팀-준법심의필2026-733(유효 검증 심의일자: 2026-05-18 ~ 2027-05-17)</p>
               <p>3. <strong>유효기간:</strong> 본 온라인 광고는 업계 정식 광고 심의 규정을 정확히 준수하였으며, 해당 유효기간은 정식 심의 완료일로부터 명확히 1년입니다.</p>
               <p>4. <strong>가입 및 해지 중요주의:</strong> 기존 체결된 적격 계약을 정당한 사유 없이 도중에 강제 해약하고 신설 포트폴리오를 체결하시는 일련의 과정에서, (1) 고의 누락이나 상해 질병 신체 연령 이력 증가로 인수 제안이 전면 취소 거절되거나 표준 요율이 할증 상승할 수 있습니다. (2) 개개 세부 상품 편구에 따라 신규 3대 성인 질환 면책 기한 적용 및 부분 지급 유예 등 부가 불이익 사항이 따를 수 있는 만큼 면밀한 진단과 사전 협의를 부탁드립니다.</p>
             </section>
@@ -822,7 +822,7 @@ export default function App() {
                 <div className="grid grid-cols-1 gap-1.5 text-[11px] text-neutral-gray leading-relaxed">
                   <p><strong>공동 사업체 상호:</strong> (주)핀토스  |  <strong>본사 사업자등록번호:</strong> 123-45-67890  |  <strong>대표 고객 센터:</strong> 032-999-0119</p>
                   <p><strong>페이지 실무 보호책임:</strong> 개인정보관리담당 임원 유영환 수석 (메일 문의: security@insucare.net)</p>
-                  <p><strong>소재지 주소:</strong> 서울특별시 영등포구 당산로35길 4-3, 5층 상설 법인부스</p>
+                  <p><strong>소재지 주소:</strong> 경기 오산시 남부대로 411-15 원동 푸르지오 109동 804호 상설 법인부스</p>
                   <p className="text-[10px] text-neutral-muted mt-2">© 2026 InsureAnalysis Co., Ltd. All rights reserved. Our values and technologies prioritize the financial security of our client base.</p>
                 </div>
 

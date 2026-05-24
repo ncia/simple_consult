@@ -48,7 +48,7 @@ export function AgreementModal({ isOpen, onClose, title, type }: AgreementModalP
           {type === 'marketing' && (
             <>
               <p className="font-bold text-neutral-dark text-sm">마케팅 정보 및 혜택 수신 동의 (선택사항)</p>
-              <p>에즈금융서비스가 제공하는 신규 보험 상품 소개, 미 청구 보험금 찾기 긴급 알림, 세미나 초청 및 각종 할인 쿠폰/이벤트 혜택 정보를 수신하는 것에 동의합니다.</p>
+              <p>핀토스가 제공하는 신규 보험 상품 소개, 미 청구 보험금 찾기 긴급 알림, 세미나 초청 및 각종 할인 쿠폰/이벤트 혜택 정보를 수신하는 것에 동의합니다.</p>
               
               <div className="bg-neutral-bg p-3 rounded-lg border border-neutral-border space-y-1.5">
                 <p><strong>1. 전송 채널:</strong> 휴대폰 문자메시지 (SMS/LMS), 알림톡, 유선 통화</p>
