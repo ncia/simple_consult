@@ -46,17 +46,6 @@ export function ProcessSection() {
     },
     {
       step: 'STEP 3',
-      title: '보장분석 리포트 제공',
-      icon: <ShieldCheck className="text-white" size={20} />,
-      color: 'bg-brand-green-neon',
-      details: [
-        '최종 정리된 나만의 원클릭 리포트 영구 저장',
-        '매월 세이브 가능한 가계 소득 리스트 증명서 제공',
-        '보안 등기 혹은 카카오 알림톡 실시간 파일 전송'
-      ]
-    },
-    {
-      step: 'STEP 4',
       title: '고객 맞춤 상담',
       icon: <MessageCircle className="text-white" size={20} />,
       color: 'bg-brand-blue',
@@ -64,6 +53,17 @@ export function ProcessSection() {
         '불편한 내방 없이 100% 무상 유선 클리닉',
         '의무 가입 등으로 꽁꽁 숨겨진 누수 특약 공개',
         '유지 가능한 범위 안에서 실속형 클리닉 방향 제안'
+      ]
+    },
+    {
+      step: 'STEP 4',
+      title: '보장분석 리포트 제공',
+      icon: <ShieldCheck className="text-white" size={20} />,
+      color: 'bg-brand-green-neon',
+      details: [
+        '최종 정리된 나만의 원클릭 리포트 영구 저장',
+        '매월 세이브 가능한 가계 소득 리스트 증명서 제공',
+        '보안 등기 혹은 카카오 알림톡 실시간 파일 전송'
       ]
     }
   ];
@@ -126,7 +126,7 @@ export function ProcessSection() {
                   {/* Step status and icon */}
                   <div className="flex justify-between items-center mb-2">
                     <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                      item.color === 'bg-brand-green-neon' ? 'text-neutral-dark bg-brand-green-neon' : 'text-white bg-brand-blue'
+                      idx === 3 ? 'text-neutral-dark bg-brand-green-neon' : 'text-white bg-brand-blue'
                     }`}>
                       {item.step}
                     </span>
