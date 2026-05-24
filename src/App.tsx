@@ -738,19 +738,20 @@ export default function App() {
               <div className="max-w-[280px] mx-auto mt-8 transform hover:-translate-y-2 transition-transform duration-500">
                 <div 
                   className="w-full relative select-none"
-                  style={{ perspective: '1500px' }}
+                  style={{ perspective: '1500px', WebkitPerspective: '1500px' }}
                 >
                   <div 
                     className="w-full relative transition-transform duration-700 ease-in-out"
                     style={{ 
                       transformStyle: 'preserve-3d', 
+                      WebkitTransformStyle: 'preserve-3d',
                       transform: isDashboardFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' 
                     }}
                   >
                     {/* FRONT FACE (Original Dashboard) */}
                     <div 
-                      className="w-full bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 relative z-10 overflow-hidden"
-                      style={{ backfaceVisibility: 'hidden' }}
+                      className="w-full bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 relative z-10"
+                      style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
                     >
                     {/* Speaker Notch */}
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
@@ -835,8 +836,8 @@ export default function App() {
 
                   {/* BACK FACE (Claim Mockup Image) */}
                   <div 
-                    className="absolute top-0 left-0 w-full h-full bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 z-0 overflow-hidden"
-                    style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+                    className="absolute top-0 left-0 w-full h-full bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 z-0"
+                    style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
                   >
                     {/* Speaker Notch */}
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
