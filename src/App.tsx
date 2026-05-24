@@ -242,6 +242,16 @@ export default function App() {
                   </div>
                 </div>
               </div>
+
+              {/* Claims Inquiry Button */}
+              <button 
+                type="button"
+                className="relative z-10 mt-4 w-full max-w-[320px] h-12 bg-white/15 hover:bg-white/25 text-white rounded-xl font-bold text-sm backdrop-blur-md border border-white/20 shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
+                onClick={() => alert('보험금 청구 조회 서비스는 준비 중입니다.')}
+              >
+                <span className="text-base">🧾</span>
+                <span>보험금 청구 조회</span>
+              </button>
             </section>
 
             {/* EVENT BANNER AD */}
