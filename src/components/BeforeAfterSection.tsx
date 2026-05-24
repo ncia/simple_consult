@@ -85,9 +85,15 @@ export function BeforeAfterSection() {
             </div>
           ) : (
             /* Premium Styled Diagnostic Interactive Visualizations */
-            <div className="space-y-4 text-left animate-fade-in font-sans">
-              {activeTab === 'before' ? (
-                <div className="bg-white border border-red-200 shadow-md rounded-2xl p-6 space-y-4">
+            <div 
+              className="grid cursor-pointer w-full text-left animate-fade-in font-sans [perspective:1500px]"
+              onClick={() => setActiveTab(activeTab === 'before' ? 'after' : 'before')}
+            >
+              {/* Before Card */}
+              <div 
+                className={`col-start-1 row-start-1 w-full transition-transform duration-700 ease-in-out [transform-style:preserve-3d] [backface-visibility:hidden] ${activeTab === 'before' ? '[transform:rotateY(0deg)] z-10' : '[transform:rotateY(180deg)] z-0 pointer-events-none'}`}
+              >
+                <div className="bg-white border border-red-200 shadow-md rounded-2xl p-6 space-y-4 h-full hover:shadow-lg transition-shadow">
                   {/* Summary Box */}
                   <div className="flex justify-between items-center bg-red-50 p-4 rounded-xl border border-red-100">
                     <div>
@@ -132,8 +138,13 @@ export function BeforeAfterSection() {
                     </p>
                   </div>
                 </div>
-              ) : (
-                <div className="bg-neutral-bg border-2 border-brand-blue shadow-lg rounded-2xl p-6 space-y-4">
+              </div>
+
+              {/* After Card */}
+              <div 
+                className={`col-start-1 row-start-1 w-full transition-transform duration-700 ease-in-out [transform-style:preserve-3d] [backface-visibility:hidden] ${activeTab === 'after' ? '[transform:rotateY(0deg)] z-10' : '[transform:rotateY(-180deg)] z-0 pointer-events-none'}`}
+              >
+                <div className="bg-neutral-bg border-2 border-brand-blue shadow-lg rounded-2xl p-6 space-y-4 h-full hover:shadow-xl transition-shadow">
                   {/* Summary Box */}
                   <div className="flex justify-between items-center bg-brand-blue text-white p-5 rounded-xl shadow-inner relative overflow-hidden">
                     <div className="absolute right-0 top-0 opacity-10 font-display font-black text-7xl translate-x-3 translate-y-3">
@@ -193,7 +204,7 @@ export function BeforeAfterSection() {
                     </p>
                   </div>
                 </div>
-              )}
+              </div>
             </div>
           )}
         </div>

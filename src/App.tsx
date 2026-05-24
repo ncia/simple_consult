@@ -249,7 +249,7 @@ export default function App() {
                 className="relative z-10 mt-4 w-full max-w-[320px] h-12 bg-white/15 hover:bg-white/25 text-white rounded-xl font-bold text-sm backdrop-blur-md border border-white/20 shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
                 onClick={() => alert('보험금 청구 조회 서비스는 준비 중입니다.')}
               >
-                <span className="text-base">🧾</span>
+                <span className="text-base">🔍</span>
                 <span>보험금 청구 조회</span>
               </button>
             </section>
@@ -279,8 +279,8 @@ export default function App() {
                 <p className="text-[11px] font-display font-bold uppercase tracking-wider text-brand-blue">
                   Bohum Store Service Portal
                 </p>
-                <h2 className="font-sans font-bold text-xl text-neutral-dark">
-                  분석 서비스 신청
+                <h2 className="font-sans font-bold text-xl text-neutral-dark flex items-center justify-center gap-1.5">
+                  <span className="text-2xl">📝</span> 보험분석 서비스 신청
                 </h2>
                 <p className="text-xs text-neutral-gray leading-relaxed text-balance">
                   가계 소중한 생활 소득을 지키는 1분 리밸런싱 예약을 위해 필수 세부 필수 정보를 기입해 주세요.
