@@ -690,10 +690,7 @@ export default function App() {
             <BeforeAfterSection />
 
             {/* FINAL CONVERSION PERSUADE WRAPPER */}
-            <section 
-              className="py-14 px-5 bg-white text-center space-y-6 cursor-pointer group/section"
-              onClick={() => setIsDashboardFlipped(!isDashboardFlipped)}
-            >
+            <section className="py-14 px-5 bg-white text-center space-y-6">
               <div className="space-y-2 text-center max-w-sm mx-auto">
                 <h2 className="font-sans font-extrabold text-2xl text-neutral-dark leading-tight transition-opacity duration-300">
                   {isDashboardFlipped ? (
@@ -711,13 +708,38 @@ export default function App() {
                 </p>
               </div>
 
+              {/* Tab Selector */}
+              <div className="flex bg-neutral-bg p-1.5 rounded-2xl max-w-[340px] mx-auto border border-neutral-border mt-6">
+                <button
+                  type="button"
+                  onClick={() => setIsDashboardFlipped(false)}
+                  className={`flex-1 py-3 text-xs font-bold rounded-xl transition-all ${
+                    !isDashboardFlipped
+                      ? 'bg-brand-blue shadow-sm text-white'
+                      : 'text-neutral-gray hover:text-neutral-dark'
+                  }`}
+                >
+                  보드미 AI 리포트
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsDashboardFlipped(true)}
+                  className={`flex-1 py-3 text-xs font-bold rounded-xl transition-all ${
+                    isDashboardFlipped
+                      ? 'bg-brand-green shadow-sm text-white'
+                      : 'text-neutral-gray hover:text-neutral-dark'
+                  }`}
+                >
+                  보험금 청구 조회
+                </button>
+              </div>
+
               {/* Animated Mobile Dashboard Mockup */}
-              <div 
-                className="max-w-[280px] mx-auto mt-8 relative select-none"
-                style={{ perspective: '1000px' }}
-              >
-                {/* Hover effect wrapper */}
-                <div className="transform group-hover/section:-translate-y-2 transition-transform duration-500">
+              <div className="max-w-[280px] mx-auto mt-8 transform hover:-translate-y-2 transition-transform duration-500">
+                <div 
+                  className="w-full relative select-none"
+                  style={{ perspective: '1500px' }}
+                >
                   <div 
                     className="w-full relative transition-transform duration-700 ease-in-out"
                     style={{ 
