@@ -552,14 +552,74 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Infographic with shadow */}
-              <div className="w-full bg-white rounded-2xl overflow-hidden border border-neutral-border shadow-md select-none mt-6 hover:scale-[1.01] transition-transform">
-                <img 
-                  src="https://lh3.googleusercontent.com/aida/ADBb0ugA-ufdGQzGixT_Tx5CdPw5XgtOrh7a35wJyBF7AoFs5I1r64P6c2VqcWZCcZpEoMOsU-OIhAB1dwFTQfUVJs5ZPGRFHkWuQhe_46QaAYEbKauOTbHxuFo6fCjulB1e_oxjy5KmtsDisitRegIgmsn9gsGDoG5_6fHPIF6HeznG5a4yKcVp9xDJi9GTy6cBrgg5hUPjkxRG0xxnmN4qkQ0OvWDWi4fQt0QoQKN5mWO6gSFSFzaPqJw" 
-                  alt="보험 보장의 누출 경로 분석 구도" 
-                  className="w-full h-auto"
-                  referrerPolicy="no-referrer"
-                />
+              {/* Animated Infographic: Coverage Leakage Analysis */}
+              <div className="w-full bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl border border-neutral-border shadow-inner p-5 sm:p-6 mt-8 relative overflow-hidden font-sans">
+                {/* Background decorative elements */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-red-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-brand-blue-pale rounded-full blur-3xl opacity-70 translate-y-1/2 -translate-x-1/2"></div>
+                
+                <div className="text-center mb-6 relative z-10">
+                  <span className="text-[10px] font-bold text-red-500 bg-red-50 px-2.5 py-1 rounded-md mb-2 inline-block border border-red-100">경고 현황</span>
+                  <h3 className="font-extrabold text-neutral-dark text-lg">나도 모르게 새는 <span className="text-red-500">보험료 누수 경로</span></h3>
+                  <p className="text-[11px] text-neutral-gray mt-1">중복 가입과 불필요한 특약으로 매달 버려지는 금액을 진단합니다.</p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 relative z-10">
+                  
+                  {/* Step 1: Duplication */}
+                  <div className="bg-white p-4 rounded-xl border border-neutral-border shadow-sm w-full flex-1 text-center relative group">
+                    <div className="w-11 h-11 bg-neutral-bg rounded-full mx-auto flex items-center justify-center text-neutral-dark mb-2 border border-neutral-border group-hover:scale-110 transition-transform">
+                      <span className="text-lg">📄</span>
+                    </div>
+                    <strong className="text-[11px] font-bold text-neutral-dark block">무분별한 중복 가입</strong>
+                    <p className="text-[10px] text-neutral-gray mt-1 leading-relaxed break-keep">비슷한 보장이 겹쳐 의미 없는 지출 발생</p>
+                  </div>
+
+                  {/* Arrow with leaking coins */}
+                  <div className="flex flex-col items-center justify-center shrink-0 py-2 sm:py-0 relative">
+                    <div className="hidden sm:block w-6 border-t-2 border-dashed border-red-300 relative">
+                      <ArrowRight size={14} className="text-red-400 absolute -right-2 -top-[9px]" />
+                    </div>
+                    <div className="sm:hidden h-6 border-l-2 border-dashed border-red-300 relative">
+                      <ArrowRight size={14} className="text-red-400 absolute -bottom-2 -left-[9px] rotate-90" />
+                    </div>
+                    {/* Leaking animation */}
+                    <div className="absolute -top-3 sm:-top-5 flex gap-0.5">
+                      <span className="text-[10px] animate-bounce" style={{ animationDelay: '0ms' }}>💸</span>
+                      <span className="text-[10px] animate-bounce" style={{ animationDelay: '150ms' }}>💸</span>
+                    </div>
+                  </div>
+
+                  {/* Step 2: Leakage */}
+                  <div className="bg-white p-4 rounded-xl border border-red-200 shadow-md w-full flex-1 text-center relative ring-2 ring-red-500/20 animate-pulse-slow">
+                    <div className="w-11 h-11 bg-red-500 text-white rounded-full mx-auto flex items-center justify-center mb-2 shadow-lg shadow-red-500/30">
+                      <span className="text-lg">💧</span>
+                    </div>
+                    <strong className="text-[11px] font-bold text-red-600 block">과도한 보험료 누수</strong>
+                    <p className="text-[10px] text-red-400/90 mt-1 leading-relaxed break-keep">월평균 <strong className="text-red-500">약 5~10만원</strong> 불필요한 비용 증발</p>
+                  </div>
+
+                  {/* Arrow to resolution */}
+                  <div className="flex items-center justify-center shrink-0 py-2 sm:py-0">
+                    <div className="hidden sm:block w-6 border-t-2 border-dashed border-brand-green-light relative">
+                      <ArrowRight size={14} className="text-brand-green-light absolute -right-2 -top-[9px]" />
+                    </div>
+                    <div className="sm:hidden h-6 border-l-2 border-dashed border-brand-green-light relative">
+                      <ArrowRight size={14} className="text-brand-green-light absolute -bottom-2 -left-[9px] rotate-90" />
+                    </div>
+                  </div>
+
+                  {/* Step 3: Resolution */}
+                  <div className="bg-brand-blue border border-brand-blue-hover p-4 rounded-xl shadow-lg w-full flex-1 text-center relative group overflow-hidden">
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/20 to-transparent opacity-50"></div>
+                    <div className="w-11 h-11 bg-white/20 rounded-full mx-auto flex items-center justify-center text-white mb-2 backdrop-blur-sm group-hover:rotate-12 transition-transform shadow-inner">
+                      <ShieldCheck size={20} />
+                    </div>
+                    <strong className="text-[11px] font-bold text-white block">보드미 최적화</strong>
+                    <p className="text-[10px] text-white/80 mt-1 leading-relaxed break-keep">중복 제거 후 필수 보장만 튼튼하고 저렴하게</p>
+                  </div>
+
+                </div>
               </div>
             </section>
 
@@ -581,13 +641,94 @@ export default function App() {
                 </p>
               </div>
 
-              <div className="max-w-xs mx-auto drop-shadow-2xl hover:scale-[1.02] transition-transform select-none">
-                <img 
-                  src="https://lh3.googleusercontent.com/aida/ADBb0ugtywe0sTbPtNi4mtDYA2lKnJwyvomtWD8CUHFMPZiQsGv1baykLVUSsg0_XB8B3VspPgSVC7ttdSQiCBB_pkFZ_q6GS2x-KjMltf2bHIW265wQhsfnDzLoClKHmSdWGTeA7Q1f095oSCju5TRxi5Kb2m7cqGsM4Xy_F8BXrE5BGDRa9QExsyH4p6Ca0Sy5SGWNFhRYC7O59KouX4mLoRzvQrl-Tl9Gy8RAo5RDfN7UQ9tIkfjO6KQ" 
-                  alt="모바일 대시보드 리포트 시안 이미지" 
-                  className="w-full h-auto rounded-3xl"
-                  referrerPolicy="no-referrer"
-                />
+              {/* Animated Mobile Dashboard Mockup */}
+              <div className="max-w-[280px] mx-auto mt-8 relative select-none group">
+                {/* Phone Frame */}
+                <div className="w-full bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 relative z-10 overflow-hidden transform group-hover:-translate-y-2 transition-transform duration-500">
+                  {/* Speaker Notch */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
+                  
+                  {/* Screen Content */}
+                  <div className="bg-slate-50 w-full h-[400px] rounded-[1.8rem] overflow-hidden flex flex-col font-sans border border-neutral-100 relative">
+                    
+                    {/* Header */}
+                    <div className="bg-brand-blue pt-8 pb-5 px-4 text-left relative overflow-hidden">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/3 animate-pulse-slow"></div>
+                      <span className="text-white/80 text-[10px] font-medium">보드미 AI 리포트</span>
+                      <h4 className="text-white font-extrabold text-sm mt-0.5">홍길동님의<br/>종합 보장 점수</h4>
+                      
+                      {/* Animated Score */}
+                      <div className="absolute right-4 bottom-4 flex items-baseline gap-0.5">
+                        <span className="text-3xl font-black text-white group-hover:scale-110 transition-transform origin-bottom duration-300">85</span>
+                        <span className="text-white/80 text-xs font-bold">점</span>
+                      </div>
+                    </div>
+
+                    {/* Chart Body */}
+                    <div className="flex-1 p-4 space-y-4">
+                      
+                      {/* Bar 1: Score Progress */}
+                      <div className="bg-white p-3 rounded-xl shadow-sm border border-neutral-100 group-hover:border-brand-blue/30 transition-colors">
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="text-[10px] font-bold text-neutral-dark">보장 충분도</span>
+                          <span className="text-[10px] font-bold text-brand-blue animate-pulse">우수해요</span>
+                        </div>
+                        <div className="w-full bg-neutral-100 rounded-full h-2 overflow-hidden">
+                          <div className="bg-brand-blue h-full rounded-full w-[85%] relative overflow-hidden">
+                            <div className="absolute top-0 bottom-0 -left-10 w-20 bg-white/20 -skew-x-12 translate-x-32 group-hover:translate-x-64 transition-transform duration-1000 ease-in-out delay-100"></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Bar 2: Premium Comparison */}
+                      <div className="bg-white p-3 rounded-xl shadow-sm border border-neutral-100">
+                        <h5 className="text-[10px] font-bold text-neutral-dark mb-2">보험료 다이어트 결과</h5>
+                        
+                        <div className="space-y-2">
+                          <div>
+                            <div className="flex justify-between items-end mb-1">
+                              <span className="text-[9px] text-neutral-gray">현재 납입액</span>
+                              <span className="text-[10px] font-bold text-neutral-dark line-through">185,000원</span>
+                            </div>
+                            <div className="w-full bg-neutral-100 rounded-full h-1.5 overflow-hidden">
+                              <div className="bg-neutral-300 h-full rounded-full w-full"></div>
+                            </div>
+                          </div>
+
+                          <div className="relative">
+                            <div className="flex justify-between items-end mb-1">
+                              <span className="text-[9px] font-bold text-brand-green">보드미 추천액</span>
+                              <span className="text-[11px] font-extrabold text-brand-green">120,000원</span>
+                            </div>
+                            <div className="w-full bg-brand-green-light/20 rounded-full h-1.5 overflow-hidden">
+                              <div className="bg-brand-green h-full rounded-full w-[65%]"></div>
+                            </div>
+                            {/* Animated Saving Badge */}
+                            <div className="absolute -right-2 -top-6 bg-brand-green text-white text-[9px] font-bold px-1.5 py-0.5 rounded shadow-sm animate-bounce">
+                              ▼ 6.5만
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Info Cards */}
+                      <div className="grid grid-cols-2 gap-2">
+                        <div className="bg-red-50 p-2.5 rounded-lg border border-red-100 flex flex-col justify-center hover:bg-red-100 transition-colors cursor-default">
+                          <span className="text-[9px] text-red-500 font-bold block mb-0.5">중복 가입</span>
+                          <strong className="text-xs text-red-600">2건 발견</strong>
+                        </div>
+                        <div className="bg-brand-blue-pale p-2.5 rounded-lg border border-brand-blue/20 flex flex-col justify-center hover:bg-blue-100 transition-colors cursor-default">
+                          <span className="text-[9px] text-brand-blue font-bold block mb-0.5">절감 가능액</span>
+                          <strong className="text-xs text-brand-blue font-extrabold">월 6.5만원</strong>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                {/* Decorative background blobs */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-brand-blue/5 to-transparent rounded-full blur-3xl -z-10"></div>
               </div>
 
               <div className="pt-4">
