@@ -3,7 +3,7 @@ import { ArrowDown, Check, Coins, TrendingDown, BadgeAlert, Sparkles, Image as I
 
 export function BeforeAfterSection() {
   const [activeTab, setActiveTab] = useState<'before' | 'after'>('after');
-  const [showRawImages, setShowRawImages] = useState(false);
+
 
   return (
     <section className="py-14 px-5 bg-white border-y border-neutral-border">
@@ -26,7 +26,7 @@ export function BeforeAfterSection() {
             onClick={() => setActiveTab('before')}
             className={`flex-1 py-3 text-xs font-bold rounded-xl transition-all ${
               activeTab === 'before'
-                ? 'bg-white shadow-sm text-red-600'
+                ? 'bg-red-600 shadow-sm text-white'
                 : 'text-neutral-gray hover:text-neutral-dark'
             }`}
           >
@@ -44,46 +44,8 @@ export function BeforeAfterSection() {
           </button>
         </div>
 
-        {/* Mode Toggle Layout */}
-        <div className="flex justify-end w-full">
-          <button
-            onClick={() => setShowRawImages(!showRawImages)}
-            className="flex items-center gap-1.5 text-xs text-brand-blue hover:underline bg-brand-blue-pale px-3 py-1.5 rounded-lg font-semibold transition"
-          >
-            {showRawImages ? <Eye size={12} /> : <ImageIcon size={12} />}
-            <span>{showRawImages ? '상세분석 진단표 보기' : '원본 홍보 이미지 보기'}</span>
-          </button>
-        </div>
-
         {/* Comparison Display */}
         <div className="w-full">
-          {showRawImages ? (
-            /* Render official hotlinked images requested by the user */
-            <div className="space-y-4 animate-fade-in">
-              <p className="text-[11px] text-neutral-muted italic">
-                ※ 실제 광고 페이지에 활용된 원본 이미지를 원터치로 감상하실 수 있습니다.
-              </p>
-              {activeTab === 'before' ? (
-                <div className="border border-neutral-border rounded-2xl overflow-hidden shadow-lg hover:scale-[1.01] transition-transform">
-                  <img
-                    src="https://lh3.googleusercontent.com/aida/ADBb0uhxktfMkmWU6jvPTviqevZMeBWwFX2AXX0LR2Vk_Wp6ROz236OrPdFwXGV2c6YvPg35pGIIKMfzxqTXb7FN399X0tnBJie7EmBYugaQ8F7SYzE-LwUXfitS0KB5DkqG4696kadD-ILmICIrFYBc4nFabpwuhLFmqvWGMvnFr9-T09PvPmL_rqn06x8887EX83FvCKd2kYur8OeUk3Ny728pbNhAX8k0qiZ76gMFNFIJ8WLALAtE9wM"
-                    alt="보험분석 Before 원본 이미지"
-                    className="w-full h-auto object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-              ) : (
-                <div className="border-4 border-brand-blue rounded-2xl overflow-hidden shadow-xl hover:scale-[1.01] transition-transform">
-                  <img
-                    src="https://lh3.googleusercontent.com/aida/ADBb0ugGkO8KUUEBxTSw0nTfUKv3ec_ceMXFlqHo5pCcAvhaKmuE-Nq9kB52UqqCKeX_boLE0-o7-pngLErIQa1ZgTFkCLmUZpi0_cM5vM90t7uplVLlRCYHSh8hi9HqvANsjX7s52G5oKGJE04WFnt5edPWS6MzSUi69WFT4qjwZkHBNM6PLrf_1j0J5XIS37u506g_YaPpOoc_t3LgFUkUFGa31iDImzi2DAhgLfnTMm8sbRTvGwIPF9bM"
-                    alt="보험분석 After 원본 이미지"
-                    className="w-full h-auto object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-              )}
-            </div>
-          ) : (
             /* Premium Styled Diagnostic Interactive Visualizations */
             <div 
               className="grid cursor-pointer w-full text-left animate-fade-in font-sans [perspective:1500px]"
@@ -206,14 +168,6 @@ export function BeforeAfterSection() {
                 </div>
               </div>
             </div>
-          )}
-        </div>
-        
-        {/* Helper Note */}
-        <div className="p-3.5 rounded-lg bg-neutral-bg text-center w-full">
-          <p className="text-[10px] text-neutral-muted leading-relaxed">
-            * 해당 내용은 고객의 이해를 돕기 위한 보장 제안 시뮬레이션 예시로 고객님의 성별, 연령, 직종, 질병 이력 및 보유 이력에 따라 진단 결과와 절감액은 달라질 수 있습니다.
-          </p>
         </div>
       </div>
     </section>
