@@ -9,7 +9,10 @@ export function Header({ onContactClick }: HeaderProps) {
   return (
     <header className="bg-white/80 dark:bg-neutral-dark/80 backdrop-blur-md sticky top-0 z-50 border-b border-neutral-border w-full">
       <div className="flex justify-between items-center w-full px-5 h-16 max-w-[768px] mx-auto">
-        <div className="flex items-center gap-2">
+        <button 
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+        >
           {/* Logo Brand Icon with Heart and Pulse concept */}
           <div className="bg-brand-blue text-white p-1.5 rounded-lg flex items-center justify-center shadow-md shadow-brand-blue/20">
             <ShieldAlert size={18} className="fill-current" />
@@ -20,7 +23,7 @@ export function Header({ onContactClick }: HeaderProps) {
           <span className="text-[10px] bg-brand-green text-white font-bold px-1.5 py-0.5 rounded-full hidden sm:inline">
             내 보험 바로알기
           </span>
-        </div>
+        </button>
         
         <a
           href="tel:01026277771"
