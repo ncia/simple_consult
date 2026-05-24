@@ -24,6 +24,53 @@ import {
   PartnerCompany 
 } from './types';
 
+function getInsuranceInfo(birthdateStr: string) {
+  if (birthdateStr.length !== 8) return null;
+  const year = parseInt(birthdateStr.substring(0, 4), 10);
+  const month = parseInt(birthdateStr.substring(4, 6), 10) - 1;
+  const day = parseInt(birthdateStr.substring(6, 8), 10);
+  
+  const birth = new Date(year, month, day);
+  if (birth.getFullYear() !== year || birth.getMonth() !== month || birth.getDate() !== day) return null;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  let ageYears = today.getFullYear() - birth.getFullYear();
+  let ageMonths = today.getMonth() - birth.getMonth();
+  let ageDays = today.getDate() - birth.getDate();
+
+  if (ageDays < 0) {
+    ageMonths -= 1;
+  }
+  if (ageMonths < 0) {
+    ageYears -= 1;
+    ageMonths += 12;
+  }
+
+  let insuranceAge = ageYears;
+  if (ageMonths >= 6) {
+    insuranceAge += 1;
+  }
+
+  let nextSangryeong = new Date(today.getFullYear(), month + 6, day);
+  if (nextSangryeong.getMonth() !== (month + 6) % 12) {
+    nextSangryeong = new Date(today.getFullYear(), month + 7, 0);
+  }
+
+  if (nextSangryeong.getTime() <= today.getTime()) {
+    nextSangryeong = new Date(today.getFullYear() + 1, month + 6, day);
+    if (nextSangryeong.getMonth() !== (month + 6) % 12) {
+      nextSangryeong = new Date(today.getFullYear() + 1, month + 7, 0);
+    }
+  }
+
+  const diffTime = nextSangryeong.getTime() - today.getTime();
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+  return { insuranceAge, diffDays };
+}
+
 export default function App() {
   // Main form state
   const [formData, setFormData] = useState<InquiryFormState>({
@@ -396,6 +443,15 @@ export default function App() {
                   {validationErrors.birthdate && (
                     <p className="text-[11px] text-red-500 font-medium">{validationErrors.birthdate}</p>
                   )}
+                  {formData.birthdate.length === 8 && !validationErrors.birthdate && (() => {
+                    const info = getInsuranceInfo(formData.birthdate);
+                    if (!info) return null;
+                    return (
+                      <p className="text-xs text-red-600 font-bold mt-1">
+                        현재 보험 나이는 {info.insuranceAge}세이며 다음 상령일까지 {info.diffDays}일 남았습니다.
+                      </p>
+                    );
+                  })()}
                 </div>
 
                 {/* Gender Selectors */}
