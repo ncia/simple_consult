@@ -27,12 +27,10 @@ export interface PartnerCompany {
 }
 
 export const CHECK_ITEMS: CheckItem[] = [
-  { id: 'item1', label: '숨은보험금', description: '가입 후 한 번도 찾아가지 않은 미청구 환급금이나 배당금을 찾아드립니다.' },
-  { id: 'item2', label: '보험료확인', description: '현재 연령과 성별 기준 대조군 대비 매월 납부하는 납입액이 적정한라인지 분석합니다.' },
-  { id: 'item3', label: '내보험점검', description: '보장 범위가 좁거나 누락된 치명 자금이 있는지 기존 특약들을 전면 분석합니다.' },
-  { id: 'item4', label: '보험상품비교', description: '29개 국내 주요 생보사 및 손보사 제품 중 동일 보장 대비 최저가 등 옵션을 매치합니다.' },
-  { id: 'item5', label: '만기환급금', description: '소멸형과 환급형 계약의 실익과 만기 도래 시 환급 구조를 최적화해 제안합니다.' },
-  { id: 'item6', label: '청구문의', description: '불만 많은 보상 청구 절차, 서류 누락으로 지연된 보금 청구 대행법을 지원해드립니다.' },
+  { id: 'item1', label: '📊 보험분석 상담', description: '현재 보유하신 보험의 보장 내역을 종합적으로 분석하고 상담해 드립니다.' },
+  { id: 'item2', label: '🔄 보험 리모델링', description: '불필요한 특약을 줄이고 부족한 보장을 채워 실속 있게 재구성합니다.' },
+  { id: 'item3', label: '🧾 보험금 청구', description: '복잡하고 번거로운 보험금 청구 절차를 간편하게 대행하거나 안내해 드립니다.' },
+  { id: 'item4', label: '🔍 내보험 점검', description: '놓치고 있는 숨은 보장이나 중복 가입된 항목이 없는지 정밀하게 점검합니다.' },
 ];
 
 export const PARTNERS_LIFE: PartnerCompany[] = [

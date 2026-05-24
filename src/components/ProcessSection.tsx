@@ -200,8 +200,7 @@ export function ProcessSection() {
           <h3 className="text-base font-extrabold text-white">청구지원서비스까지 함께 완벽하게 받아보세요</h3>
           
           <button className="relative z-10 mt-4 w-full max-w-[320px] mx-auto h-12 bg-white/15 hover:bg-white/25 text-white rounded-xl font-bold text-sm backdrop-blur-md border border-white/20 shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer">
-            보험금 청구 조회
-            <ArrowRight size={16} />
+            🔍 보험금 청구 조회
           </button>
         </div>
       </div>

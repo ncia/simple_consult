@@ -80,13 +80,8 @@ export default function App() {
   };
 
   const handleChipToggle = (itemId: string) => {
-    let items = [...formData.selectedItems];
-    if (items.includes(itemId)) {
-      items = items.filter((id) => id !== itemId);
-    } else {
-      items.push(itemId);
-    }
-    setFormData({ ...formData, selectedItems: items });
+    // 라디오 버튼 방식: 무조건 선택한 항목 하나만 배열에 남김
+    setFormData({ ...formData, selectedItems: [itemId] });
   };
 
   // Agreements state synchronizer
@@ -299,13 +294,13 @@ export default function App() {
                   <span>상담 필수 정보 입력</span>
                 </p>
 
-                {/* Checklist chips selection block */}
+                {/* Checklist radio selection block */}
                 <div className="space-y-2.5 pt-2">
                   <p className="text-xs font-semibold text-neutral-medium">
-                    점검 희망 항목 선택 (중복 가능)
+                    점검 항목 선택
                   </p>
                   
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="grid grid-cols-2 gap-2">
                     {CHECK_ITEMS.map((item) => {
                       const selected = formData.selectedItems.includes(item.id);
                       return (
@@ -313,13 +308,16 @@ export default function App() {
                           key={item.id}
                           type="button"
                           onClick={() => handleChipToggle(item.id)}
-                          className={`h-11 rounded-lg text-xs font-medium border flex items-center justify-center transition-all ${
+                          className={`h-11 px-2 rounded-lg text-xs font-medium border flex items-center justify-center gap-1.5 transition-all ${
                             selected
                               ? 'bg-brand-blue-pale border-brand-blue text-brand-blue font-bold shadow-sm'
                               : 'bg-white border-neutral-border text-neutral-gray hover:bg-neutral-bg'
                           }`}
                         >
-                          {item.label}
+                          <div className={`w-3 h-3 rounded-full border flex items-center justify-center shrink-0 ${selected ? 'border-brand-blue bg-white' : 'border-neutral-border bg-white'}`}>
+                            {selected && <div className="w-1.5 h-1.5 rounded-full bg-brand-blue" />}
+                          </div>
+                          <span className="truncate">{item.label}</span>
                         </button>
                       );
                     })}
