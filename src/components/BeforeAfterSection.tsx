@@ -12,8 +12,8 @@ export function BeforeAfterSection() {
           <span className="text-brand-blue bg-brand-blue-pale text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
             Optimized Clinic
           </span>
-          <h2 className="font-sans font-bold text-2xl text-neutral-dark mt-2">
-            보험분석, 극적인 변화
+          <h2 className="font-sans font-bold text-2xl text-neutral-dark mt-2 flex items-center justify-center gap-1.5">
+            <span className="text-3xl">✨</span> 보험분석, 극적인 변화
           </h2>
           <p className="text-xs text-neutral-gray mt-1">
             중복 가입으로 비싸게 지불하던 기존 구성을 실속 패키지로 바꾼 설계 예시입니다.

@@ -510,8 +510,8 @@ export default function App() {
                 <span className="text-brand-blue bg-brand-blue-pale text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                   Need for review
                 </span>
-                <h2 className="font-sans font-bold text-2xl text-neutral-dark">
-                  보험분석, 왜 필요할까요?
+                <h2 className="font-sans font-bold text-2xl text-neutral-dark flex items-center justify-center gap-2">
+                  <span className="text-3xl">🤔</span> 보험분석, 왜 필요할까요?
                 </h2>
                 <p className="text-xs text-neutral-gray leading-normal">
                   매달 자동이체되고 있는 상당 범위의 누적 보험금, 제대로 보장받고 안전하게 축소하는 법을 알아봅니다.
