@@ -61,7 +61,7 @@ export function BeforeAfterSection() {
                       <span className="text-[10px] uppercase font-bold text-red-500 bg-red-100 px-2 py-0.5 rounded-full">
                         보험분석 전
                       </span>
-                      <p className="font-display font-black text-2xl text-red-600 mt-1">459,000원</p>
+                      <p className="font-display font-black text-2xl text-red-600 mt-1">480,300원</p>
                     </div>
                     <div className="text-right">
                       <span className="text-xs text-neutral-gray block">가입건수</span>
@@ -75,12 +75,12 @@ export function BeforeAfterSection() {
                   </p>
                   <div className="space-y-2.5">
                     {[
-                      { name: 'A사 실비보험', price: '36,000원', tag: '중복 가입 누수', bad: true },
-                      { name: 'B사 암보험', price: '51,500원', tag: '보장 범위 부족(소액암 미달)', bad: true },
-                      { name: 'C사 건강보험', price: '130,000원', tag: '불필요 고액 적립료 포함', bad: true },
-                      { name: 'D사 운전자보험', price: '23,500원', tag: '민사 벌금 한도 미정비', bad: true },
-                      { name: 'E사 변액보험', price: '200,000원', tag: '원금 손실 방치 / 정기이율 미비', bad: true },
-                      { name: 'F사 운전자보험', price: '18,000원', tag: 'D사 중복 가입 쓰레기 특약', bad: true },
+                      { name: 'A사 실비보험', price: '38,500원', tag: '중복 가입 누수', bad: true },
+                      { name: 'B사 암보험', price: '54,200원', tag: '보장 범위 부족(소액암 미달)', bad: true },
+                      { name: 'C사 건강보험', price: '135,000원', tag: '불필요 고액 적립료 포함', bad: true },
+                      { name: 'D사 운전자보험', price: '25,100원', tag: '민사 벌금 한도 미정비', bad: true },
+                      { name: 'E사 변액보험', price: '210,000원', tag: '원금 손실 방치 / 정기이율 미비', bad: true },
+                      { name: 'F사 운전자보험', price: '17,500원', tag: 'D사 중복 가입 쓰레기 특약', bad: true },
                     ].map((item, idx) => (
                       <div key={idx} className="flex justify-between items-center text-xs pb-2 border-b border-dashed border-neutral-border/60">
                         <div>
@@ -115,7 +115,7 @@ export function BeforeAfterSection() {
                       <span className="text-[10px] font-bold text-brand-green-light bg-neutral-dark/40 px-2 py-0.5 rounded-full">
                         보험 분석 후
                       </span>
-                      <p className="font-display font-black text-3xl text-white mt-1">156,692원</p>
+                      <p className="font-display font-black text-3xl text-white mt-1">162,250원</p>
                     </div>
                     <div className="text-right">
                       <span className="text-xs text-brand-blue-light block">남은 계약</span>
@@ -129,7 +129,7 @@ export function BeforeAfterSection() {
                       <Coins size={14} />
                       <span className="text-xs font-bold">매월 세이브 가능한 가계소득</span>
                     </div>
-                    <strong className="font-display font-black text-sm">302,308원 절감 (-65.8%)</strong>
+                    <strong className="font-display font-black text-sm">318,050원 절감 (-66.2%)</strong>
                   </div>
 
                   {/* List of optimized items */}
@@ -138,10 +138,10 @@ export function BeforeAfterSection() {
                   </p>
                   <div className="space-y-2.5">
                     {[
-                      { name: 'G사 실비보험', price: '16,210원', action: '상품변경', desc: '과도한 미 청약 세대 실손에서 합리적인 신실손 이동' },
-                      { name: 'B사 암보험', price: '51,982원', action: '필요보장추가', desc: '납입은 다운시키고 전이 부위까지 특별 특약 보강 완료' },
-                      { name: 'C사 건강보험', price: '70,180원', action: '적립보험료제거', desc: '소멸성 중심 세팅으로 만기 무의미한 저축료 전면 적출' },
-                      { name: 'D사 운전자보험', price: '18,320원', action: '중복보장제거', desc: '벌금 형사 합의금 합법 한도 맥스 정비 및 중복 해약' },
+                      { name: 'G사 실비보험', price: '17,450원', action: '상품변경', desc: '과도한 미 청약 세대 실손에서 합리적인 신실손 이동' },
+                      { name: 'B사 암보험', price: '53,100원', action: '필요보장추가', desc: '납입은 다운시키고 전이 부위까지 특별 특약 보강 완료' },
+                      { name: 'C사 건강보험', price: '72,500원', action: '적립보험료제거', desc: '소멸성 중심 세팅으로 만기 무의미한 저축료 전면 적출' },
+                      { name: 'D사 운전자보험', price: '19,200원', action: '중복보장제거', desc: '벌금 형사 합의금 합법 한도 맥스 정비 및 중복 해약' },
                     ].map((item, idx) => (
                       <div key={idx} className="flex justify-between items-start text-xs pb-2 border-b border-dashed border-neutral-border/60">
                         <div>
@@ -161,7 +161,7 @@ export function BeforeAfterSection() {
                   <div className="bg-brand-blue-pale p-3.5 rounded-xl border border-brand-blue-light flex items-start gap-2">
                     <Check size={16} className="text-brand-blue shrink-0 mt-0.5" />
                     <p className="text-xs text-brand-blue-dark leading-normal">
-                      불필요 변액 자산을 해약 및 통합하여 자산 안정을 잡았습니다. <strong>체험 특화 리밸런싱</strong>을 통해 매월 약 30만 원 상당의 가계부 유동성을 영구 회생했습니다!
+                      불필요 변액 자산을 해약 및 통합하여 자산 안정을 잡았습니다. <strong>체험 특화 리밸런싱</strong>을 통해 매월 약 31만 원 상당의 가계부 유동성을 영구 회생했습니다!
                     </p>
                   </div>
                 </div>
