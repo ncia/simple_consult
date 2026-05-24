@@ -59,7 +59,7 @@ export function BeforeAfterSection() {
                   <div className="flex justify-between items-center bg-red-50 p-4 rounded-xl border border-red-100">
                     <div>
                       <span className="text-[10px] uppercase font-bold text-red-500 bg-red-100 px-2 py-0.5 rounded-full">
-                        설계 리밸런싱 전
+                        보험분석 전
                       </span>
                       <p className="font-display font-black text-2xl text-red-600 mt-1">459,000원</p>
                     </div>
@@ -113,7 +113,7 @@ export function BeforeAfterSection() {
                     </div>
                     <div>
                       <span className="text-[10px] font-bold text-brand-green-light bg-neutral-dark/40 px-2 py-0.5 rounded-full">
-                        설계 리밸런싱 후
+                        보험 분석 후
                       </span>
                       <p className="font-display font-black text-3xl text-white mt-1">156,692원</p>
                     </div>
