@@ -15,8 +15,12 @@ export function ProcessSection() {
 
   useEffect(() => {
     if (showProcessRaw) return;
+    const sequence = [0, 1, 3, 2];
     const interval = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % 4);
+      setActiveStep((prev) => {
+        const currentIndex = sequence.indexOf(prev);
+        return sequence[(currentIndex + 1) % 4];
+      });
     }, 2000);
     return () => clearInterval(interval);
   }, [showProcessRaw]);
@@ -110,29 +114,34 @@ export function ProcessSection() {
           </div>
         ) : (
           /* Interactive Quadrant Panel */
-          <div className="grid grid-cols-2 gap-4 w-full animate-fade-in font-sans">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full animate-fade-in font-sans">
             {steps.map((item, idx) => {
               const isSelected = activeStep === idx;
+              
+              // 모바일(1단)일 때는 1-2-3-4 순서, 데스크탑(2단)일 때는 1-2-4-3 순서(박스 스왑 유지)
+              let orderClass = '';
+              if (item.step === 'STEP 1') orderClass = 'order-1 sm:order-1';
+              if (item.step === 'STEP 2') orderClass = 'order-2 sm:order-2';
+              if (item.step === 'STEP 3') orderClass = 'order-3 sm:order-4';
+              if (item.step === 'STEP 4') orderClass = 'order-4 sm:order-3';
+
               return (
                 <button
                   key={idx}
                   onClick={() => setActiveStep(idx)}
-                  className={`text-left p-4 rounded-2xl border transition-all relative overflow-hidden ${
+                  className={`text-left p-4 rounded-2xl border transition-all relative overflow-hidden flex flex-col h-full ${orderClass} ${
                     isSelected
                       ? 'bg-neutral-dark border-brand-blue-hover ring-2 ring-brand-blue-hover/60 shadow-xl'
                       : 'bg-white/5 border-white/10 hover:border-white/20 hover:bg-white/10'
                   }`}
                 >
-                  {/* Step status and icon */}
-                  <div className="flex justify-between items-center mb-2">
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                  {/* Step status */}
+                  <div className="mb-2">
+                    <span className={`inline-block text-[10px] font-bold px-2 py-0.5 rounded-full ${
                       item.color === 'bg-brand-green-neon' ? 'text-neutral-dark bg-brand-green-neon' : 'text-white bg-brand-blue'
                     }`}>
                       {item.step}
                     </span>
-                    <div className={`p-1.5 rounded-lg ${isSelected ? 'bg-white/15' : 'bg-white/5'}`}>
-                      {item.icon}
-                    </div>
                   </div>
 
                   <strong className="text-sm font-bold block mb-1 text-white">{item.title}</strong>
