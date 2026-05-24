@@ -631,43 +631,31 @@ export default function App() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 relative z-10">
                   
                   {/* Step 1: Duplication */}
-                  <div className="bg-white p-4 rounded-xl border border-neutral-border shadow-sm w-full flex-1 text-center relative group">
-                    <div className="w-11 h-11 bg-neutral-bg rounded-full mx-auto flex items-center justify-center text-neutral-dark mb-2 border border-neutral-border group-hover:scale-110 transition-transform">
-                      <span className="text-lg">📄</span>
+                  <div className="bg-white p-6 rounded-xl border border-neutral-border shadow-sm w-full flex-1 text-center relative group">
+                    <div className="w-12 h-12 bg-neutral-bg rounded-full mx-auto flex items-center justify-center text-neutral-dark mb-3 border border-neutral-border group-hover:scale-110 transition-transform">
+                      <span className="text-xl">📄</span>
                     </div>
-                    <strong className="text-[11px] font-bold text-neutral-dark block">무분별한 중복 가입</strong>
-                    <p className="text-[10px] text-neutral-gray mt-1 leading-relaxed break-keep">비슷한 보장이 겹쳐 의미 없는 지출 발생</p>
-                  </div>
-
-                  {/* Simple Arrow Emoji */}
-                  <div className="flex flex-col items-center justify-center shrink-0 py-2 sm:py-0 relative">
-                    <span className="text-lg hidden sm:block">➡️</span>
-                    <span className="text-lg sm:hidden">⬇️</span>
+                    <strong className="text-[12px] font-bold text-neutral-dark block">무분별한 중복 가입</strong>
+                    <p className="text-[11px] text-neutral-gray mt-1.5 leading-relaxed break-keep">비슷한 보장이 겹쳐 의미 없는 지출 발생</p>
                   </div>
 
                   {/* Step 2: Leakage */}
-                  <div className="bg-white p-4 rounded-xl border border-red-200 shadow-md w-full flex-1 text-center relative ring-2 ring-red-500/20 animate-pulse-slow">
-                    <div className="w-11 h-11 bg-red-500 text-white rounded-full mx-auto flex items-center justify-center mb-2 shadow-lg shadow-red-500/30">
-                      <span className="text-lg">💧</span>
+                  <div className="bg-white p-6 rounded-xl border border-red-200 shadow-md w-full flex-1 text-center relative ring-2 ring-red-500/20 animate-pulse-slow">
+                    <div className="w-12 h-12 bg-red-500 text-white rounded-full mx-auto flex items-center justify-center mb-3 shadow-lg shadow-red-500/30">
+                      <span className="text-xl">💧</span>
                     </div>
-                    <strong className="text-[11px] font-bold text-red-600 block">과도한 보험료 누수</strong>
-                    <p className="text-[10px] text-red-400/90 mt-1 leading-relaxed break-keep">월평균 <strong className="text-red-500">약 5~10만원</strong> 불필요한 비용 증발</p>
-                  </div>
-
-                  {/* Arrow to resolution */}
-                  <div className="flex flex-col items-center justify-center shrink-0 py-2 sm:py-0 relative">
-                    <span className="text-lg hidden sm:block">➡️</span>
-                    <span className="text-lg sm:hidden">⬇️</span>
+                    <strong className="text-[12px] font-bold text-red-600 block">과도한 보험료 누수</strong>
+                    <p className="text-[11px] text-red-400/90 mt-1.5 leading-relaxed break-keep">월평균 <strong className="text-red-500">약 5~10만원</strong> 불필요한 비용 증발</p>
                   </div>
 
                   {/* Step 3: Resolution */}
-                  <div className="bg-brand-blue border border-brand-blue-hover p-4 rounded-xl shadow-lg w-full flex-1 text-center relative group overflow-hidden">
+                  <div className="bg-brand-blue border border-brand-blue-hover p-6 rounded-xl shadow-lg w-full flex-1 text-center relative group overflow-hidden">
                     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/20 to-transparent opacity-50"></div>
-                    <div className="w-11 h-11 bg-white/20 rounded-full mx-auto flex items-center justify-center text-white mb-2 backdrop-blur-sm group-hover:rotate-12 transition-transform shadow-inner">
-                      <ShieldCheck size={20} />
+                    <div className="w-12 h-12 bg-white/20 rounded-full mx-auto flex items-center justify-center text-white mb-3 backdrop-blur-sm group-hover:rotate-12 transition-transform shadow-inner">
+                      <ShieldCheck size={24} />
                     </div>
-                    <strong className="text-[11px] font-bold text-white block">보드미 최적화</strong>
-                    <p className="text-[10px] text-white/80 mt-1 leading-relaxed break-keep">중복 제거 후 필수 보장만 튼튼하고 저렴하게</p>
+                    <strong className="text-[12px] font-bold text-white block">보드미 최적화</strong>
+                    <p className="text-[11px] text-white/80 mt-1.5 leading-relaxed break-keep">중복 제거 후 필수 보장만 튼튼하고 저렴하게</p>
                   </div>
 
                 </div>
