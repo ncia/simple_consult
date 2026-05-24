@@ -655,15 +655,9 @@ export default function App() {
                   </div>
 
                   {/* Arrow to resolution */}
-                  <div className="flex items-center justify-center shrink-0 py-2 sm:py-0">
-                    <div className="hidden sm:flex items-center">
-                      <div className="w-4 border-t-2 border-dashed border-brand-green-light"></div>
-                      <ArrowRight size={16} className="text-brand-green-light -ml-1.5" />
-                    </div>
-                    <div className="sm:hidden flex flex-col items-center">
-                      <div className="h-4 border-l-2 border-dashed border-brand-green-light"></div>
-                      <ArrowRight size={16} className="text-brand-green-light rotate-90 -mt-1.5" />
-                    </div>
+                  <div className="flex flex-col items-center justify-center shrink-0 py-2 sm:py-0 relative">
+                    <span className="text-lg hidden sm:block">➡️</span>
+                    <span className="text-lg sm:hidden">⬇️</span>
                   </div>
 
                   {/* Step 3: Resolution */}
