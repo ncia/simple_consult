@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Sparkles, MessageCircle, FileText, Database, ShieldCheck, Eye, Image as ImageIcon } from 'lucide-react';
 
 interface ProcessStep {
@@ -12,11 +12,15 @@ interface ProcessStep {
 export function ProcessSection() {
   const [activeStep, setActiveStep] = useState<number>(0);
   const [showProcessRaw, setShowProcessRaw] = useState(false);
+  const lastInteractionTimeRef = useRef<number>(0);
 
   useEffect(() => {
     if (showProcessRaw) return;
     const sequence = [0, 1, 3, 2];
     const interval = setInterval(() => {
+      // 마지막 상호작용 후 10초(10000ms)가 지나기 전에는 자동 전환 일시 정지
+      if (Date.now() - lastInteractionTimeRef.current < 10000) return;
+      
       setActiveStep((prev) => {
         const currentIndex = sequence.indexOf(prev);
         return sequence[(currentIndex + 1) % 4];
@@ -128,7 +132,10 @@ export function ProcessSection() {
               return (
                 <button
                   key={idx}
-                  onClick={() => setActiveStep(idx)}
+                  onClick={() => {
+                    setActiveStep(idx);
+                    lastInteractionTimeRef.current = Date.now();
+                  }}
                   className={`text-left p-4 rounded-2xl border transition-all relative overflow-hidden flex flex-col h-full ${orderClass} ${
                     isSelected
                       ? 'bg-neutral-dark border-brand-blue-hover ring-2 ring-brand-blue-hover/60 shadow-xl'
@@ -188,9 +195,14 @@ export function ProcessSection() {
         )}
 
         {/* bottom subtext */}
-        <div className="pt-6 border-t border-white/10 max-w-md mx-auto text-center space-y-1">
+        <div className="pt-6 border-t border-white/10 max-w-md mx-auto text-center space-y-1 flex flex-col items-center">
           <p className="text-brand-blue-light text-xs font-bold">🎯 불편하고 복잡한 청구절차는 이제 그만!</p>
           <h3 className="text-base font-extrabold text-white">청구지원서비스까지 함께 완벽하게 받아보세요</h3>
+          
+          <button className="relative z-10 mt-4 w-full max-w-[320px] mx-auto h-12 bg-white/15 hover:bg-white/25 text-white rounded-xl font-bold text-sm backdrop-blur-md border border-white/20 shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer">
+            보험금 청구 조회
+            <ArrowRight size={16} />
+          </button>
         </div>
       </div>
     </section>
