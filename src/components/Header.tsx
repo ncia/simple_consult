@@ -29,7 +29,7 @@ export function Header({ onContactClick }: HeaderProps) {
           href="tel:01026277771"
           className="flex items-center gap-1.5 font-sans font-semibold text-xs bg-white text-brand-blue border border-brand-blue hover:bg-brand-blue hover:text-white px-3.5 py-2 rounded-full transition-colors duration-300 active:scale-95 shadow-sm group"
         >
-          <img src="/kakao_talk_icon.png" alt="카카오톡" className="w-[14px] h-[14px]" />
+          <Phone size={13} className="text-brand-blue group-hover:text-white transition-colors duration-300" />
           <span>빠른상담</span>
         </a>
       </div>
