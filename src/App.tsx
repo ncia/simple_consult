@@ -632,7 +632,7 @@ export default function App() {
                 
                 <div className="text-center mb-6 relative z-10">
                   <span className="text-[10px] font-bold text-red-500 bg-red-50 px-2.5 py-1 rounded-md mb-2 inline-block border border-red-100">경고 현황</span>
-                  <h3 className="font-extrabold text-neutral-dark text-lg">나도 모르게 새는 <span className="text-red-500">보험료 누수 경로</span></h3>
+                  <h3 className="font-extrabold text-neutral-dark text-lg">나도 모르게 새는 <span className="text-red-500">보험료 누수</span> <span className="text-neutral-dark">경로</span></h3>
                   <p className="text-[11px] text-neutral-gray mt-1">중복 가입과 불필요한 특약으로 매달 버려지는 금액을 진단합니다.</p>
                 </div>
 
