@@ -625,70 +625,47 @@ export default function App() {
               </div>
 
               {/* Animated Infographic: Coverage Leakage Analysis */}
-              <div className="w-full bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] rounded-2xl border border-white/10 shadow-2xl p-5 sm:p-7 mt-8 relative overflow-hidden font-sans">
-                {/* Animated background blobs */}
-                <div className="absolute top-0 right-0 w-48 h-48 bg-purple-500 rounded-full blur-3xl opacity-20 -translate-y-1/3 translate-x-1/3 animate-pulse-slow"></div>
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-red-500 rounded-full blur-3xl opacity-20 translate-y-1/3 -translate-x-1/3 animate-pulse-slow"></div>
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-blue-500 rounded-full blur-3xl opacity-10"></div>
-
-                <div className="text-center mb-7 relative z-10">
-                  <span className="text-[10px] font-bold text-red-400 bg-red-500/20 px-3 py-1 rounded-full mb-3 inline-block border border-red-500/30 tracking-widest uppercase">⚠️ 경고 현황</span>
-                  <h3 className="font-extrabold text-white text-xl mt-2">나도 모르게 새는 <span className="text-red-400">보험료 누수</span> 경로</h3>
-                  <p className="text-[11px] text-white/50 mt-2">중복 가입과 불필요한 특약으로 매달 버려지는 금액을 진단합니다.</p>
+              <div className="w-full bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl border border-neutral-border shadow-inner p-5 sm:p-6 mt-8 relative overflow-hidden font-sans">
+                {/* Background decorative elements */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-red-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-brand-blue-pale rounded-full blur-3xl opacity-70 translate-y-1/2 -translate-x-1/2"></div>
+                
+                <div className="text-center mb-6 relative z-10">
+                  <span className="text-[10px] font-bold text-red-500 bg-red-50 px-2.5 py-1 rounded-md mb-2 inline-block border border-red-100">경고 현황</span>
+                  <h3 className="font-extrabold text-neutral-dark text-lg">나도 모르게 새는 <span className="text-red-500">보험료 누수</span> <span className="text-neutral-dark">경로</span></h3>
+                  <p className="text-[11px] text-neutral-gray mt-1">중복 가입과 불필요한 특약으로 매달 버려지는 금액을 진단합니다.</p>
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-stretch justify-center gap-4 relative z-10">
-
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 relative z-10">
+                  
                   {/* Step 1: Duplication */}
-                  <div className="flex-1 rounded-2xl p-5 relative overflow-hidden group cursor-default"
-                    style={{background: 'linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%)'}}>
-                    {/* Shine effect */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    {/* Number badge */}
-                    <div className="absolute top-3 right-3 w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-white font-black text-[10px]">01</div>
-                    <div className="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
-                      <span className="text-2xl">📋</span>
+                  <div className="bg-purple-600 border border-purple-700 p-6 rounded-xl shadow-lg w-full flex-1 text-center relative overflow-hidden group">
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/20 to-transparent opacity-50"></div>
+                    <div className="w-12 h-12 bg-white/20 rounded-full mx-auto flex items-center justify-center mb-3 backdrop-blur-sm shadow-inner text-white group-hover:scale-110 transition-transform">
+                      <span className="text-xl">📄</span>
                     </div>
-                    <strong className="text-base font-extrabold text-white block mb-2">무분별한 중복 가입</strong>
-                    <p className="text-[11px] text-white/70 leading-relaxed break-keep">비슷한 보장이 겹쳐 의미 없는 지출이 매달 발생하고 있습니다.</p>
-                    <div className="mt-4 pt-3 border-t border-white/10">
-                      <span className="text-[10px] text-purple-300 font-bold">평균 중복 보험: 2.4건</span>
-                    </div>
+                    <strong className="text-sm font-bold text-white block relative z-10">무분별한 중복 가입</strong>
+                    <p className="text-xs text-white/80 mt-1.5 leading-relaxed break-keep relative z-10">비슷한 보장이 겹쳐 의미 없는 지출 발생</p>
                   </div>
 
                   {/* Step 2: Leakage */}
-                  <div className="flex-1 rounded-2xl p-5 relative overflow-hidden group cursor-default animate-pulse-slow"
-                    style={{background: 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)'}}>
-                    <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    {/* Pulse ring */}
-                    <div className="absolute inset-0 rounded-2xl ring-2 ring-red-400/50 animate-pulse"></div>
-                    <div className="absolute top-3 right-3 w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-white font-black text-[10px]">02</div>
-                    <div className="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300 shadow-lg">
-                      <span className="text-2xl">💸</span>
+                  <div className="bg-red-600 border border-red-700 p-6 rounded-xl shadow-lg w-full flex-1 text-center relative overflow-hidden ring-2 ring-red-500/20 animate-pulse-slow">
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/20 to-transparent opacity-50"></div>
+                    <div className="w-12 h-12 bg-white/20 rounded-full mx-auto flex items-center justify-center mb-3 backdrop-blur-sm shadow-inner text-white">
+                      <span className="text-xl">💧</span>
                     </div>
-                    <strong className="text-base font-extrabold text-white block mb-2">과도한 보험료 누수</strong>
-                    <p className="text-[11px] text-white/70 leading-relaxed break-keep">월평균 <strong className="text-yellow-300 font-extrabold">약 5~10만원</strong>의 비용이 불필요하게 증발 중!</p>
-                    <div className="mt-4 pt-3 border-t border-white/10">
-                      <span className="text-[10px] text-red-300 font-bold">연간 최대 120만원 손실</span>
-                    </div>
+                    <strong className="text-sm font-bold text-white block relative z-10">과도한 보험료 누수</strong>
+                    <p className="text-xs text-white/80 mt-1.5 leading-relaxed break-keep relative z-10">월평균 <strong className="text-white font-extrabold">약 5~10만원</strong> 불필요한 비용 증발</p>
                   </div>
 
                   {/* Step 3: Resolution */}
-                  <div className="flex-1 rounded-2xl p-5 relative overflow-hidden group cursor-default"
-                    style={{background: 'linear-gradient(135deg, #0055d3 0%, #0040a0 100%)'}}>
-                    <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    {/* Star sparkles */}
-                    <div className="absolute top-2 left-2 text-yellow-300 text-xs opacity-60 animate-pulse">✦</div>
-                    <div className="absolute bottom-4 right-5 text-yellow-300 text-[8px] opacity-40 animate-pulse-slow">✦</div>
-                    <div className="absolute top-3 right-3 w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-white font-black text-[10px]">03</div>
-                    <div className="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
-                      <ShieldCheck size={26} className="text-white" />
+                  <div className="bg-brand-blue border border-brand-blue-hover p-6 rounded-xl shadow-lg w-full flex-1 text-center relative group overflow-hidden">
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/20 to-transparent opacity-50"></div>
+                    <div className="w-12 h-12 bg-white/20 rounded-full mx-auto flex items-center justify-center text-white mb-3 backdrop-blur-sm group-hover:rotate-12 transition-transform shadow-inner">
+                      <ShieldCheck size={24} />
                     </div>
-                    <strong className="text-base font-extrabold text-white block mb-2">핀토스 최적화</strong>
-                    <p className="text-[11px] text-white/70 leading-relaxed break-keep">중복 제거 후 필수 보장만 튼튼하고 <strong className="text-green-300 font-extrabold">저렴하게</strong> 재설계!</p>
-                    <div className="mt-4 pt-3 border-t border-white/10">
-                      <span className="text-[10px] text-blue-300 font-bold">평균 월 6.5만원 절감</span>
-                    </div>
+                    <strong className="text-sm font-bold text-white block">보드미 최적화</strong>
+                    <p className="text-xs text-white/80 mt-1.5 leading-relaxed break-keep">중복 제거 후 필수 보장만 튼튼하고 저렴하게</p>
                   </div>
 
                 </div>
