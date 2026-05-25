@@ -643,8 +643,8 @@ export default function App() {
                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
                     <div className="absolute bottom-0 left-0 w-24 h-24 bg-black/10 rounded-full blur-xl translate-y-1/2 -translate-x-1/2"></div>
                     
-                    <div className="w-14 h-14 bg-white/20 rounded-2xl mx-auto flex items-center justify-center mb-4 backdrop-blur-md shadow-inner text-white group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300 border border-white/30 relative z-10">
-                      <span className="text-2xl drop-shadow-md group-hover:animate-bounce">📄</span>
+                    <div className="w-14 h-14 bg-white/20 rounded-2xl mx-auto flex items-center justify-center mb-4 backdrop-blur-md shadow-inner text-white group-hover:rotate-[360deg] transition-all duration-700 border border-white/30 relative z-10">
+                      <span className="text-2xl drop-shadow-md">📄</span>
                     </div>
                     <strong className="text-sm font-bold text-white block relative z-10 drop-shadow-sm">무분별한 중복 가입</strong>
                     <p className="text-xs text-white/90 mt-2 leading-relaxed break-keep relative z-10">비슷한 보장이 겹쳐 의미 없는 지출 발생</p>
@@ -655,7 +655,7 @@ export default function App() {
                     <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
                     
-                    <div className="w-14 h-14 bg-white/20 rounded-2xl mx-auto flex items-center justify-center mb-4 backdrop-blur-md shadow-inner text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 border border-white/30 relative z-10 animate-pulse-slow">
+                    <div className="w-14 h-14 bg-white/20 rounded-2xl mx-auto flex items-center justify-center mb-4 backdrop-blur-md shadow-inner text-white group-hover:rotate-[360deg] transition-all duration-700 border border-white/30 relative z-10">
                       <span className="text-2xl drop-shadow-md">💧</span>
                     </div>
                     <strong className="text-sm font-bold text-white block relative z-10 drop-shadow-sm">과도한 보험료 누수</strong>
@@ -667,7 +667,7 @@ export default function App() {
                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
                     <div className="absolute bottom-0 left-0 w-32 h-32 bg-black/10 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2"></div>
                     
-                    <div className="w-14 h-14 bg-white/20 rounded-2xl mx-auto flex items-center justify-center mb-4 backdrop-blur-md shadow-inner text-white group-hover:scale-125 group-hover:rotate-12 transition-all duration-300 border border-white/30 relative z-10">
+                    <div className="w-14 h-14 bg-white/20 rounded-2xl mx-auto flex items-center justify-center mb-4 backdrop-blur-md shadow-inner text-white group-hover:rotate-[360deg] transition-all duration-700 border border-white/30 relative z-10">
                       <ShieldCheck size={28} className="drop-shadow-md" />
                     </div>
                     <strong className="text-sm font-bold text-white block relative z-10 drop-shadow-sm">보드미 최적화</strong>
