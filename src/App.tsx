@@ -624,8 +624,13 @@ export default function App() {
                 </div>
               </div>
 
+              {/* Kakao Talk Banner */}
+              <div className="w-full mt-8 mb-4">
+                <img src="/kakao_banner.jpg" alt="카카오톡 상담 바로가기" className="w-full h-auto rounded-2xl shadow-lg object-cover" />
+              </div>
+
               {/* Animated Infographic: Coverage Leakage Analysis */}
-              <div className="w-full bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl border border-neutral-border shadow-inner p-5 sm:p-6 mt-8 relative overflow-hidden font-sans">
+              <div className="w-full bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl border border-neutral-border shadow-inner p-5 sm:p-6 mt-4 relative overflow-hidden font-sans">
                 {/* Background decorative elements */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-red-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-brand-blue-pale rounded-full blur-3xl opacity-70 translate-y-1/2 -translate-x-1/2"></div>
