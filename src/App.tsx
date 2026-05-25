@@ -303,29 +303,13 @@ export default function App() {
               </button>
             </section>
 
-            {/* EVENT BANNER AD (Beach Background) */}
-            <section 
-              className="event-banner-ad relative py-12 px-5 text-center flex flex-col items-center justify-center border-b border-neutral-border overflow-hidden bg-cover bg-center"
-              style={{ backgroundImage: "url('/assets/event-beach-bg.jpg')" }}
-            >
-              {/* 투명 글라스 느낌을 내는 오버레이 레이어 */}
-              <div className="absolute inset-0 bg-blue-50/20 backdrop-blur-[2px] shadow-inner"></div>
-
-              <div className="relative z-10 max-w-xs w-full flex flex-col items-center gap-5">
-                <div className="w-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white/80 bg-white hover:scale-[1.02] transition-transform duration-300 backdrop-blur-sm">
-                  {/* 첨부된 이미지가 위치할 경로입니다. 실제 파일명/경로로 변경해 주세요. */}
-                  <img 
-                    src="/assets/mega-coffee-event.png" 
-                    alt="보드미 메가커피 이벤트" 
-                    className="w-full h-auto object-cover"
-                  />
-                </div>
-                <h3 className="font-sans font-extrabold text-neutral-dark text-[17px] leading-snug break-keep bg-white/75 backdrop-blur-md px-5 py-3.5 rounded-2xl shadow-sm border border-white/60">
-                  보드미와 보험 상담 받으시고<br />
-                  <span className="text-[#3E80E5] font-black">시원한 메가커피 아이스 아메리카노</span><br />
-                  한잔하세요!
-                </h3>
-              </div>
+            {/* EVENT BANNER AD */}
+            <section className="w-full border-b border-neutral-border overflow-hidden bg-[#FFDCA8]">
+              <img 
+                src="/coffee_event_banner.jpg" 
+                alt="메가커피 증정 이벤트" 
+                className="w-full h-auto object-cover block"
+              />
             </section>
 
             {/* LIVE APPLICATION FORM SECTION */}
