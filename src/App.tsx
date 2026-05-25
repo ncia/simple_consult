@@ -421,7 +421,7 @@ export default function App() {
                       <span>내보험 점검 상세 정보</span>
                     </p>
                     <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 block">가장 고민되는 점 / 가족력 (선택)</label>
+                      <label className="text-xs font-semibold text-slate-700 block">가장 걱정되는 가족력 (선택)</label>
                       <input
                         type="text"
                         value={formData.concernPoint || ''}
