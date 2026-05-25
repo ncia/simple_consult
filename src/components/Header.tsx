@@ -25,13 +25,25 @@ export function Header({ onContactClick }: HeaderProps) {
           </span>
         </button>
         
-        <a
-          href="tel:01026277771"
-          className="flex items-center gap-1.5 font-sans font-semibold text-xs bg-white text-brand-blue border border-brand-blue hover:bg-brand-blue hover:text-white px-3.5 py-2 rounded-full transition-colors duration-300 active:scale-95 shadow-sm group"
-        >
-          <Phone size={13} className="text-brand-blue group-hover:text-white transition-colors duration-300" />
-          <span>빠른상담</span>
-        </a>
+        <div className="flex items-center gap-2">
+          {/* Kakao Talk Consultation Button */}
+          <a
+            href="#"
+            className="flex items-center gap-1.5 font-sans font-semibold text-xs bg-[#FEE500] text-[#371D1E] hover:bg-[#FDD800] px-3.5 py-2 rounded-full transition-colors duration-300 active:scale-95 shadow-sm"
+          >
+            <img src="/kakao_talk_icon.png" alt="카카오톡" className="w-[14px] h-[14px]" />
+            <span>카톡상담</span>
+          </a>
+          
+          {/* Phone Consultation Button */}
+          <a
+            href="tel:01026277771"
+            className="flex items-center gap-1.5 font-sans font-semibold text-xs bg-white text-brand-blue border border-brand-blue hover:bg-brand-blue hover:text-white px-3.5 py-2 rounded-full transition-colors duration-300 active:scale-95 shadow-sm group"
+          >
+            <Phone size={13} className="text-brand-blue group-hover:text-white transition-colors duration-300" />
+            <span>빠른상담</span>
+          </a>
+        </div>
       </div>
     </header>
   );
