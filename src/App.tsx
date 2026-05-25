@@ -636,36 +636,42 @@ export default function App() {
                   <p className="text-[11px] text-neutral-gray mt-1">중복 가입과 불필요한 특약으로 매달 버려지는 금액을 진단합니다.</p>
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 relative z-10">
+                <div className="flex flex-col sm:flex-row items-stretch justify-center gap-4 relative z-10">
                   
                   {/* Step 1: Duplication */}
-                  <div className="bg-purple-600 border border-purple-700 p-6 rounded-xl shadow-lg w-full flex-1 text-center relative overflow-hidden group">
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/20 to-transparent opacity-50"></div>
-                    <div className="w-12 h-12 bg-white/20 rounded-full mx-auto flex items-center justify-center mb-3 backdrop-blur-sm shadow-inner text-white group-hover:scale-110 transition-transform">
-                      <span className="text-xl">📄</span>
+                  <div className="rounded-2xl p-6 shadow-lg w-full flex-1 text-center relative overflow-hidden group transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(139,92,246,0.25)] bg-gradient-to-br from-violet-500 to-fuchsia-500 border border-white/20">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
+                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-black/10 rounded-full blur-xl translate-y-1/2 -translate-x-1/2"></div>
+                    
+                    <div className="w-14 h-14 bg-white/20 rounded-2xl mx-auto flex items-center justify-center mb-4 backdrop-blur-md shadow-inner text-white group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300 border border-white/30 relative z-10">
+                      <span className="text-2xl drop-shadow-md group-hover:animate-bounce">📄</span>
                     </div>
-                    <strong className="text-sm font-bold text-white block relative z-10">무분별한 중복 가입</strong>
-                    <p className="text-xs text-white/80 mt-1.5 leading-relaxed break-keep relative z-10">비슷한 보장이 겹쳐 의미 없는 지출 발생</p>
+                    <strong className="text-sm font-bold text-white block relative z-10 drop-shadow-sm">무분별한 중복 가입</strong>
+                    <p className="text-xs text-white/90 mt-2 leading-relaxed break-keep relative z-10">비슷한 보장이 겹쳐 의미 없는 지출 발생</p>
                   </div>
 
                   {/* Step 2: Leakage */}
-                  <div className="bg-red-600 border border-red-700 p-6 rounded-xl shadow-lg w-full flex-1 text-center relative overflow-hidden ring-2 ring-red-500/20 animate-pulse-slow">
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/20 to-transparent opacity-50"></div>
-                    <div className="w-12 h-12 bg-white/20 rounded-full mx-auto flex items-center justify-center mb-3 backdrop-blur-sm shadow-inner text-white">
-                      <span className="text-xl">💧</span>
+                  <div className="rounded-2xl p-6 shadow-lg w-full flex-1 text-center relative overflow-hidden group transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(244,63,94,0.25)] bg-gradient-to-br from-rose-500 to-orange-500 border border-white/20">
+                    <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                    
+                    <div className="w-14 h-14 bg-white/20 rounded-2xl mx-auto flex items-center justify-center mb-4 backdrop-blur-md shadow-inner text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 border border-white/30 relative z-10 animate-pulse-slow">
+                      <span className="text-2xl drop-shadow-md">💧</span>
                     </div>
-                    <strong className="text-sm font-bold text-white block relative z-10">과도한 보험료 누수</strong>
-                    <p className="text-xs text-white/80 mt-1.5 leading-relaxed break-keep relative z-10">월평균 <strong className="text-white font-extrabold">약 5~10만원</strong> 불필요한 비용 증발</p>
+                    <strong className="text-sm font-bold text-white block relative z-10 drop-shadow-sm">과도한 보험료 누수</strong>
+                    <p className="text-xs text-white/90 mt-2 leading-relaxed break-keep relative z-10">월평균 <strong className="text-yellow-200 font-extrabold">약 5~10만원</strong> 불필요한 비용 증발</p>
                   </div>
 
                   {/* Step 3: Resolution */}
-                  <div className="bg-brand-blue border border-brand-blue-hover p-6 rounded-xl shadow-lg w-full flex-1 text-center relative group overflow-hidden">
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/20 to-transparent opacity-50"></div>
-                    <div className="w-12 h-12 bg-white/20 rounded-full mx-auto flex items-center justify-center text-white mb-3 backdrop-blur-sm group-hover:rotate-12 transition-transform shadow-inner">
-                      <ShieldCheck size={24} />
+                  <div className="rounded-2xl p-6 shadow-lg w-full flex-1 text-center relative overflow-hidden group transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,85,211,0.25)] bg-gradient-to-br from-[#0055d3] to-blue-400 border border-white/20">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
+                    <div className="absolute bottom-0 left-0 w-32 h-32 bg-black/10 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2"></div>
+                    
+                    <div className="w-14 h-14 bg-white/20 rounded-2xl mx-auto flex items-center justify-center mb-4 backdrop-blur-md shadow-inner text-white group-hover:scale-125 group-hover:rotate-12 transition-all duration-300 border border-white/30 relative z-10">
+                      <ShieldCheck size={28} className="drop-shadow-md" />
                     </div>
-                    <strong className="text-sm font-bold text-white block">보드미 최적화</strong>
-                    <p className="text-xs text-white/80 mt-1.5 leading-relaxed break-keep">중복 제거 후 필수 보장만 튼튼하고 저렴하게</p>
+                    <strong className="text-sm font-bold text-white block relative z-10 drop-shadow-sm">보드미 최적화</strong>
+                    <p className="text-xs text-white/90 mt-2 leading-relaxed break-keep relative z-10">중복 제거 후 필수 보장만 튼튼하고 저렴하게</p>
                   </div>
 
                 </div>
