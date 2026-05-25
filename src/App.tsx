@@ -327,18 +327,14 @@ export default function App() {
               </div>
 
               <form onSubmit={handleFormSubmit} className="bg-neutral-bg rounded-2xl p-5 sm:p-6 border border-neutral-border space-y-5 w-full">
-                <p className="text-xs font-semibold text-neutral-medium border-b border-neutral-border pb-2 flex items-center gap-1.5">
-                  <Smartphone size={14} className="text-brand-blue" />
-                  <span>상담 필수 정보 입력</span>
-                </p>
-
-                {/* Checklist radio selection block */}
-                <div className="space-y-2.5 pt-2">
-                  <p className="text-xs font-semibold text-neutral-medium">
-                    점검 항목 선택
+                {/* Checklist radio selection block (Moved to top) */}
+                <div className="space-y-2.5 pb-4 border-b border-neutral-border/60">
+                  <p className="text-sm font-bold text-neutral-dark flex items-center gap-1.5">
+                    <span className="text-[18px]">📋</span>
+                    <span>어떤 서비스가 필요하신가요?</span>
                   </p>
                   
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2 gap-2 mt-2">
                     {CHECK_ITEMS.map((item) => {
                       const selected = formData.selectedItems.includes(item.id);
                       return (
@@ -346,7 +342,7 @@ export default function App() {
                           key={item.id}
                           type="button"
                           onClick={() => handleChipToggle(item.id)}
-                          className={`h-11 px-2 rounded-lg text-sm font-medium border flex items-center justify-center gap-1.5 transition-all ${
+                          className={`h-11 px-2 rounded-lg text-[16px] font-medium border flex items-center justify-center gap-1.5 transition-all ${
                             selected
                               ? 'bg-brand-blue-pale border-brand-blue text-brand-blue font-bold shadow-sm'
                               : 'bg-white border-neutral-border text-neutral-gray hover:bg-neutral-bg'
@@ -357,6 +353,92 @@ export default function App() {
                       );
                     })}
                   </div>
+                </div>
+
+                {/* Conditional Specific Fields */}
+                {formData.selectedItems[0] === 'item3' && (
+                  <div className="space-y-4 pb-4 border-b border-neutral-border/60">
+                    <p className="text-xs font-semibold text-neutral-medium flex items-center gap-1.5">
+                      <FileText size={14} className="text-brand-blue" />
+                      <span>보험금 청구 상세 정보</span>
+                    </p>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-700 block">청구 사유 (선택)</label>
+                      <input
+                        type="text"
+                        value={formData.claimReason || ''}
+                        onChange={(e) => setFormData({ ...formData, claimReason: e.target.value })}
+                        placeholder="예: 실손의료비, 수술비 등"
+                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-700 block">진단명 또는 병원명 (선택)</label>
+                      <input
+                        type="text"
+                        value={formData.hospitalName || ''}
+                        onChange={(e) => setFormData({ ...formData, hospitalName: e.target.value })}
+                        placeholder="예: 위염, OO병원"
+                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {formData.selectedItems[0] === 'item2' && (
+                  <div className="space-y-4 pb-4 border-b border-neutral-border/60">
+                    <p className="text-xs font-semibold text-neutral-medium flex items-center gap-1.5">
+                      <Zap size={14} className="text-brand-blue" />
+                      <span>보험 리모델링 상세 정보</span>
+                    </p>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-700 block">현재 월 납입액 (선택)</label>
+                      <input
+                        type="text"
+                        value={formData.currentPremium || ''}
+                        onChange={(e) => setFormData({ ...formData, currentPremium: e.target.value })}
+                        placeholder="예: 약 15만원"
+                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-700 block">중점 희망 보장 (선택)</label>
+                      <input
+                        type="text"
+                        value={formData.targetCoverage || ''}
+                        onChange={(e) => setFormData({ ...formData, targetCoverage: e.target.value })}
+                        placeholder="예: 암, 뇌졸중 등"
+                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {formData.selectedItems[0] === 'item4' && (
+                  <div className="space-y-4 pb-4 border-b border-neutral-border/60">
+                    <p className="text-xs font-semibold text-neutral-medium flex items-center gap-1.5">
+                      <ShieldCheck size={14} className="text-brand-blue" />
+                      <span>내보험 점검 상세 정보</span>
+                    </p>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-700 block">가장 고민되는 점 / 가족력 (선택)</label>
+                      <input
+                        type="text"
+                        value={formData.concernPoint || ''}
+                        onChange={(e) => setFormData({ ...formData, concernPoint: e.target.value })}
+                        placeholder="예: 고혈압 가족력이 걱정돼요."
+                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* Common Fields */}
+                <div className="pt-2 pb-2">
+                  <p className="text-xs font-semibold text-neutral-medium border-b border-neutral-border pb-2 flex items-center gap-1.5 mb-4">
+                    <User size={14} className="text-brand-blue" />
+                    <span>상담 필수 정보 입력</span>
+                  </p>
                 </div>
 
                 {/* Input Name field */}

@@ -9,6 +9,13 @@ export interface InquiryFormState {
   termAll: boolean;
   termPrivacy: boolean;
   termMarketing: boolean;
+  
+  // 항목별 추가 특화 필드
+  claimReason?: string; // 보험금 청구: 사유
+  hospitalName?: string; // 보험금 청구: 병원/진단명
+  currentPremium?: string; // 보험 리모델링: 현재 월 납입액
+  targetCoverage?: string; // 보험 리모델링: 중점 희망 보장
+  concernPoint?: string; // 내보험 점검: 고민/가족력
 }
 
 export interface CheckItem {
