@@ -431,7 +431,7 @@ export default function App() {
                       />
                     </div>
                     <div className="space-y-1.5 mt-3">
-                      <label className="text-xs font-semibold text-slate-700 block">특별히 점검하고 싶은 사항 (선택)</label>
+                      <label className="text-xs font-semibold text-slate-700 block">점검하고 싶은 사항 (선택)</label>
                       <input
                         type="text"
                         value={formData.checkRequest || ''}
