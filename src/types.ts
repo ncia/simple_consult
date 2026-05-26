@@ -16,6 +16,7 @@ export interface InquiryFormState {
   currentPremium?: string; // 보험 리모델링: 현재 월 납입액
   targetCoverage?: string; // 보험 리모델링: 중점 희망 보장
   concernPoint?: string; // 내보험 점검: 고민/가족력
+  checkRequest?: string; // 내보험 점검: 점검 희망 사항
 }
 
 export interface CheckItem {

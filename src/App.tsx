@@ -430,6 +430,16 @@ export default function App() {
                         className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
                       />
                     </div>
+                    <div className="space-y-1.5 mt-3">
+                      <label className="text-xs font-semibold text-slate-700 block">특별히 점검하고 싶은 사항 (선택)</label>
+                      <input
+                        type="text"
+                        value={formData.checkRequest || ''}
+                        onChange={(e) => setFormData({ ...formData, checkRequest: e.target.value })}
+                        placeholder="예: 실비보험 중복 여부 확인 등"
+                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                      />
+                    </div>
                   </div>
                 )}
 
