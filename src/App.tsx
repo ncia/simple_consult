@@ -136,6 +136,12 @@ export default function App() {
   const handleChipToggle = (itemId: string) => {
     // 라디오 버튼 방식: 무조건 선택한 항목 하나만 배열에 남김
     setFormData({ ...formData, selectedItems: [itemId] });
+    
+    // 보험분석 서비스 신청 섹션 시작점(signup-form-anchor)으로 정확히 스크롤 스파이더
+    const targetElement = document.getElementById('signup-form-anchor');
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   // Agreements state synchronizer
@@ -345,7 +351,7 @@ export default function App() {
             </section>
 
             {/* LIVE APPLICATION FORM SECTION */}
-            <section id="signup-form-anchor" className="py-12 px-6 bg-white space-y-6">
+            <section id="signup-form-anchor" className="py-12 px-6 bg-white space-y-6 scroll-mt-16">
               <div className="text-center space-y-1.5 max-w-sm mx-auto">
                 <p className="text-[11px] font-display font-bold uppercase tracking-wider text-brand-blue">
                   Bohum Store Service Portal
@@ -386,6 +392,8 @@ export default function App() {
                     })}
                   </div>
                 </div>
+
+                <div id="dynamic-fields-start"></div>
 
                 {/* Conditional Specific Fields */}
                 {formData.selectedItems[0] === 'item3' && (
