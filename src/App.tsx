@@ -177,7 +177,7 @@ export default function App() {
   };
 
   // Form final submit
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const errors: { [key: string]: string } = {};
 
@@ -192,9 +192,10 @@ export default function App() {
         errors.birthdate = '올바른 연도 범위(1920~2026년)를 설정해 주세요.';
       }
     }
-    if (!formData.isVerified) {
-      errors.phone = '휴대전화 본인인증(7777인증)을 완료해 주세요.';
+    if (formData.phone.length < 10) {
+      errors.phone = '올바른 휴대전화 번호 10~11자리를 입력해 주세요.';
     }
+
     if (!formData.gender) {
       errors.gender = '성별을 선택해 주세요.';
     }
@@ -213,7 +214,38 @@ export default function App() {
     }
 
     setValidationErrors({});
-    setIsSubmitted(true);
+
+    try {
+      const payload = {
+        inquiry_type: formData.selectedItems[0],
+        name: formData.name,
+        phone: formData.phone,
+        birthdate: formData.birthdate,
+        gender: formData.gender,
+        claim_reason: formData.claimReason,
+        hospital_name: formData.hospitalName,
+        current_premium: formData.currentPremium,
+        target_coverage: formData.targetCoverage,
+        concern_point: formData.concernPoint,
+        check_request: formData.checkRequest
+      };
+
+      const apiUrl = 'http://ncia.dothome.co.kr';
+      const response = await fetch(`${apiUrl}/api.php`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error('API Error');
+      }
+
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error(err);
+      alert('신청 처리 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+    }
   };
 
   const formattedAgeDisplay = () => {
