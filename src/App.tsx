@@ -476,7 +476,7 @@ export default function App() {
                         type="text"
                         value={formData.checkRequest || ''}
                         onChange={(e) => setFormData({ ...formData, checkRequest: e.target.value })}
-                        placeholder="예: 실비보험 중복 여부 확인"
+                        placeholder="예: 실비보험 중복 여부 확인등"
                         className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
                       />
                     </div>
