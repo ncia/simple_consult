@@ -21,6 +21,8 @@ export interface InquiryFormState {
   analysisCompany?: string; // 보험분석: 현재 가입된 보험사
   province?: string;
   district?: string;
+  consultTimeType?: string; // 상담시간구분 (종일, 오전, 오후)
+  consultTime?: string; // 상담시간선택 (01시 ~ 12시)
 }
 
 export const REGION_DATA: Record<string, string[]> = {

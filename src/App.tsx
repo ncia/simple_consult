@@ -92,7 +92,9 @@ export default function App() {
     termPrivacy: false,
     termMarketing: false,
     province: '',
-    district: ''
+    district: '',
+    consultTimeType: '',
+    consultTime: ''
   });
 
   // Modal tracking states
@@ -247,6 +249,8 @@ export default function App() {
         analysis_company: formData.analysisCompany,
         province: formData.province,
         district: formData.district,
+        consult_time_type: formData.consultTimeType,
+        consult_time: formData.consultTime,
         term_privacy: formData.termPrivacy,
         term_marketing: formData.termMarketing
       };
@@ -266,7 +270,7 @@ export default function App() {
       setFormData({
         name: '', gender: null, birthdate: '', phone: '', verificationCode: '', isVerified: false,
         selectedItems: formData.selectedItems, termAll: false, termPrivacy: false, termMarketing: false,
-        province: '', district: '', claimReason: '', hospitalName: '', currentPremium: '',
+        province: '', district: '', consultTimeType: '', consultTime: '', claimReason: '', hospitalName: '', currentPremium: '',
         targetCoverage: '', concernPoint: '', checkRequest: '', analysisInterest: '', analysisCompany: ''
       });
     } catch (err) {
@@ -420,7 +424,7 @@ export default function App() {
                       <img 
                         src="/guide_image.jpeg" 
                         alt="상담 안내 이미지" 
-                        className="w-full h-auto rounded-xl border border-neutral-border shadow-sm"
+                        className="w-full h-auto rounded-none border border-neutral-border shadow-sm"
                       />
                     </div>
                   )}
@@ -612,6 +616,46 @@ export default function App() {
                         <p className="text-[11px] text-red-500 font-medium mt-1">{validationErrors.district}</p>
                       )}
                     </div>
+                  </div>
+                </div>
+
+                {/* Consult Time Selectors */}
+                <div className="space-y-1.5 mt-4">
+                  <label className="text-xs font-semibold text-slate-700 block">상담 가능 시간</label>
+                  <div className="flex gap-2">
+                    <div className={!formData.consultTimeType || formData.consultTimeType === '종일' ? "w-full" : "flex-1"}>
+                      <select
+                        value={formData.consultTimeType || ''}
+                        onChange={(e) => {
+                          setFormData({ ...formData, consultTimeType: e.target.value, consultTime: '' });
+                        }}
+                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all appearance-none"
+                        style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%236b7280\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'%3E%3C/path%3E%3C/svg%3E")', backgroundPosition: 'right 1rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.25rem' }}
+                      >
+                        <option value="" disabled>상담시간구분(오전/오후)</option>
+                        <option value="종일">종일</option>
+                        <option value="오전">오전</option>
+                        <option value="오후">오후</option>
+                      </select>
+                    </div>
+                    {formData.consultTimeType && formData.consultTimeType !== '종일' && (
+                      <div className="flex-1 animate-fade-in">
+                        <select
+                          value={formData.consultTime || ''}
+                          onChange={(e) => {
+                            setFormData({ ...formData, consultTime: e.target.value });
+                          }}
+                          className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all appearance-none"
+                          style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%236b7280\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'%3E%3C/path%3E%3C/svg%3E")', backgroundPosition: 'right 1rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.25rem' }}
+                        >
+                          <option value="" disabled>시간 선택</option>
+                          {[...Array(12)].map((_, i) => {
+                            const hour = (i + 1).toString().padStart(2, '0');
+                            return <option key={hour} value={`${hour}시`}>{hour}시</option>;
+                          })}
+                        </select>
+                      </div>
+                    )}
                   </div>
                 </div>
 

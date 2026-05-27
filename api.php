@@ -39,6 +39,8 @@ try {
             analysis_company VARCHAR(255),
             term_privacy TINYINT(1) DEFAULT 0,
             term_marketing TINYINT(1) DEFAULT 0,
+            consult_time_type VARCHAR(20),
+            consult_time VARCHAR(20),
             status VARCHAR(20) DEFAULT '대기중',
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -61,8 +63,8 @@ try {
             INSERT INTO simple_consult (
                 path, name, phone, birthdate, gender, province, district,
                 claim_reason, hospital_name, current_premium, target_coverage, concern_point, check_request,
-                analysis_interest, analysis_company, term_privacy, term_marketing
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                analysis_interest, analysis_company, term_privacy, term_marketing, consult_time_type, consult_time
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ");
         $stmt->execute([
             $path,
@@ -81,7 +83,9 @@ try {
             $data['analysis_interest'] ?? null,
             $data['analysis_company'] ?? null,
             isset($data['term_privacy']) && $data['term_privacy'] ? 1 : 0,
-            isset($data['term_marketing']) && $data['term_marketing'] ? 1 : 0
+            isset($data['term_marketing']) && $data['term_marketing'] ? 1 : 0,
+            $data['consult_time_type'] ?? null,
+            $data['consult_time'] ?? null
         ]);
         
         // 구글 시트 연동 로직 시작
@@ -167,7 +171,7 @@ try {
                             $data['birthdate'] ?? '', // E: 생년월일
                             $data['gender'] ?? '', // F: 성별
                             $address,            // G: 주소
-                            '',                  // H: (비워둠)
+                            trim(($data['consult_time_type'] ?? '') . ' ' . ($data['consult_time'] ?? '')), // H: 상담가능시간
                             $q1,                 // I: 질문1
                             $q2,                 // J: 질문2
                             (isset($data['term_privacy']) && $data['term_privacy']) ? '동의' : '미동의', // K: 필수
@@ -182,10 +186,11 @@ try {
                             $data['birthdate'] ?? '', // E: 생년월일
                             $data['gender'] ?? '', // F: 성별
                             $address,            // G: 주소
-                            $q1,                 // H: 질문1
-                            $q2,                 // I: 질문2
-                            (isset($data['term_privacy']) && $data['term_privacy']) ? '동의' : '미동의', // J: 필수
-                            (isset($data['term_marketing']) && $data['term_marketing']) ? '동의' : '미동의' // K: 선택
+                            trim(($data['consult_time_type'] ?? '') . ' ' . ($data['consult_time'] ?? '')), // H: 상담가능시간
+                            $q1,                 // I: 질문1
+                            $q2,                 // J: 질문2
+                            (isset($data['term_privacy']) && $data['term_privacy']) ? '동의' : '미동의', // K: 필수
+                            (isset($data['term_marketing']) && $data['term_marketing']) ? '동의' : '미동의' // L: 선택
                         ];
                     }
 
