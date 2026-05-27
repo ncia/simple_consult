@@ -27,7 +27,8 @@ import {
   CHECK_ITEMS, 
   PARTNERS_LIFE, 
   PARTNERS_NONLIFE, 
-  PartnerCompany 
+  PartnerCompany,
+  REGION_DATA
 } from './types';
 
 function getInsuranceInfo(birthdateStr: string) {
@@ -89,7 +90,9 @@ export default function App() {
     selectedItems: [], // default selection
     termAll: false,
     termPrivacy: false,
-    termMarketing: false
+    termMarketing: false,
+    province: '',
+    district: ''
   });
 
   // Modal tracking states
@@ -205,6 +208,12 @@ export default function App() {
     if (!formData.gender) {
       errors.gender = '성별을 선택해 주세요.';
     }
+    if (!formData.province) {
+      errors.province = '주소(시/도)를 선택해 주세요.';
+    }
+    if (!formData.district) {
+      errors.district = '주소(시/군/구)를 선택해 주세요.';
+    }
     if (!formData.termPrivacy) {
       errors.terms = '필수 개인정보 수집 및 활용 동의서에 체크해 주세요.';
     }
@@ -233,11 +242,16 @@ export default function App() {
         current_premium: formData.currentPremium,
         target_coverage: formData.targetCoverage,
         concern_point: formData.concernPoint,
-        check_request: formData.checkRequest
+        check_request: formData.checkRequest,
+        analysis_interest: formData.analysisInterest,
+        analysis_company: formData.analysisCompany,
+        province: formData.province,
+        district: formData.district,
+        term_privacy: formData.termPrivacy,
+        term_marketing: formData.termMarketing
       };
 
-      const apiUrl = 'http://ncia.dothome.co.kr';
-      const response = await fetch(`${apiUrl}/api.php`, {
+      const response = await fetch('/api.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -247,7 +261,14 @@ export default function App() {
         throw new Error('API Error');
       }
 
-      setIsSubmitted(true);
+      alert('상담신청이 접수되었습니다.\n빠른 시간에 연락 드리겠습니다.');
+      // 폼 초기화 (선택사항)
+      setFormData({
+        name: '', gender: null, birthdate: '', phone: '', verificationCode: '', isVerified: false,
+        selectedItems: formData.selectedItems, termAll: false, termPrivacy: false, termMarketing: false,
+        province: '', district: '', claimReason: '', hospitalName: '', currentPremium: '',
+        targetCoverage: '', concernPoint: '', checkRequest: '', analysisInterest: '', analysisCompany: ''
+      });
     } catch (err) {
       console.error(err);
       alert('신청 처리 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
@@ -334,7 +355,7 @@ export default function App() {
               <button 
                 type="button"
                 className="relative z-10 mt-4 w-full max-w-[320px] h-12 bg-white/15 hover:bg-white/25 text-white rounded-xl font-bold text-sm backdrop-blur-md border border-white/20 shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
-                onClick={() => alert('보험금 청구 조회 서비스는 준비 중입니다.')}
+                onClick={() => window.open('https://claimexpert.vercel.app/', '_blank')}
               >
                 <span className="text-base">🔍</span>
                 <span>보험금 청구 조회</span>
@@ -369,7 +390,7 @@ export default function App() {
                 <div className="space-y-2.5 pb-4 border-b border-neutral-border/60">
                   <p className="text-sm font-bold text-neutral-dark flex items-center gap-1.5">
                     <span className="text-[18px]">📋</span>
-                    <span>어떤 서비스가 필요하신가요?</span>
+                    <span>어떤 서비스가 필요하신가요? 선택해 주세요!</span>
                   </p>
                   
                   <div className="grid grid-cols-2 gap-2 mt-2">
@@ -393,96 +414,20 @@ export default function App() {
                   </div>
                 </div>
 
-                <div id="dynamic-fields-start"></div>
+                <div id="dynamic-fields-start">
+                  {formData.selectedItems.length === 0 && (
+                    <div className="w-full mt-4 animate-fade-in">
+                      <img 
+                        src="/guide_image.jpeg" 
+                        alt="상담 안내 이미지" 
+                        className="w-full h-auto rounded-xl border border-neutral-border shadow-sm"
+                      />
+                    </div>
+                  )}
+                </div>
 
-                {/* Conditional Specific Fields */}
-                {formData.selectedItems[0] === 'item3' && (
-                  <div className="space-y-4 pb-4 border-b border-neutral-border/60">
-                    <p className="text-xs font-semibold text-neutral-medium flex items-center gap-1.5">
-                      <FileText size={14} className="text-brand-blue" />
-                      <span>보험금 청구 상세 정보</span>
-                    </p>
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 block">청구 사유 (선택)</label>
-                      <input
-                        type="text"
-                        value={formData.claimReason || ''}
-                        onChange={(e) => setFormData({ ...formData, claimReason: e.target.value })}
-                        placeholder="예: 실손의료비, 수술비 등"
-                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
-                      />
-                    </div>
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 block">진단명 또는 병원명 (선택)</label>
-                      <input
-                        type="text"
-                        value={formData.hospitalName || ''}
-                        onChange={(e) => setFormData({ ...formData, hospitalName: e.target.value })}
-                        placeholder="예: 위염, OO병원"
-                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
-                      />
-                    </div>
-                  </div>
-                )}
-
-                {formData.selectedItems[0] === 'item2' && (
-                  <div className="space-y-4 pb-4 border-b border-neutral-border/60">
-                    <p className="text-xs font-semibold text-neutral-medium flex items-center gap-1.5">
-                      <Zap size={14} className="text-brand-blue" />
-                      <span>보험 리모델링 상세 정보</span>
-                    </p>
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 block">현재 월 납입액 (선택)</label>
-                      <input
-                        type="text"
-                        value={formData.currentPremium || ''}
-                        onChange={(e) => setFormData({ ...formData, currentPremium: e.target.value })}
-                        placeholder="예: 약 15만원"
-                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
-                      />
-                    </div>
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 block">중점 희망 보장 (선택)</label>
-                      <input
-                        type="text"
-                        value={formData.targetCoverage || ''}
-                        onChange={(e) => setFormData({ ...formData, targetCoverage: e.target.value })}
-                        placeholder="예: 암, 뇌졸중 등"
-                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
-                      />
-                    </div>
-                  </div>
-                )}
-
-                {formData.selectedItems[0] === 'item4' && (
-                  <div className="space-y-4 pb-4 border-b border-neutral-border/60">
-                    <p className="text-xs font-semibold text-neutral-medium flex items-center gap-1.5">
-                      <ShieldCheck size={14} className="text-brand-blue" />
-                      <span>내보험 점검 상세 정보</span>
-                    </p>
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 block">가장 걱정되는 가족력 (선택)</label>
-                      <input
-                        type="text"
-                        value={formData.concernPoint || ''}
-                        onChange={(e) => setFormData({ ...formData, concernPoint: e.target.value })}
-                        placeholder="예: 고혈압 가족력이 걱정돼요."
-                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
-                      />
-                    </div>
-                    <div className="space-y-1.5 mt-3">
-                      <label className="text-xs font-semibold text-slate-700 block">점검하고 싶은 사항 (선택)</label>
-                      <input
-                        type="text"
-                        value={formData.checkRequest || ''}
-                        onChange={(e) => setFormData({ ...formData, checkRequest: e.target.value })}
-                        placeholder="예: 실비보험 중복 여부 확인등"
-                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
-                      />
-                    </div>
-                  </div>
-                )}
-
+                {formData.selectedItems.length > 0 && (
+                  <>
                 {/* Common Fields */}
                 <div className="pt-2 pb-2">
                   <p className="text-xs font-semibold text-neutral-medium border-b border-neutral-border pb-2 flex items-center gap-1.5 mb-4">
@@ -620,6 +565,174 @@ export default function App() {
                   )}
                 </div>
 
+                {/* Address Selectors */}
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold text-slate-700 block">주소</label>
+                  <div className="flex gap-2">
+                    <div className="flex-1">
+                      <select
+                        value={formData.province || ''}
+                        onChange={(e) => {
+                          setFormData({ ...formData, province: e.target.value, district: '' });
+                          setValidationErrors({ ...validationErrors, province: '' });
+                        }}
+                        className={`w-full h-12 bg-white rounded-xl border px-4 font-sans text-sm focus:ring-2 focus:outline-none transition-all appearance-none ${
+                          validationErrors.province ? 'border-red-500 focus:ring-red-200' : 'border-neutral-border focus:ring-brand-blue-pale focus:border-brand-blue'
+                        }`}
+                        style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%236b7280\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'%3E%3C/path%3E%3C/svg%3E")', backgroundPosition: 'right 1rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.25rem' }}
+                      >
+                        <option value="" disabled>시/도 선택</option>
+                        {Object.keys(REGION_DATA).map(prov => (
+                          <option key={prov} value={prov}>{prov}</option>
+                        ))}
+                      </select>
+                      {validationErrors.province && (
+                        <p className="text-[11px] text-red-500 font-medium mt-1">{validationErrors.province}</p>
+                      )}
+                    </div>
+                    <div className="flex-1">
+                      <select
+                        value={formData.district || ''}
+                        onChange={(e) => {
+                          setFormData({ ...formData, district: e.target.value });
+                          setValidationErrors({ ...validationErrors, district: '' });
+                        }}
+                        disabled={!formData.province}
+                        className={`w-full h-12 bg-white rounded-xl border px-4 font-sans text-sm focus:ring-2 focus:outline-none transition-all appearance-none disabled:opacity-75 disabled:bg-neutral-border/20 ${
+                          validationErrors.district ? 'border-red-500 focus:ring-red-200' : 'border-neutral-border focus:ring-brand-blue-pale focus:border-brand-blue'
+                        }`}
+                        style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%236b7280\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'%3E%3C/path%3E%3C/svg%3E")', backgroundPosition: 'right 1rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.25rem' }}
+                      >
+                        <option value="" disabled>시/군/구 선택</option>
+                        {formData.province && REGION_DATA[formData.province]?.map(dist => (
+                          <option key={dist} value={dist}>{dist}</option>
+                        ))}
+                      </select>
+                      {validationErrors.district && (
+                        <p className="text-[11px] text-red-500 font-medium mt-1">{validationErrors.district}</p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Conditional Specific Fields (Moved from Top) */}
+                {formData.selectedItems[0] === 'item1' && (
+                  <div className="space-y-4 pt-2 border-t border-neutral-border/60">
+                    <p className="text-xs font-semibold text-neutral-medium flex items-center gap-1.5">
+                      <Sparkles size={14} className="text-brand-blue" />
+                      <span>보험분석 상담 상세 정보</span>
+                    </p>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-700 block">관심 있는 보험 종류 (선택)</label>
+                      <input
+                        type="text"
+                        value={formData.analysisInterest || ''}
+                        onChange={(e) => setFormData({ ...formData, analysisInterest: e.target.value })}
+                        placeholder="예: 암보험, 종신보험, 종합보험 등"
+                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-700 block">현재 가입된 보험사 (선택)</label>
+                      <input
+                        type="text"
+                        value={formData.analysisCompany || ''}
+                        onChange={(e) => setFormData({ ...formData, analysisCompany: e.target.value })}
+                        placeholder="예: 삼성생명, 현대해상 등"
+                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* Conditional Specific Fields (Moved from Top) */}
+                {formData.selectedItems[0] === 'item3' && (
+                  <div className="space-y-4 pt-2 border-t border-neutral-border/60">
+                    <p className="text-xs font-semibold text-neutral-medium flex items-center gap-1.5">
+                      <FileText size={14} className="text-brand-blue" />
+                      <span>보험금 청구 상세 정보</span>
+                    </p>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-700 block">청구 사유 (선택)</label>
+                      <input
+                        type="text"
+                        value={formData.claimReason || ''}
+                        onChange={(e) => setFormData({ ...formData, claimReason: e.target.value })}
+                        placeholder="예: 실손의료비, 수술비 등"
+                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-700 block">진단명 또는 병원명 (선택)</label>
+                      <input
+                        type="text"
+                        value={formData.hospitalName || ''}
+                        onChange={(e) => setFormData({ ...formData, hospitalName: e.target.value })}
+                        placeholder="예: 위염, OO병원"
+                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {formData.selectedItems[0] === 'item2' && (
+                  <div className="space-y-4 pt-2 border-t border-neutral-border/60">
+                    <p className="text-xs font-semibold text-neutral-medium flex items-center gap-1.5">
+                      <Zap size={14} className="text-brand-blue" />
+                      <span>보험 리모델링 상세 정보</span>
+                    </p>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-700 block">현재 월 납입액 (선택)</label>
+                      <input
+                        type="text"
+                        value={formData.currentPremium || ''}
+                        onChange={(e) => setFormData({ ...formData, currentPremium: e.target.value })}
+                        placeholder="예: 약 15만원"
+                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-700 block">중점 희망 보장 (선택)</label>
+                      <input
+                        type="text"
+                        value={formData.targetCoverage || ''}
+                        onChange={(e) => setFormData({ ...formData, targetCoverage: e.target.value })}
+                        placeholder="예: 암, 뇌졸중 등"
+                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {formData.selectedItems[0] === 'item4' && (
+                  <div className="space-y-4 pt-2 border-t border-neutral-border/60">
+                    <p className="text-xs font-semibold text-neutral-medium flex items-center gap-1.5">
+                      <ShieldCheck size={14} className="text-brand-blue" />
+                      <span>내보험 점검 상세 정보</span>
+                    </p>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-700 block">가장 걱정되는 가족력 (선택)</label>
+                      <input
+                        type="text"
+                        value={formData.concernPoint || ''}
+                        onChange={(e) => setFormData({ ...formData, concernPoint: e.target.value })}
+                        placeholder="예: 고혈압 가족력이 걱정돼요."
+                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                      />
+                    </div>
+                    <div className="space-y-1.5 mt-3">
+                      <label className="text-xs font-semibold text-slate-700 block">점검하고 싶은 사항 (선택)</label>
+                      <input
+                        type="text"
+                        value={formData.checkRequest || ''}
+                        onChange={(e) => setFormData({ ...formData, checkRequest: e.target.value })}
+                        placeholder="예: 실비보험 중복 여부 확인등"
+                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+                )}
+
                 {/* Agreement contracts */}
                 <div className="pt-3 border-t border-neutral-border/60 space-y-2 select-none">
                   <label className="flex items-center gap-2 cursor-pointer pb-1.5 border-b border-neutral-border/40">
@@ -687,9 +800,11 @@ export default function App() {
                   className="w-full md:w-1/2 mx-auto h-14 bg-brand-blue text-white rounded-xl font-bold text-sm tracking-wide shadow-lg shadow-brand-blue/15 hover:bg-brand-blue-hover active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 mt-2 cursor-pointer"
                 >
                   <ShieldCheck size={18} />
-                  <span>실시간 무료 분석 신청하기</span>
+                  <span>보험케어 상담하기</span>
                   <ArrowRight size={15} />
                 </button>
+                  </>
+                )}
               </form>
             </section>
 

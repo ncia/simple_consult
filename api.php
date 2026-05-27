@@ -1,97 +1,96 @@
 <?php
-// CORS 설정: 모든 도메인에서의 요청 허용 (실서비스 시에는 특정 도메인으로 제한 권장)
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json; charset=UTF-8");
 
-// OPTIONS 요청(Preflight)에 대한 처리
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     http_response_code(200);
     exit();
 }
 
-// 닷홈 DB 연결 정보
-$servername = "localhost";
-$username = "ncia";
-$password = "Skycastle77!";
-$dbname = "ncia";
-
-// 에러 리포팅 설정
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+$host = "localhost";
+$dbname = "nciame_care";
+$username = "nciame_care";
+$password = "V?nPPYwGOscw=dIm";
 
 try {
-    // DB 연결
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    $conn->set_charset("utf8mb4");
+    $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // 테이블이 없으면 생성하는 쿼리 (최초 1회 실행용)
+    // 테이블이 없으면 자동 생성
     $createTableQuery = "
-        CREATE TABLE IF NOT EXISTS insurance_inquiries (
+        CREATE TABLE IF NOT EXISTS simple_consult (
             id INT AUTO_INCREMENT PRIMARY KEY,
-            inquiry_type VARCHAR(50) NOT NULL,
-            name VARCHAR(100) NOT NULL,
+            path VARCHAR(50) NOT NULL,
+            name VARCHAR(50) NOT NULL,
             phone VARCHAR(20) NOT NULL,
             birthdate VARCHAR(10) NOT NULL,
             gender VARCHAR(10) NOT NULL,
+            province VARCHAR(50),
+            district VARCHAR(50),
             claim_reason VARCHAR(255),
-            hospital_name VARCHAR(255),
-            current_premium VARCHAR(255),
+            hospital_name VARCHAR(100),
+            current_premium VARCHAR(100),
             target_coverage VARCHAR(255),
             concern_point VARCHAR(255),
             check_request VARCHAR(255),
+            analysis_interest VARCHAR(255),
+            analysis_company VARCHAR(255),
+            term_privacy TINYINT(1) DEFAULT 0,
+            term_marketing TINYINT(1) DEFAULT 0,
+            status VARCHAR(20) DEFAULT '대기중',
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     ";
-    $conn->query($createTableQuery);
+    $conn->exec($createTableQuery);
 
-    // JSON 본문 읽기
     $json = file_get_contents('php://input');
     $data = json_decode($json, true);
 
-    if (!$data) {
-        throw new Exception("잘못된 요청 데이터입니다.");
-    }
+    if ($data) {
+        $inquiry_type = $data['inquiry_type'] ?? '';
+        $path = '';
+        if ($inquiry_type === 'item1') $path = '보험분석 상담';
+        else if ($inquiry_type === 'item2') $path = '보험 리모델링';
+        else if ($inquiry_type === 'item3') $path = '보험금 청구';
+        else if ($inquiry_type === 'item4') $path = '내보험 점검';
+        else $path = '기타';
 
-    // 데이터 추출 및 안전한 바인딩 준비
-    $inquiry_type = $data['inquiry_type'] ?? '';
-    $name = $data['name'] ?? '';
-    $phone = $data['phone'] ?? '';
-    $birthdate = $data['birthdate'] ?? '';
-    $gender = $data['gender'] ?? '';
-    $claim_reason = $data['claim_reason'] ?? '';
-    $hospital_name = $data['hospital_name'] ?? '';
-    $current_premium = $data['current_premium'] ?? '';
-    $target_coverage = $data['target_coverage'] ?? '';
-    $concern_point = $data['concern_point'] ?? '';
-    $check_request = $data['check_request'] ?? '';
-
-    // INSERT 쿼리 준비
-    $stmt = $conn->prepare("
-        INSERT INTO insurance_inquiries (
-            inquiry_type, name, phone, birthdate, gender,
-            claim_reason, hospital_name, current_premium, target_coverage, concern_point, check_request
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    ");
-
-    $stmt->bind_param(
-        "sssssssssss",
-        $inquiry_type, $name, $phone, $birthdate, $gender,
-        $claim_reason, $hospital_name, $current_premium, $target_coverage, $concern_point, $check_request
-    );
-
-    // 실행
-    if ($stmt->execute()) {
-        echo json_encode(["status" => "success", "message" => "신청이 성공적으로 저장되었습니다.", "id" => $stmt->insert_id]);
+        $stmt = $conn->prepare("
+            INSERT INTO simple_consult (
+                path, name, phone, birthdate, gender, province, district,
+                claim_reason, hospital_name, current_premium, target_coverage, concern_point, check_request,
+                analysis_interest, analysis_company, term_privacy, term_marketing
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ");
+        $stmt->execute([
+            $path,
+            $data['name'] ?? '',
+            $data['phone'] ?? '',
+            $data['birthdate'] ?? '',
+            $data['gender'] ?? '',
+            $data['province'] ?? '',
+            $data['district'] ?? '',
+            $data['claim_reason'] ?? null,
+            $data['hospital_name'] ?? null,
+            $data['current_premium'] ?? null,
+            $data['target_coverage'] ?? null,
+            $data['concern_point'] ?? null,
+            $data['check_request'] ?? null,
+            $data['analysis_interest'] ?? null,
+            $data['analysis_company'] ?? null,
+            isset($data['term_privacy']) && $data['term_privacy'] ? 1 : 0,
+            isset($data['term_marketing']) && $data['term_marketing'] ? 1 : 0
+        ]);
+        
+        echo json_encode(["status" => "success", "message" => "신청이 성공적으로 저장되었습니다."]);
     } else {
-        throw new Exception("저장 실패");
+        http_response_code(400);
+        echo json_encode(["status" => "error", "message" => "잘못된 요청 데이터입니다."]);
     }
-
-    $stmt->close();
-    $conn->close();
-
-} catch (Exception $e) {
+} catch(PDOException $e) {
     http_response_code(500);
-    echo json_encode(["status" => "error", "message" => $e->getMessage()]);
+    echo json_encode(["status" => "error", "message" => "DB 오류: " . $e->getMessage()]);
 }
 ?>
