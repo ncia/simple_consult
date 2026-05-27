@@ -84,6 +84,131 @@ try {
             isset($data['term_marketing']) && $data['term_marketing'] ? 1 : 0
         ]);
         
+        // 구글 시트 연동 로직 시작
+        try {
+            if (file_exists(__DIR__ . '/google_key.php')) {
+                $keyData = require __DIR__ . '/google_key.php';
+                
+                $header = json_encode(['alg' => 'RS256', 'typ' => 'JWT']);
+                $now = time();
+                $claim = json_encode([
+                    'iss' => $keyData['client_email'],
+                    'scope' => 'https://www.googleapis.com/auth/spreadsheets',
+                    'aud' => 'https://oauth2.googleapis.com/token',
+                    'exp' => $now + 3600,
+                    'iat' => $now
+                ]);
+
+                $base64UrlHeader = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($header));
+                $base64UrlClaim = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($claim));
+
+                $signature = '';
+                openssl_sign($base64UrlHeader . '.' . $base64UrlClaim, $signature, $keyData['private_key'], 'SHA256');
+                $base64UrlSignature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($signature));
+
+                $jwt = $base64UrlHeader . '.' . $base64UrlClaim . '.' . $base64UrlSignature;
+
+                $ch = curl_init('https://oauth2.googleapis.com/token');
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_POST, true);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+                    'grant_type' => 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+                    'assertion' => $jwt
+                ]));
+                
+                $response = curl_exec($ch);
+                curl_close($ch);
+                
+                $result = json_decode($response, true);
+                $accessToken = $result['access_token'] ?? null;
+
+                if ($accessToken) {
+                    $spreadsheetId = '1t3OElFyO6HlUm7qtf8ASE5PTEk5qAq6IzALsaV4XSA0';
+                    $range = ($inquiry_type === 'item3') ? '보험금청구예약' : '간편상담CARE';
+                    $url = "https://sheets.googleapis.com/v4/spreadsheets/{$spreadsheetId}/values/" . urlencode($range) . ":append?valueInputOption=USER_ENTERED";
+
+                    // 경로 설정
+                    $googlePath = $path;
+
+                    // 주소 조합
+                    $address = trim(($data['province'] ?? '') . ' ' . ($data['district'] ?? ''));
+
+                    // 질문1, 질문2 매핑
+                    $q1 = '';
+                    $q2 = '';
+                    if ($inquiry_type === 'item1') {
+                        $q1 = $data['concern_point'] ?? '';
+                        $q2 = $data['check_request'] ?? '';
+                    } else if ($inquiry_type === 'item2') {
+                        $q1 = $data['current_premium'] ?? '';
+                        $q2 = $data['target_coverage'] ?? '';
+                    } else if ($inquiry_type === 'item3') {
+                        $q1 = $data['claim_reason'] ?? '';
+                        $q2 = $data['hospital_name'] ?? '';
+                    } else if ($inquiry_type === 'item4') {
+                        $q1 = $data['analysis_interest'] ?? '';
+                        $q2 = $data['analysis_company'] ?? '';
+                    }
+
+                    if ($inquiry_type === 'item3') {
+                        $siteHost = $_SERVER['HTTP_HOST'] ?? '간편상담';
+                        if (!empty($_SERVER['HTTP_REFERER'])) {
+                            $parsed = parse_url($_SERVER['HTTP_REFERER']);
+                            if (!empty($parsed['host'])) {
+                                $siteHost = $parsed['host'];
+                            }
+                        }
+                        
+                        $values = [
+                            date('Y-m-d H:i:s'), // A: 날짜
+                            $siteHost,           // B: 경로 (사이트 주소)
+                            $data['name'] ?? '', // C: 이름
+                            $data['phone'] ?? '', // D: 연락처
+                            $data['birthdate'] ?? '', // E: 생년월일
+                            $data['gender'] ?? '', // F: 성별
+                            $address,            // G: 주소
+                            '',                  // H: (비워둠)
+                            $q1,                 // I: 질문1
+                            $q2,                 // J: 질문2
+                            (isset($data['term_privacy']) && $data['term_privacy']) ? '동의' : '미동의', // K: 필수
+                            (isset($data['term_marketing']) && $data['term_marketing']) ? '동의' : '미동의' // L: 선택
+                        ];
+                    } else {
+                        $values = [
+                            date('Y-m-d H:i:s'), // A: 날짜
+                            $googlePath,         // B: 경로
+                            $data['name'] ?? '', // C: 이름
+                            $data['phone'] ?? '', // D: 연락처
+                            $data['birthdate'] ?? '', // E: 생년월일
+                            $data['gender'] ?? '', // F: 성별
+                            $address,            // G: 주소
+                            $q1,                 // H: 질문1
+                            $q2,                 // I: 질문2
+                            (isset($data['term_privacy']) && $data['term_privacy']) ? '동의' : '미동의', // J: 필수
+                            (isset($data['term_marketing']) && $data['term_marketing']) ? '동의' : '미동의' // K: 선택
+                        ];
+                    }
+
+                    $postData = json_encode(['values' => [$values]]);
+                    
+                    $ch = curl_init($url);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_POST, true);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+                    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                        'Authorization: Bearer ' . $accessToken,
+                        'Content-Type: application/json'
+                    ]);
+                    
+                    $sheetResponse = curl_exec($ch);
+                    curl_close($ch);
+                }
+            }
+        } catch (Exception $e) {
+            error_log("Google Sheets API Error: " . $e->getMessage());
+        }
+        // 구글 시트 연동 로직 끝
+
         echo json_encode(["status" => "success", "message" => "신청이 성공적으로 저장되었습니다."]);
     } else {
         http_response_code(400);
