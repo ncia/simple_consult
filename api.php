@@ -137,9 +137,6 @@ try {
                     $range = ($inquiry_type === 'item3') ? '보험금청구예약' : '간편상담CARE';
                     $url = "https://sheets.googleapis.com/v4/spreadsheets/{$spreadsheetId}/values/" . urlencode($range) . ":append?valueInputOption=USER_ENTERED";
 
-                    // 경로 설정
-                    $googlePath = $path;
-
                     // 주소 조합
                     $address = trim(($data['province'] ?? '') . ' ' . ($data['district'] ?? ''));
 
@@ -160,45 +157,29 @@ try {
                         $q2 = $data['check_request'] ?? '';
                     }
 
-                    if ($inquiry_type === 'item3') {
-                        $siteHost = $_SERVER['HTTP_HOST'] ?? '간편상담';
-                        if (!empty($_SERVER['HTTP_REFERER'])) {
-                            $parsed = parse_url($_SERVER['HTTP_REFERER']);
-                            if (!empty($parsed['host'])) {
-                                $siteHost = $parsed['host'];
-                            }
-                        }
-                        
-                        $values = [
-                            date('Y-m-d H:i:s'), // A: 날짜
-                            $siteHost,           // B: 경로 (사이트 주소)
-                            $data['name'] ?? '', // C: 이름
-                            $data['phone'] ?? '', // D: 연락처
-                            $data['birthdate'] ?? '', // E: 생년월일
-                            $data['gender'] ?? '', // F: 성별
-                            $address,            // G: 주소
-                            trim(($data['consult_time_type'] ?? '') . ' ' . ($data['consult_time'] ?? '')), // H: 상담가능시간
-                            $q1,                 // I: 질문1
-                            $q2,                 // J: 질문2
-                            (isset($data['term_privacy']) && $data['term_privacy']) ? '동의' : '미동의', // K: 필수
-                            (isset($data['term_marketing']) && $data['term_marketing']) ? '동의' : '미동의' // L: 선택
-                        ];
-                    } else {
-                        $values = [
-                            date('Y-m-d H:i:s'), // A: 날짜
-                            $googlePath,         // B: 경로
-                            $data['name'] ?? '', // C: 이름
-                            $data['phone'] ?? '', // D: 연락처
-                            $data['birthdate'] ?? '', // E: 생년월일
-                            $data['gender'] ?? '', // F: 성별
-                            $address,            // G: 주소
-                            trim(($data['consult_time_type'] ?? '') . ' ' . ($data['consult_time'] ?? '')), // H: 상담가능시간
-                            $q1,                 // I: 질문1
-                            $q2,                 // J: 질문2
-                            (isset($data['term_privacy']) && $data['term_privacy']) ? '동의' : '미동의', // K: 필수
-                            (isset($data['term_marketing']) && $data['term_marketing']) ? '동의' : '미동의' // L: 선택
-                        ];
+                    $siteUrl = '간편상담';
+                    if (!empty($_SERVER['HTTP_REFERER'])) {
+                        $siteUrl = $_SERVER['HTTP_REFERER'];
+                    } else if (!empty($_SERVER['HTTP_HOST'])) {
+                        $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http");
+                        $siteUrl = $protocol . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     }
+
+                    $values = [
+                        date('Y-m-d H:i:s'), // A: 날짜
+                        $siteUrl,            // B: 경로 (사이트 URL)
+                        $path,               // C: 구분
+                        $data['name'] ?? '', // D: 이름
+                        $data['phone'] ?? '', // E: 연락처
+                        $data['birthdate'] ?? '', // F: 생년월일
+                        $data['gender'] ?? '', // G: 성별
+                        $address,            // H: 주소
+                        trim(($data['consult_time_type'] ?? '') . ' ' . ($data['consult_time'] ?? '')), // I: 상담가능시간
+                        $q1,                 // J: 질문1
+                        $q2,                 // K: 질문2
+                        (isset($data['term_privacy']) && $data['term_privacy']) ? '동의' : '미동의', // L: 필수
+                        (isset($data['term_marketing']) && $data['term_marketing']) ? '동의' : '미동의' // M: 선택
+                    ];
 
                     $postData = json_encode(['values' => [$values]]);
                     
