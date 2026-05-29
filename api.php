@@ -59,6 +59,12 @@ try {
         else if ($inquiry_type === 'item4') $path = '내보험 점검';
         else $path = '기타';
 
+        if (isset($data['gender'])) {
+            if ($data['gender'] === 'male') $data['gender'] = '남성';
+            else if ($data['gender'] === 'female') $data['gender'] = '여성';
+        }
+
+
         $stmt = $conn->prepare("
             INSERT INTO simple_consult (
                 path, name, phone, birthdate, gender, province, district,
@@ -141,8 +147,8 @@ try {
                     $q1 = '';
                     $q2 = '';
                     if ($inquiry_type === 'item1') {
-                        $q1 = $data['concern_point'] ?? '';
-                        $q2 = $data['check_request'] ?? '';
+                        $q1 = $data['analysis_interest'] ?? '';
+                        $q2 = $data['analysis_company'] ?? '';
                     } else if ($inquiry_type === 'item2') {
                         $q1 = $data['current_premium'] ?? '';
                         $q2 = $data['target_coverage'] ?? '';
@@ -150,8 +156,8 @@ try {
                         $q1 = $data['claim_reason'] ?? '';
                         $q2 = $data['hospital_name'] ?? '';
                     } else if ($inquiry_type === 'item4') {
-                        $q1 = $data['analysis_interest'] ?? '';
-                        $q2 = $data['analysis_company'] ?? '';
+                        $q1 = $data['concern_point'] ?? '';
+                        $q2 = $data['check_request'] ?? '';
                     }
 
                     if ($inquiry_type === 'item3') {

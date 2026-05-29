@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { 
-  ShieldCheck, 
-  Check, 
-  Smartphone, 
-  Sparkles, 
-  ArrowRight, 
+import {
+  ShieldCheck,
+  Check,
+  Smartphone,
+  Sparkles,
+  ArrowRight,
   Info,
   User,
   Car,
@@ -22,11 +22,11 @@ import { ProcessSection } from './components/ProcessSection';
 import { DiagnosticsReport } from './components/DiagnosticsReport';
 import { PartnerProductModal } from './components/PartnerProductModal';
 
-import { 
-  InquiryFormState, 
-  CHECK_ITEMS, 
-  PARTNERS_LIFE, 
-  PARTNERS_NONLIFE, 
+import {
+  InquiryFormState,
+  CHECK_ITEMS,
+  PARTNERS_LIFE,
+  PARTNERS_NONLIFE,
   PartnerCompany,
   REGION_DATA
 } from './types';
@@ -36,7 +36,7 @@ function getInsuranceInfo(birthdateStr: string) {
   const year = parseInt(birthdateStr.substring(0, 4), 10);
   const month = parseInt(birthdateStr.substring(4, 6), 10) - 1;
   const day = parseInt(birthdateStr.substring(6, 8), 10);
-  
+
   const birth = new Date(year, month, day);
   if (birth.getFullYear() !== year || birth.getMonth() !== month || birth.getDate() !== day) return null;
 
@@ -106,10 +106,10 @@ export default function App() {
     type: 'privacy'
   });
   const [selectedPartner, setSelectedPartner] = useState<PartnerCompany | null>(null);
-  
+
   // App routing/submission state
   const [isSubmitted, setIsSubmitted] = useState(false);
-  
+
   // Validation errors mapping
   const [validationErrors, setValidationErrors] = useState<{ [key: string]: string }>({});
 
@@ -141,7 +141,7 @@ export default function App() {
   const handleChipToggle = (itemId: string) => {
     // 라디오 버튼 방식: 무조건 선택한 항목 하나만 배열에 남김
     setFormData({ ...formData, selectedItems: [itemId] });
-    
+
     // 보험분석 서비스 신청 섹션 시작점(signup-form-anchor)으로 정확히 스크롤 스파이더
     const targetElement = document.getElementById('signup-form-anchor');
     if (targetElement) {
@@ -289,21 +289,21 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-neutral-bg text-neutral-dark flex flex-col items-center selection:bg-brand-blue-light selection:text-brand-blue-dark">
-      
+
       {/* Top sticky header */}
       <Header onContactClick={handleContactClick} />
 
       {/* Main Container max width 768px matching specifications */}
       <main className="w-full max-w-[768px] bg-white shadow-2xl overflow-hidden flex flex-col mt-0 border-x border-neutral-border animate-fade-in pb-16">
-        
+
         {isSubmitted ? (
           /* Success Screen -> Direct custom diagnostics generated based on form parameters */
-          <DiagnosticsReport 
-            formData={formData} 
+          <DiagnosticsReport
+            formData={formData}
             onReset={() => {
               setIsSubmitted(false);
               setFormData({ ...formData, isVerified: false, phone: '' });
-            }} 
+            }}
           />
         ) : (
           /* Main Interactive Landing Content */
@@ -312,7 +312,7 @@ export default function App() {
             <section className="relative h-[480px] bg-slate-950 text-white flex flex-col items-center justify-center text-center px-5 relative overflow-hidden">
               {/* background graphic overlays to match sparkles and lights */}
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/60 via-slate-900 to-black opacity-95"></div>
-              
+
               {/* Dynamic light spot */}
               <div className="absolute -left-16 -top-16 w-80 h-80 bg-brand-green-neon/20 rounded-full blur-3xl animate-pulse-slow"></div>
               <div className="absolute -right-16 -bottom-16 w-80 h-80 bg-brand-blue-light/10 rounded-full blur-3xl animate-pulse-slow"></div>
@@ -356,7 +356,7 @@ export default function App() {
               </div>
 
               {/* Claims Inquiry Button */}
-              <button 
+              <button
                 type="button"
                 className="relative z-10 mt-4 w-full max-w-[320px] h-12 bg-white/15 hover:bg-white/25 text-white rounded-xl font-bold text-sm backdrop-blur-md border border-white/20 shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
                 onClick={() => window.open('https://claimexpert.vercel.app/', '_blank')}
@@ -368,16 +368,16 @@ export default function App() {
 
             {/* EVENT BANNER AD */}
             <section className="w-full border-b border-neutral-border overflow-hidden bg-[#FFDCA8]">
-              <img 
-                src="/coffee_event_banner.jpg" 
-                alt="메가커피 증정 이벤트" 
+              <img
+                src="/coffee_event_banner.jpg"
+                alt="메가커피 증정 이벤트"
                 className="w-full h-auto object-cover block"
               />
             </section>
 
             {/* LIVE APPLICATION FORM SECTION */}
-            <section id="signup-form-anchor" className="py-12 px-6 bg-white space-y-6 scroll-mt-16">
-              <div className="text-center space-y-1.5 max-w-sm mx-auto">
+            <section id="signup-form-anchor" className="py-12 px-[15px] bg-white space-y-6 scroll-mt-16">
+              <div className="text-center space-y-1.5 max-w-sm mx-auto px-6">
                 <p className="text-[11px] font-display font-bold uppercase tracking-wider text-brand-blue">
                   Bohum Store Service Portal
                 </p>
@@ -389,14 +389,14 @@ export default function App() {
                 </p>
               </div>
 
-              <form onSubmit={handleFormSubmit} className="bg-neutral-bg rounded-2xl p-5 sm:p-6 border border-neutral-border space-y-5 w-full">
+              <form onSubmit={handleFormSubmit} className="bg-neutral-bg rounded-none p-[5px] border border-neutral-border space-y-5 w-full">
                 {/* Checklist radio selection block (Moved to top) */}
                 <div className="space-y-2.5 pb-4 border-b border-neutral-border/60">
                   <p className="text-sm font-bold text-neutral-dark flex items-center gap-1.5">
                     <span className="text-[18px]">📋</span>
                     <span>어떤 서비스가 필요하신가요? 선택해 주세요!</span>
                   </p>
-                  
+
                   <div className="grid grid-cols-2 gap-2 mt-2">
                     {CHECK_ITEMS.map((item) => {
                       const selected = formData.selectedItems.includes(item.id);
@@ -405,11 +405,10 @@ export default function App() {
                           key={item.id}
                           type="button"
                           onClick={() => handleChipToggle(item.id)}
-                          className={`h-11 px-2 rounded-lg text-[16px] font-medium border flex items-center justify-center gap-1.5 transition-all ${
-                            selected
+                          className={`h-11 px-2 rounded-lg text-[16px] font-medium border flex items-center justify-center gap-1.5 transition-all ${selected
                               ? 'bg-brand-blue-pale border-brand-blue text-brand-blue font-bold shadow-sm'
                               : 'bg-white border-neutral-border text-neutral-gray hover:bg-neutral-bg'
-                          }`}
+                            }`}
                         >
                           <span className="truncate">{item.label}</span>
                         </button>
@@ -421,9 +420,9 @@ export default function App() {
                 <div id="dynamic-fields-start">
                   {formData.selectedItems.length === 0 && (
                     <div className="w-full mt-4 animate-fade-in">
-                      <img 
-                        src="/guide_image.jpeg" 
-                        alt="상담 안내 이미지" 
+                      <img
+                        src="/guide_image.jpeg"
+                        alt="상담 안내 이미지"
                         className="w-full h-auto rounded-none border border-neutral-border shadow-sm"
                       />
                     </div>
@@ -432,421 +431,414 @@ export default function App() {
 
                 {formData.selectedItems.length > 0 && (
                   <>
-                {/* Common Fields */}
-                <div className="pt-2 pb-2">
-                  <p className="text-xs font-semibold text-neutral-medium border-b border-neutral-border pb-2 flex items-center gap-1.5 mb-4">
-                    <User size={14} className="text-brand-blue" />
-                    <span>상담 필수 정보 입력</span>
-                  </p>
-                </div>
-
-                {/* Input Name field */}
-                <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-700 block">이름</label>
-                  <input
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) => {
-                      setFormData({ ...formData, name: e.target.value });
-                      setValidationErrors({ ...validationErrors, name: '' });
-                    }}
-                    placeholder="이름을 입력하세요."
-                    className={`w-full h-12 bg-white rounded-xl border px-4 font-sans text-sm focus:ring-2 focus:outline-none transition-all ${
-                      validationErrors.name ? 'border-red-500 focus:ring-red-200' : 'border-neutral-border focus:ring-brand-blue-pale focus:border-brand-blue'
-                    }`}
-                  />
-                  {validationErrors.name && (
-                    <p className="text-[11px] text-red-500 font-medium">{validationErrors.name}</p>
-                  )}
-                </div>
-
-                {/* Phone verification combo */}
-                <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-700 block">연락처</label>
-                  <div className="flex gap-2">
-                    <input
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handlePhoneChange}
-                      disabled={formData.isVerified}
-                      placeholder="연락처를 입력하세요."
-                      className={`flex-[2] h-12 bg-white rounded-xl border px-4 font-sans text-sm focus:ring-2 focus:outline-none transition-all disabled:opacity-75 disabled:bg-neutral-border/20 ${
-                        validationErrors.phone ? 'border-red-500 focus:ring-red-200' : 'border-neutral-border focus:ring-brand-blue-pale focus:border-brand-blue'
-                      }`}
-                    />
-                    
-                    {formData.isVerified ? (
-                      <div className="flex-1 h-12 bg-brand-green/10 text-brand-green rounded-xl text-xs font-bold border border-brand-green/30 flex items-center justify-center gap-1 shrink-0">
-                        <Check size={13} />
-                        <span>인증 완료</span>
-                      </div>
-                    ) : (
-                      <button
-                        type="button"
-                        onClick={requestVerification}
-                        className="flex-1 h-12 bg-white hover:bg-brand-blue border border-brand-blue text-brand-blue hover:text-white rounded-xl text-xs font-bold transition-colors duration-300 shrink-0 active:scale-95"
-                      >
-                        인증요청
-                      </button>
-                    )}
-                  </div>
-                  {validationErrors.phone && (
-                    <p className="text-[11px] text-red-500 font-medium">{validationErrors.phone}</p>
-                  )}
-                </div>
-
-                {/* Birthdate Selector */}
-                <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-700 block">생년월일</label>
-                  <input
-                    type="text"
-                    inputMode="numeric"
-                    maxLength={8}
-                    value={formData.birthdate}
-                    onChange={(e) => {
-                      setFormData({ ...formData, birthdate: formatBirthdate(e.target.value) });
-                      setValidationErrors({ ...validationErrors, birthdate: '' });
-                    }}
-                    placeholder="생년월일 8자리 (예: 19850613)"
-                    className={`w-full h-12 bg-white rounded-xl border px-4 font-sans text-sm focus:ring-2 focus:outline-none transition-all ${
-                      validationErrors.birthdate ? 'border-red-500 focus:ring-red-200' : 'border-neutral-border focus:ring-brand-blue-pale focus:border-brand-blue'
-                    }`}
-                  />
-                  {validationErrors.birthdate && (
-                    <p className="text-[11px] text-red-500 font-medium">{validationErrors.birthdate}</p>
-                  )}
-                  {formData.birthdate.length === 8 && !validationErrors.birthdate && (() => {
-                    const info = getInsuranceInfo(formData.birthdate);
-                    if (!info) return null;
-                    const nameStr = formData.name.trim() || '고객';
-                    return (
-                      <p className="text-xs text-slate-400 font-medium mt-1">
-                        {nameStr}님의 보험 나이는 <span className="text-red-500 font-bold">{info.insuranceAge}세</span>이며 다음 상령일까지 <span className="text-red-500 font-bold">{info.diffDays}일</span> 남았습니다.
+                    {/* Common Fields */}
+                    <div className="pt-2 pb-2">
+                      <p className="text-xs font-semibold text-neutral-medium border-b border-neutral-border pb-2 flex items-center gap-1.5 mb-4">
+                        <User size={14} className="text-brand-blue" />
+                        <span>상담 필수 정보 입력</span>
                       </p>
-                    );
-                  })()}
-                </div>
+                    </div>
 
-                {/* Gender Selectors */}
-                <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-700 block">성별</label>
-                  <div className="flex gap-2">
-                    <button
-                      type="button"
-                      onClick={() => handleGenderToggle('male')}
-                      className={`flex-1 h-12 rounded-xl text-sm font-semibold border transition-all active:scale-95 flex items-center justify-center gap-1.5 ${
-                        formData.gender === 'male'
-                          ? 'bg-brand-blue-pale border-brand-blue text-brand-blue'
-                          : 'bg-white border-neutral-border text-neutral-gray hover:bg-neutral-bg'
-                      }`}
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={`transition-all ${formData.gender !== 'male' ? 'opacity-40 grayscale' : ''}`}>
-                        <circle cx="12" cy="12" r="12" fill="#3b82f6"/>
-                        <circle cx="9.5" cy="14.5" r="4" stroke="white" strokeWidth="2"/>
-                        <path d="M12.5 11.5L17 7M14 7H17V10" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      <span>남성</span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleGenderToggle('female')}
-                      className={`flex-1 h-12 rounded-xl text-sm font-semibold border transition-all active:scale-95 flex items-center justify-center gap-1.5 ${
-                        formData.gender === 'female'
-                          ? 'bg-red-50 border-red-500 text-red-600'
-                          : 'bg-white border-neutral-border text-neutral-gray hover:bg-neutral-bg'
-                      }`}
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={`transition-all ${formData.gender !== 'female' ? 'opacity-40 grayscale' : ''}`}>
-                        <circle cx="12" cy="12" r="12" fill="#ef4444"/>
-                        <circle cx="12" cy="9.5" r="4.5" stroke="white" strokeWidth="2"/>
-                        <path d="M12 14V19M9.5 16.5H14.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      <span>여성</span>
-                    </button>
-                  </div>
-                  {validationErrors.gender && (
-                    <p className="text-[11px] text-red-500 font-medium">{validationErrors.gender}</p>
-                  )}
-                </div>
-
-                {/* Address Selectors */}
-                <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-700 block">주소</label>
-                  <div className="flex gap-2">
-                    <div className="flex-1">
-                      <select
-                        value={formData.province || ''}
+                    {/* Input Name field */}
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-700 block">이름</label>
+                      <input
+                        type="text"
+                        value={formData.name}
                         onChange={(e) => {
-                          setFormData({ ...formData, province: e.target.value, district: '' });
-                          setValidationErrors({ ...validationErrors, province: '' });
+                          setFormData({ ...formData, name: e.target.value });
+                          setValidationErrors({ ...validationErrors, name: '' });
                         }}
-                        className={`w-full h-12 bg-white rounded-xl border px-4 font-sans text-sm focus:ring-2 focus:outline-none transition-all appearance-none ${
-                          validationErrors.province ? 'border-red-500 focus:ring-red-200' : 'border-neutral-border focus:ring-brand-blue-pale focus:border-brand-blue'
-                        }`}
-                        style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%236b7280\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'%3E%3C/path%3E%3C/svg%3E")', backgroundPosition: 'right 1rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.25rem' }}
-                      >
-                        <option value="" disabled>시/도 선택</option>
-                        {Object.keys(REGION_DATA).map(prov => (
-                          <option key={prov} value={prov}>{prov}</option>
-                        ))}
-                      </select>
-                      {validationErrors.province && (
-                        <p className="text-[11px] text-red-500 font-medium mt-1">{validationErrors.province}</p>
+                        placeholder="이름을 입력하세요."
+                        className={`w-full h-12 bg-white rounded-xl border px-4 font-sans text-sm focus:ring-2 focus:outline-none transition-all ${validationErrors.name ? 'border-red-500 focus:ring-red-200' : 'border-neutral-border focus:ring-brand-blue-pale focus:border-brand-blue'
+                          }`}
+                      />
+                      {validationErrors.name && (
+                        <p className="text-[11px] text-red-500 font-medium">{validationErrors.name}</p>
                       )}
                     </div>
-                    <div className="flex-1">
-                      <select
-                        value={formData.district || ''}
-                        onChange={(e) => {
-                          setFormData({ ...formData, district: e.target.value });
-                          setValidationErrors({ ...validationErrors, district: '' });
-                        }}
-                        disabled={!formData.province}
-                        className={`w-full h-12 bg-white rounded-xl border px-4 font-sans text-sm focus:ring-2 focus:outline-none transition-all appearance-none disabled:opacity-75 disabled:bg-neutral-border/20 ${
-                          validationErrors.district ? 'border-red-500 focus:ring-red-200' : 'border-neutral-border focus:ring-brand-blue-pale focus:border-brand-blue'
-                        }`}
-                        style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%236b7280\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'%3E%3C/path%3E%3C/svg%3E")', backgroundPosition: 'right 1rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.25rem' }}
-                      >
-                        <option value="" disabled>시/군/구 선택</option>
-                        {formData.province && REGION_DATA[formData.province]?.map(dist => (
-                          <option key={dist} value={dist}>{dist}</option>
-                        ))}
-                      </select>
-                      {validationErrors.district && (
-                        <p className="text-[11px] text-red-500 font-medium mt-1">{validationErrors.district}</p>
+
+                    {/* Phone verification combo */}
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-700 block">연락처</label>
+                      <div className="flex gap-2">
+                        <input
+                          type="tel"
+                          value={formData.phone}
+                          onChange={handlePhoneChange}
+                          disabled={formData.isVerified}
+                          placeholder="연락처를 입력하세요."
+                          className={`flex-[2] h-12 bg-white rounded-xl border px-4 font-sans text-sm focus:ring-2 focus:outline-none transition-all disabled:opacity-75 disabled:bg-neutral-border/20 ${validationErrors.phone ? 'border-red-500 focus:ring-red-200' : 'border-neutral-border focus:ring-brand-blue-pale focus:border-brand-blue'
+                            }`}
+                        />
+
+                        {formData.isVerified ? (
+                          <div className="flex-1 h-12 bg-brand-green/10 text-brand-green rounded-xl text-xs font-bold border border-brand-green/30 flex items-center justify-center gap-1 shrink-0">
+                            <Check size={13} />
+                            <span>인증 완료</span>
+                          </div>
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={requestVerification}
+                            className="flex-1 h-12 bg-white hover:bg-brand-blue border border-brand-blue text-brand-blue hover:text-white rounded-xl text-xs font-bold transition-colors duration-300 shrink-0 active:scale-95"
+                          >
+                            인증요청
+                          </button>
+                        )}
+                      </div>
+                      {validationErrors.phone && (
+                        <p className="text-[11px] text-red-500 font-medium">{validationErrors.phone}</p>
                       )}
                     </div>
-                  </div>
-                </div>
 
-                {/* Consult Time Selectors */}
-                <div className="space-y-1.5 mt-4">
-                  <label className="text-xs font-semibold text-slate-700 block">상담 가능 시간</label>
-                  <div className="flex gap-2">
-                    <div className={!formData.consultTimeType || formData.consultTimeType === '종일' ? "w-full" : "flex-1"}>
-                      <select
-                        value={formData.consultTimeType || ''}
+                    {/* Birthdate Selector */}
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-700 block">생년월일</label>
+                      <input
+                        type="text"
+                        inputMode="numeric"
+                        maxLength={8}
+                        value={formData.birthdate}
                         onChange={(e) => {
-                          setFormData({ ...formData, consultTimeType: e.target.value, consultTime: '' });
+                          setFormData({ ...formData, birthdate: formatBirthdate(e.target.value) });
+                          setValidationErrors({ ...validationErrors, birthdate: '' });
                         }}
-                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all appearance-none"
-                        style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%236b7280\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'%3E%3C/path%3E%3C/svg%3E")', backgroundPosition: 'right 1rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.25rem' }}
-                      >
-                        <option value="" disabled>상담시간구분(오전/오후)</option>
-                        <option value="종일">종일</option>
-                        <option value="오전">오전</option>
-                        <option value="오후">오후</option>
-                      </select>
+                        placeholder="생년월일 8자리 (예: 19850613)"
+                        className={`w-full h-12 bg-white rounded-xl border px-4 font-sans text-sm focus:ring-2 focus:outline-none transition-all ${validationErrors.birthdate ? 'border-red-500 focus:ring-red-200' : 'border-neutral-border focus:ring-brand-blue-pale focus:border-brand-blue'
+                          }`}
+                      />
+                      {validationErrors.birthdate && (
+                        <p className="text-[11px] text-red-500 font-medium">{validationErrors.birthdate}</p>
+                      )}
+                      {formData.birthdate.length === 8 && !validationErrors.birthdate && (() => {
+                        const info = getInsuranceInfo(formData.birthdate);
+                        if (!info) return null;
+                        const nameStr = formData.name.trim() || '고객';
+                        return (
+                          <p className="text-xs text-slate-400 font-medium mt-1">
+                            {nameStr}님의 보험 나이는 <span className="text-red-500 font-bold">{info.insuranceAge}세</span>이며 다음 상령일까지 <span className="text-red-500 font-bold">{info.diffDays}일</span> 남았습니다.
+                          </p>
+                        );
+                      })()}
                     </div>
-                    {formData.consultTimeType && formData.consultTimeType !== '종일' && (
-                      <div className="flex-1 animate-fade-in">
-                        <select
-                          value={formData.consultTime || ''}
-                          onChange={(e) => {
-                            setFormData({ ...formData, consultTime: e.target.value });
-                          }}
-                          className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all appearance-none"
-                          style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%236b7280\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'%3E%3C/path%3E%3C/svg%3E")', backgroundPosition: 'right 1rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.25rem' }}
+
+                    {/* Gender Selectors */}
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-700 block">성별</label>
+                      <div className="flex gap-2">
+                        <button
+                          type="button"
+                          onClick={() => handleGenderToggle('male')}
+                          className={`flex-1 h-12 rounded-xl text-sm font-semibold border transition-all active:scale-95 flex items-center justify-center gap-1.5 ${formData.gender === 'male'
+                              ? 'bg-brand-blue-pale border-brand-blue text-brand-blue'
+                              : 'bg-white border-neutral-border text-neutral-gray hover:bg-neutral-bg'
+                            }`}
                         >
-                          <option value="" disabled>시간 선택</option>
-                          {[...Array(12)].map((_, i) => {
-                            const hour = (i + 1).toString().padStart(2, '0');
-                            return <option key={hour} value={`${hour}시`}>{hour}시</option>;
-                          })}
-                        </select>
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={`transition-all ${formData.gender !== 'male' ? 'opacity-40 grayscale' : ''}`}>
+                            <circle cx="12" cy="12" r="12" fill="#3b82f6" />
+                            <circle cx="9.5" cy="14.5" r="4" stroke="white" strokeWidth="2" />
+                            <path d="M12.5 11.5L17 7M14 7H17V10" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                          <span>남성</span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleGenderToggle('female')}
+                          className={`flex-1 h-12 rounded-xl text-sm font-semibold border transition-all active:scale-95 flex items-center justify-center gap-1.5 ${formData.gender === 'female'
+                              ? 'bg-red-50 border-red-500 text-red-600'
+                              : 'bg-white border-neutral-border text-neutral-gray hover:bg-neutral-bg'
+                            }`}
+                        >
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={`transition-all ${formData.gender !== 'female' ? 'opacity-40 grayscale' : ''}`}>
+                            <circle cx="12" cy="12" r="12" fill="#ef4444" />
+                            <circle cx="12" cy="9.5" r="4.5" stroke="white" strokeWidth="2" />
+                            <path d="M12 14V19M9.5 16.5H14.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                          <span>여성</span>
+                        </button>
+                      </div>
+                      {validationErrors.gender && (
+                        <p className="text-[11px] text-red-500 font-medium">{validationErrors.gender}</p>
+                      )}
+                    </div>
+
+                    {/* Address Selectors */}
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-semibold text-slate-700 block">주소</label>
+                      <div className="flex gap-2">
+                        <div className="flex-1">
+                          <select
+                            value={formData.province || ''}
+                            onChange={(e) => {
+                              setFormData({ ...formData, province: e.target.value, district: '' });
+                              setValidationErrors({ ...validationErrors, province: '' });
+                            }}
+                            className={`w-full h-12 bg-white rounded-xl border px-4 font-sans text-sm focus:ring-2 focus:outline-none transition-all appearance-none ${validationErrors.province ? 'border-red-500 focus:ring-red-200' : 'border-neutral-border focus:ring-brand-blue-pale focus:border-brand-blue'
+                              }`}
+                            style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%236b7280\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'%3E%3C/path%3E%3C/svg%3E")', backgroundPosition: 'right 1rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.25rem' }}
+                          >
+                            <option value="" disabled>시/도 선택</option>
+                            {Object.keys(REGION_DATA).map(prov => (
+                              <option key={prov} value={prov}>{prov}</option>
+                            ))}
+                          </select>
+                          {validationErrors.province && (
+                            <p className="text-[11px] text-red-500 font-medium mt-1">{validationErrors.province}</p>
+                          )}
+                        </div>
+                        <div className="flex-1">
+                          <select
+                            value={formData.district || ''}
+                            onChange={(e) => {
+                              setFormData({ ...formData, district: e.target.value });
+                              setValidationErrors({ ...validationErrors, district: '' });
+                            }}
+                            disabled={!formData.province}
+                            className={`w-full h-12 bg-white rounded-xl border px-4 font-sans text-sm focus:ring-2 focus:outline-none transition-all appearance-none disabled:opacity-75 disabled:bg-neutral-border/20 ${validationErrors.district ? 'border-red-500 focus:ring-red-200' : 'border-neutral-border focus:ring-brand-blue-pale focus:border-brand-blue'
+                              }`}
+                            style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%236b7280\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'%3E%3C/path%3E%3C/svg%3E")', backgroundPosition: 'right 1rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.25rem' }}
+                          >
+                            <option value="" disabled>시/군/구 선택</option>
+                            {formData.province && REGION_DATA[formData.province]?.map(dist => (
+                              <option key={dist} value={dist}>{dist}</option>
+                            ))}
+                          </select>
+                          {validationErrors.district && (
+                            <p className="text-[11px] text-red-500 font-medium mt-1">{validationErrors.district}</p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Consult Time Selectors */}
+                    <div className="space-y-1.5 mt-4">
+                      <label className="text-xs font-semibold text-slate-700 block">상담 가능 시간</label>
+                      <div className="flex gap-2">
+                        <div className={!formData.consultTimeType || formData.consultTimeType === '종일' ? "w-full" : "flex-1"}>
+                          <select
+                            value={formData.consultTimeType || ''}
+                            onChange={(e) => {
+                              setFormData({ ...formData, consultTimeType: e.target.value, consultTime: '' });
+                            }}
+                            className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all appearance-none"
+                            style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%236b7280\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'%3E%3C/path%3E%3C/svg%3E")', backgroundPosition: 'right 1rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.25rem' }}
+                          >
+                            <option value="" disabled>상담시간구분(오전/오후)</option>
+                            <option value="종일">종일</option>
+                            <option value="오전">오전</option>
+                            <option value="오후">오후</option>
+                          </select>
+                        </div>
+                        {formData.consultTimeType && formData.consultTimeType !== '종일' && (
+                          <div className="flex-1 animate-fade-in">
+                            <select
+                              value={formData.consultTime || ''}
+                              onChange={(e) => {
+                                setFormData({ ...formData, consultTime: e.target.value });
+                              }}
+                              className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all appearance-none"
+                              style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%236b7280\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'%3E%3C/path%3E%3C/svg%3E")', backgroundPosition: 'right 1rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.25rem' }}
+                            >
+                              <option value="" disabled>시간 선택</option>
+                              {[...Array(12)].map((_, i) => {
+                                const hour = (i + 1).toString().padStart(2, '0');
+                                return <option key={hour} value={`${hour}시`}>{hour}시</option>;
+                              })}
+                            </select>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Conditional Specific Fields (Moved from Top) */}
+                    {formData.selectedItems[0] === 'item1' && (
+                      <div className="space-y-4 pt-2 border-t border-neutral-border/60">
+                        <p className="text-xs font-semibold text-neutral-medium flex items-center gap-1.5">
+                          <Sparkles size={14} className="text-brand-blue" />
+                          <span>보험분석 상담 상세 정보</span>
+                        </p>
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-semibold text-slate-700 block">관심 있는 보험 종류 (선택)</label>
+                          <input
+                            type="text"
+                            value={formData.analysisInterest || ''}
+                            onChange={(e) => setFormData({ ...formData, analysisInterest: e.target.value })}
+                            placeholder="예: 암보험, 종신보험, 종합보험 등"
+                            className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                          />
+                        </div>
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-semibold text-slate-700 block">현재 가입된 보험사 (선택)</label>
+                          <input
+                            type="text"
+                            value={formData.analysisCompany || ''}
+                            onChange={(e) => setFormData({ ...formData, analysisCompany: e.target.value })}
+                            placeholder="예: 삼성생명, 현대해상 등"
+                            className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                          />
+                        </div>
                       </div>
                     )}
-                  </div>
-                </div>
 
-                {/* Conditional Specific Fields (Moved from Top) */}
-                {formData.selectedItems[0] === 'item1' && (
-                  <div className="space-y-4 pt-2 border-t border-neutral-border/60">
-                    <p className="text-xs font-semibold text-neutral-medium flex items-center gap-1.5">
-                      <Sparkles size={14} className="text-brand-blue" />
-                      <span>보험분석 상담 상세 정보</span>
-                    </p>
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 block">관심 있는 보험 종류 (선택)</label>
-                      <input
-                        type="text"
-                        value={formData.analysisInterest || ''}
-                        onChange={(e) => setFormData({ ...formData, analysisInterest: e.target.value })}
-                        placeholder="예: 암보험, 종신보험, 종합보험 등"
-                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
-                      />
-                    </div>
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 block">현재 가입된 보험사 (선택)</label>
-                      <input
-                        type="text"
-                        value={formData.analysisCompany || ''}
-                        onChange={(e) => setFormData({ ...formData, analysisCompany: e.target.value })}
-                        placeholder="예: 삼성생명, 현대해상 등"
-                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
-                      />
-                    </div>
-                  </div>
-                )}
+                    {/* Conditional Specific Fields (Moved from Top) */}
+                    {formData.selectedItems[0] === 'item3' && (
+                      <div className="space-y-4 pt-2 border-t border-neutral-border/60">
+                        <p className="text-xs font-semibold text-neutral-medium flex items-center gap-1.5">
+                          <FileText size={14} className="text-brand-blue" />
+                          <span>보험금 청구 상세 정보</span>
+                        </p>
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-semibold text-slate-700 block">청구 사유 (선택)</label>
+                          <input
+                            type="text"
+                            value={formData.claimReason || ''}
+                            onChange={(e) => setFormData({ ...formData, claimReason: e.target.value })}
+                            placeholder="예: 실손의료비, 수술비 등"
+                            className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                          />
+                        </div>
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-semibold text-slate-700 block">진단명 또는 병원명 (선택)</label>
+                          <input
+                            type="text"
+                            value={formData.hospitalName || ''}
+                            onChange={(e) => setFormData({ ...formData, hospitalName: e.target.value })}
+                            placeholder="예: 위염, OO병원"
+                            className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                          />
+                        </div>
+                      </div>
+                    )}
 
-                {/* Conditional Specific Fields (Moved from Top) */}
-                {formData.selectedItems[0] === 'item3' && (
-                  <div className="space-y-4 pt-2 border-t border-neutral-border/60">
-                    <p className="text-xs font-semibold text-neutral-medium flex items-center gap-1.5">
-                      <FileText size={14} className="text-brand-blue" />
-                      <span>보험금 청구 상세 정보</span>
-                    </p>
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 block">청구 사유 (선택)</label>
-                      <input
-                        type="text"
-                        value={formData.claimReason || ''}
-                        onChange={(e) => setFormData({ ...formData, claimReason: e.target.value })}
-                        placeholder="예: 실손의료비, 수술비 등"
-                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
-                      />
-                    </div>
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 block">진단명 또는 병원명 (선택)</label>
-                      <input
-                        type="text"
-                        value={formData.hospitalName || ''}
-                        onChange={(e) => setFormData({ ...formData, hospitalName: e.target.value })}
-                        placeholder="예: 위염, OO병원"
-                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
-                      />
-                    </div>
-                  </div>
-                )}
+                    {formData.selectedItems[0] === 'item2' && (
+                      <div className="space-y-4 pt-2 border-t border-neutral-border/60">
+                        <p className="text-xs font-semibold text-neutral-medium flex items-center gap-1.5">
+                          <Zap size={14} className="text-brand-blue" />
+                          <span>보험 리모델링 상세 정보</span>
+                        </p>
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-semibold text-slate-700 block">현재 월 납입액 (선택)</label>
+                          <input
+                            type="text"
+                            value={formData.currentPremium || ''}
+                            onChange={(e) => setFormData({ ...formData, currentPremium: e.target.value })}
+                            placeholder="예: 약 15만원"
+                            className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                          />
+                        </div>
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-semibold text-slate-700 block">중점 희망 보장 (선택)</label>
+                          <input
+                            type="text"
+                            value={formData.targetCoverage || ''}
+                            onChange={(e) => setFormData({ ...formData, targetCoverage: e.target.value })}
+                            placeholder="예: 암, 뇌졸중 등"
+                            className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                          />
+                        </div>
+                      </div>
+                    )}
 
-                {formData.selectedItems[0] === 'item2' && (
-                  <div className="space-y-4 pt-2 border-t border-neutral-border/60">
-                    <p className="text-xs font-semibold text-neutral-medium flex items-center gap-1.5">
-                      <Zap size={14} className="text-brand-blue" />
-                      <span>보험 리모델링 상세 정보</span>
-                    </p>
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 block">현재 월 납입액 (선택)</label>
-                      <input
-                        type="text"
-                        value={formData.currentPremium || ''}
-                        onChange={(e) => setFormData({ ...formData, currentPremium: e.target.value })}
-                        placeholder="예: 약 15만원"
-                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
-                      />
-                    </div>
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 block">중점 희망 보장 (선택)</label>
-                      <input
-                        type="text"
-                        value={formData.targetCoverage || ''}
-                        onChange={(e) => setFormData({ ...formData, targetCoverage: e.target.value })}
-                        placeholder="예: 암, 뇌졸중 등"
-                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
-                      />
-                    </div>
-                  </div>
-                )}
+                    {formData.selectedItems[0] === 'item4' && (
+                      <div className="space-y-4 pt-2 border-t border-neutral-border/60">
+                        <p className="text-xs font-semibold text-neutral-medium flex items-center gap-1.5">
+                          <ShieldCheck size={14} className="text-brand-blue" />
+                          <span>내보험 점검 상세 정보</span>
+                        </p>
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-semibold text-slate-700 block">가장 걱정되는 가족력 (선택)</label>
+                          <input
+                            type="text"
+                            value={formData.concernPoint || ''}
+                            onChange={(e) => setFormData({ ...formData, concernPoint: e.target.value })}
+                            placeholder="예: 고혈압 가족력이 걱정돼요."
+                            className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                          />
+                        </div>
+                        <div className="space-y-1.5 mt-3">
+                          <label className="text-xs font-semibold text-slate-700 block">점검하고 싶은 사항 (선택)</label>
+                          <input
+                            type="text"
+                            value={formData.checkRequest || ''}
+                            onChange={(e) => setFormData({ ...formData, checkRequest: e.target.value })}
+                            placeholder="예: 실비보험 중복 여부 확인등"
+                            className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
+                          />
+                        </div>
+                      </div>
+                    )}
 
-                {formData.selectedItems[0] === 'item4' && (
-                  <div className="space-y-4 pt-2 border-t border-neutral-border/60">
-                    <p className="text-xs font-semibold text-neutral-medium flex items-center gap-1.5">
-                      <ShieldCheck size={14} className="text-brand-blue" />
-                      <span>내보험 점검 상세 정보</span>
-                    </p>
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-slate-700 block">가장 걱정되는 가족력 (선택)</label>
-                      <input
-                        type="text"
-                        value={formData.concernPoint || ''}
-                        onChange={(e) => setFormData({ ...formData, concernPoint: e.target.value })}
-                        placeholder="예: 고혈압 가족력이 걱정돼요."
-                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
-                      />
-                    </div>
-                    <div className="space-y-1.5 mt-3">
-                      <label className="text-xs font-semibold text-slate-700 block">점검하고 싶은 사항 (선택)</label>
-                      <input
-                        type="text"
-                        value={formData.checkRequest || ''}
-                        onChange={(e) => setFormData({ ...formData, checkRequest: e.target.value })}
-                        placeholder="예: 실비보험 중복 여부 확인등"
-                        className="w-full h-12 bg-white rounded-xl border border-neutral-border px-4 font-sans text-sm focus:ring-2 focus:ring-brand-blue-pale focus:border-brand-blue focus:outline-none transition-all"
-                      />
-                    </div>
-                  </div>
-                )}
+                    {/* Agreement contracts */}
+                    <div className="pt-3 border-t border-neutral-border/60 space-y-2 select-none">
+                      <label className="flex items-center gap-2 cursor-pointer pb-1.5 border-b border-neutral-border/40">
+                        <input
+                          type="checkbox"
+                          checked={formData.termAll}
+                          onChange={(e) => handleTermAllChange(e.target.checked)}
+                          className="w-4 h-4 rounded border-neutral-border text-brand-blue focus:ring-brand-blue"
+                        />
+                        <strong className="text-xs text-neutral-dark font-extrabold">전체 동의</strong>
+                      </label>
 
-                {/* Agreement contracts */}
-                <div className="pt-3 border-t border-neutral-border/60 space-y-2 select-none">
-                  <label className="flex items-center gap-2 cursor-pointer pb-1.5 border-b border-neutral-border/40">
-                    <input
-                      type="checkbox"
-                      checked={formData.termAll}
-                      onChange={(e) => handleTermAllChange(e.target.checked)}
-                      className="w-4 h-4 rounded border-neutral-border text-brand-blue focus:ring-brand-blue"
-                    />
-                    <strong className="text-xs text-neutral-dark font-extrabold">전체 동의</strong>
-                  </label>
+                      <div className="flex justify-between items-center pl-1.5">
+                        <label className="flex items-center gap-2 cursor-pointer">
+                          <input
+                            type="checkbox"
+                            checked={formData.termPrivacy}
+                            onChange={(e) => handleTermIndividualChange('termPrivacy', e.target.checked)}
+                            className="w-3.5 h-3.5 rounded border-neutral-border text-brand-blue focus:ring-brand-blue"
+                          />
+                          <span className="text-[11px] text-neutral-gray flex items-center gap-1 font-semibold">
+                            개인정보 수집∙활용 동의
+                            <span className="text-red-500 font-bold text-[10px]">(필수)</span>
+                          </span>
+                        </label>
+                        <button
+                          type="button"
+                          onClick={() => setActiveTermModal({ isOpen: true, title: '개인정보 수집 및 활용 약관', type: 'privacy' })}
+                          className="text-[10px] text-neutral-muted hover:text-brand-blue underline"
+                        >
+                          약관보기
+                        </button>
+                      </div>
 
-                  <div className="flex justify-between items-center pl-1.5">
-                    <label className="flex items-center gap-2 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={formData.termPrivacy}
-                        onChange={(e) => handleTermIndividualChange('termPrivacy', e.target.checked)}
-                        className="w-3.5 h-3.5 rounded border-neutral-border text-brand-blue focus:ring-brand-blue"
-                      />
-                      <span className="text-[11px] text-neutral-gray flex items-center gap-1 font-semibold">
-                        개인정보 수집∙활용 동의
-                        <span className="text-red-500 font-bold text-[10px]">(필수)</span>
-                      </span>
-                    </label>
+                      <div className="flex justify-between items-center pl-1.5">
+                        <label className="flex items-center gap-2 cursor-pointer">
+                          <input
+                            type="checkbox"
+                            checked={formData.termMarketing}
+                            onChange={(e) => handleTermIndividualChange('termMarketing', e.target.checked)}
+                            className="w-3.5 h-3.5 rounded border-neutral-border text-brand-blue focus:ring-brand-blue"
+                          />
+                          <span className="text-[11px] text-neutral-gray flex items-center gap-1 font-semibold">
+                            마케팅 정보 수신 동의
+                            <span className="text-neutral-muted text-[10px] select-none">(선택)</span>
+                          </span>
+                        </label>
+                        <button
+                          type="button"
+                          onClick={() => setActiveTermModal({ isOpen: true, title: '마케팅 활용 및 광고수행 안내', type: 'marketing' })}
+                          className="text-[10px] text-neutral-muted hover:text-brand-blue underline"
+                        >
+                          상세보기
+                        </button>
+                      </div>
+
+                      {validationErrors.terms && (
+                        <p className="text-[11px] text-red-500 font-medium pt-1">{validationErrors.terms}</p>
+                      )}
+                    </div>
+
+                    {/* Main Action submit button */}
                     <button
-                      type="button"
-                      onClick={() => setActiveTermModal({ isOpen: true, title: '개인정보 수집 및 활용 약관', type: 'privacy' })}
-                      className="text-[10px] text-neutral-muted hover:text-brand-blue underline"
+                      type="submit"
+                      className="w-full md:w-1/2 mx-auto h-14 bg-brand-blue text-white rounded-xl font-bold text-sm tracking-wide shadow-lg shadow-brand-blue/15 hover:bg-brand-blue-hover active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 mt-2 cursor-pointer"
                     >
-                      약관보기
+                      <ShieldCheck size={18} />
+                      <span>보험케어 상담하기</span>
+                      <ArrowRight size={15} />
                     </button>
-                  </div>
-
-                  <div className="flex justify-between items-center pl-1.5">
-                    <label className="flex items-center gap-2 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={formData.termMarketing}
-                        onChange={(e) => handleTermIndividualChange('termMarketing', e.target.checked)}
-                        className="w-3.5 h-3.5 rounded border-neutral-border text-brand-blue focus:ring-brand-blue"
-                      />
-                      <span className="text-[11px] text-neutral-gray flex items-center gap-1 font-semibold">
-                        마케팅 정보 수신 동의
-                        <span className="text-neutral-muted text-[10px] select-none">(선택)</span>
-                      </span>
-                    </label>
-                    <button
-                      type="button"
-                      onClick={() => setActiveTermModal({ isOpen: true, title: '마케팅 활용 및 광고수행 안내', type: 'marketing' })}
-                      className="text-[10px] text-neutral-muted hover:text-brand-blue underline"
-                    >
-                      상세보기
-                    </button>
-                  </div>
-                  
-                  {validationErrors.terms && (
-                    <p className="text-[11px] text-red-500 font-medium pt-1">{validationErrors.terms}</p>
-                  )}
-                </div>
-
-                {/* Main Action submit button */}
-                <button
-                  type="submit"
-                  className="w-full md:w-1/2 mx-auto h-14 bg-brand-blue text-white rounded-xl font-bold text-sm tracking-wide shadow-lg shadow-brand-blue/15 hover:bg-brand-blue-hover active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 mt-2 cursor-pointer"
-                >
-                  <ShieldCheck size={18} />
-                  <span>보험케어 상담하기</span>
-                  <ArrowRight size={15} />
-                </button>
                   </>
                 )}
               </form>
@@ -912,45 +904,43 @@ export default function App() {
 
             {/* FINAL CONVERSION PERSUADE WRAPPER */}
             <section className="py-14 px-5 bg-white text-center space-y-6">
-              
+
               {/* Tab Selector */}
               <div className="flex bg-neutral-bg p-1.5 rounded-2xl max-w-[340px] mx-auto border border-neutral-border mb-8">
                 <button
                   type="button"
                   onClick={() => setIsDashboardFlipped(false)}
-                  className={`flex-1 py-3 text-[11px] font-bold rounded-xl transition-all duration-300 ${
-                    !isDashboardFlipped
+                  className={`flex-1 py-3 text-[11px] font-bold rounded-xl transition-all duration-300 ${!isDashboardFlipped
                       ? 'bg-white text-neutral-dark shadow-sm border border-neutral-200'
                       : 'text-neutral-gray hover:text-neutral-dark'
-                  }`}
+                    }`}
                 >
                   보험분석 결과
                 </button>
                 <button
                   type="button"
                   onClick={() => setIsDashboardFlipped(true)}
-                  className={`flex-1 py-3 text-[11px] font-bold rounded-xl transition-all duration-300 ${
-                    isDashboardFlipped
+                  className={`flex-1 py-3 text-[11px] font-bold rounded-xl transition-all duration-300 ${isDashboardFlipped
                       ? 'bg-white text-neutral-dark shadow-sm border border-neutral-200'
                       : 'text-neutral-gray hover:text-neutral-dark'
-                  }`}
+                    }`}
                 >
                   보험금 청구 조회
                 </button>
               </div>
 
               {/* 3D Flip Container wrapper */}
-              <div 
+              <div
                 className="max-w-[340px] mx-auto relative cursor-pointer"
                 style={{ perspective: '1200px' }}
                 onClick={() => setIsDashboardFlipped(!isDashboardFlipped)}
               >
-                <div 
+                <div
                   className="w-full relative transition-transform duration-700 ease-in-out"
                   style={{ transformStyle: 'preserve-3d', transform: isDashboardFlipped ? 'rotateY(-180deg)' : 'rotateY(0deg)' }}
                 >
                   {/* FRONT FACE */}
-                  <div 
+                  <div
                     className="w-full flex flex-col items-center"
                     style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
                   >
@@ -968,16 +958,16 @@ export default function App() {
                       <div className="w-full bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 relative z-10 overflow-hidden transform group-hover:-translate-y-2 transition-transform duration-500">
                         {/* Speaker Notch */}
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
-                        
+
                         {/* Screen Content */}
                         <div className="bg-slate-50 w-full h-[600px] rounded-[1.8rem] overflow-hidden flex flex-col font-sans border border-neutral-100 relative">
-                          
+
                           {/* Header */}
                           <div className="bg-brand-blue pt-8 pb-5 px-4 text-left relative overflow-hidden">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/3 animate-pulse-slow"></div>
                             <span className="text-white/80 text-[10px] font-medium">보드미 AI 리포트</span>
-                            <h4 className="text-white font-extrabold text-sm mt-0.5">38세 박*검님의<br/>종합 보장 점수</h4>
-                            
+                            <h4 className="text-white font-extrabold text-sm mt-0.5">38세 박*검님의<br />종합 보장 점수</h4>
+
                             {/* Animated Score */}
                             <div className="absolute right-4 bottom-4 flex items-baseline gap-0.5">
                               <span className="text-3xl font-black text-white group-hover:scale-110 transition-transform origin-bottom duration-300">85</span>
@@ -987,7 +977,7 @@ export default function App() {
 
                           {/* Chart Body */}
                           <div className="flex-1 p-4 space-y-4">
-                            
+
                             {/* Bar 1: Score Progress */}
                             <div className="bg-white p-3 rounded-xl shadow-sm border border-neutral-100 group-hover:border-brand-blue/30 transition-colors">
                               <div className="flex justify-between items-center mb-2">
@@ -1004,7 +994,7 @@ export default function App() {
                             {/* Bar 2: Premium Comparison */}
                             <div className="bg-white p-3 rounded-xl shadow-sm border border-neutral-100">
                               <h5 className="text-[10px] font-bold text-neutral-dark mb-2">보험료 다이어트 결과</h5>
-                              
+
                               <div className="space-y-2">
                                 <div>
                                   <div className="flex justify-between items-end mb-1">
@@ -1077,7 +1067,7 @@ export default function App() {
                   </div>
 
                   {/* BACK FACE */}
-                  <div 
+                  <div
                     className="absolute top-0 left-0 w-full flex flex-col items-center"
                     style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
                   >
@@ -1095,11 +1085,11 @@ export default function App() {
                       <div className="w-full bg-white rounded-[2.5rem] p-2 sm:p-2.5 shadow-2xl border-4 sm:border-8 border-neutral-100 relative z-10 overflow-hidden transform group-hover:-translate-y-2 transition-transform duration-500">
                         {/* Speaker Notch */}
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-neutral-100 rounded-b-xl z-20"></div>
-                        
+
                         {/* Screen Content - BACK FACE UI */}
                         <div className="bg-[#f8f9fa] w-full h-[600px] rounded-[1.8rem] flex flex-col font-sans border border-neutral-100 relative overflow-hidden text-left">
                           <div className="p-3 space-y-3 pb-8">
-                            
+
                             {/* TOP WIDGETS */}
                             <div className="flex gap-2">
                               {/* Left Widget */}
@@ -1127,7 +1117,7 @@ export default function App() {
                                   <Zap size={64} fill="currentColor" className="text-white" />
                                 </div>
                                 <p className="text-[10px] font-bold text-white leading-tight relative z-10">전문가 실시간 상담</p>
-                                <p className="text-[8px] text-white/80 mt-1 leading-tight relative z-10">전문가와 실시간 상담을 받아<br/>보세요!</p>
+                                <p className="text-[8px] text-white/80 mt-1 leading-tight relative z-10">전문가와 실시간 상담을 받아<br />보세요!</p>
                               </div>
                             </div>
 
@@ -1157,7 +1147,7 @@ export default function App() {
                                 <div className="absolute top-2.5 left-4 right-4 h-0.5 bg-neutral-200 -z-10"></div>
                                 {/* Blue completed line */}
                                 <div className="absolute top-2.5 left-4 w-[60%] h-0.5 bg-[#0055d3] -z-10"></div>
-                                
+
                                 <div className="flex justify-between">
                                   {['접수', '진행', '심사', '조사', '승인', '입금'].map((step, idx) => {
                                     const isCompleted = idx < 4;
@@ -1309,7 +1299,7 @@ export default function App() {
                   <span className="font-display text-xl font-black text-neutral-dark tracking-tight">InsureAnalysis.</span>
                   <div className="flex gap-4.5 text-xs">
                     <span className="font-bold text-neutral-medium">(주)핀토스</span>
-                    <button 
+                    <button
                       onClick={() => setActiveTermModal({ isOpen: true, title: '개인정보 처리 위탁 방침 가이드', type: 'privacy' })}
                       className="font-bold text-brand-blue underline"
                     >
@@ -1338,17 +1328,17 @@ export default function App() {
       </main>
 
       {/* RENDER MODAL LAYERS FOR AUTH/TERMS/carrier RECOMMENCES */}
-      
+
       {/* 1. SMS Verification OTP Modal */}
-      <SMSVerificationModal 
-        isOpen={isSMSOtpOpen} 
-        onClose={() => setIsSMSOtpOpen(false)} 
+      <SMSVerificationModal
+        isOpen={isSMSOtpOpen}
+        onClose={() => setIsSMSOtpOpen(false)}
         phoneNumber={formData.phone}
         onVerifySuccess={handleVerifySuccess}
       />
 
       {/* 2. Standard interactive Terms Modal */}
-      <AgreementModal 
+      <AgreementModal
         isOpen={activeTermModal.isOpen}
         title={activeTermModal.title}
         type={activeTermModal.type}
@@ -1356,7 +1346,7 @@ export default function App() {
       />
 
       {/* 3. Partner Insurer detail recommend card */}
-      <PartnerProductModal 
+      <PartnerProductModal
         partner={selectedPartner}
         onClose={() => setSelectedPartner(null)}
       />
