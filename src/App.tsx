@@ -844,6 +844,13 @@ export default function App() {
               </form>
             </section>
 
+            {/* PROMO BANNER SECTION */}
+            <section className="w-full flex justify-center py-8 px-5">
+              <div className="w-full max-w-[726px]">
+                <img src="/promo_banner.png" alt="이달의 혜택 상담 이벤트" className="w-full h-auto rounded-2xl shadow-md" />
+              </div>
+            </section>
+
             {/* INFORMATION SECTION: WHY */}
             <section className="py-14 px-5 bg-neutral-bg text-center space-y-6">
               <div className="space-y-1.5 max-w-sm mx-auto">
