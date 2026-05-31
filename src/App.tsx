@@ -114,12 +114,9 @@ export default function App() {
   // Validation errors mapping
   const [validationErrors, setValidationErrors] = useState<{ [key: string]: string }>({});
 
-  // Format phone number live helper (01012345678 -> 010-1234-5678)
+  // Format phone number live helper (limit 11 numbers)
   const formatPhone = (val: string) => {
-    const raw = val.replace(/[^0-9]/g, '');
-    if (raw.length <= 3) return raw;
-    if (raw.length <= 7) return `${raw.slice(0, 3)}-${raw.slice(3)}`;
-    return `${raw.slice(0, 3)}-${raw.slice(3, 7)}-${raw.slice(7, 11)}`;
+    return val.replace(/[^0-9]/g, '').slice(0, 11);
   };
 
   // Format birthdate helper (limit 8 numbers)
