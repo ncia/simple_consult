@@ -847,7 +847,7 @@ export default function App() {
             {/* PROMO BANNER SECTION */}
             <section className="w-full flex justify-center py-8 px-5">
               <div className="w-full max-w-[726px]">
-                <img src="/promo_banner.png" alt="이달의 혜택 상담 이벤트" className="w-full h-auto rounded-2xl shadow-md" />
+                <img src="/promo_banner.jpg" alt="이달의 혜택 상담 이벤트" className="w-full h-auto rounded-2xl shadow-md" />
               </div>
             </section>
 
