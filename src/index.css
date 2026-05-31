@@ -43,8 +43,8 @@
 }
 
 @keyframes twinkle {
-  0%, 100% { transform: scale(0.9); opacity: 0.6; filter: drop-shadow(0 0 2px rgba(255,255,255,0.4)); }
-  50% { transform: scale(1.2); opacity: 1; filter: drop-shadow(0 0 10px rgba(255,255,255,0.9)); }
+  0%, 100% { opacity: 0.6; filter: drop-shadow(0 0 2px rgba(255,255,255,0.4)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 10px rgba(255,255,255,0.9)); }
 }
 
 .animate-twinkle {

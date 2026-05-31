@@ -53,10 +53,21 @@ const ALL_HERO_ICONS = [ShieldCheck, Heart, Star, Moon, Sparkles, Sun, Smile, Be
 
 const RandomHeroIcon = ({ getAvailableIcon, initialIcon }: { getAvailableIcon: (current: any) => any, initialIcon: any }) => {
   const currentIconRef = useRef(initialIcon);
+  
+  // 초기 렌더링 시에도 중앙 영역(텍스트/버튼)을 피해 좌/우측 가장자리에만 배치되도록 합니다.
+  const getSafePosition = () => {
+    const isLeft = Math.random() > 0.5;
+    const top = 10 + Math.random() * 70; // 10% ~ 80%
+    const left = isLeft ? 5 + Math.random() * 15 : 80 + Math.random() * 15; // 좌측 5~20% 또는 우측 80~95%
+    return { top, left };
+  };
+
+  const initialPos = getSafePosition();
+
   const [iconState, setIconState] = useState({
     Icon: initialIcon,
-    top: 10 + Math.random() * 70,
-    left: 5 + Math.random() * 85,
+    top: initialPos.top,
+    left: initialPos.left,
     isVisible: true,
     key: 0
   });
@@ -74,8 +85,7 @@ const RandomHeroIcon = ({ getAvailableIcon, initialIcon }: { getAvailableIcon: (
         const nextIcon = getAvailableIcon(currentIconRef.current);
         currentIconRef.current = nextIcon;
         
-        const top = 10 + Math.random() * 70;
-        const left = 5 + Math.random() * 85;
+        const { top, left } = getSafePosition();
         
         setIconState(prev => ({ Icon: nextIcon, top, left, isVisible: true, key: prev.key + 1 }));
 
@@ -285,7 +295,7 @@ export default function App() {
     const errors: { [key: string]: string } = {};
 
     if (!formData.name.trim()) {
-      errors.name = '이름을 기입해 주세요.';
+      errors.name = '이름을 입력해 주세요.';
     }
     if (formData.birthdate.length !== 8) {
       errors.birthdate = '생년월일 8자리(예: 19850613)를 정확히 입력해 주세요.';
