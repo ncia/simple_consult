@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   ShieldCheck,
   Check,
@@ -12,7 +12,24 @@ import {
   Heart,
   Flame,
   Zap,
-  FileText
+  FileText,
+  Star,
+  Moon,
+  Sun,
+  Smile,
+  Bell,
+  Flower,
+  Gift,
+  Ghost,
+  Panda,
+  WandSparkles,
+  Tag,
+  Landmark,
+  Dog,
+  Cat,
+  Crown,
+  BriefcaseMedical,
+  Baby
 } from 'lucide-react';
 
 import { Header } from './components/Header';
@@ -31,6 +48,83 @@ import {
   PartnerCompany,
   REGION_DATA
 } from './types';
+
+const ALL_HERO_ICONS = [ShieldCheck, Heart, Star, Moon, Sparkles, Sun, Smile, Bell, Flower, Gift, Ghost, Panda, WandSparkles, Tag, Landmark, Dog, Cat, Crown, BriefcaseMedical, Baby];
+
+const RandomHeroIcon = ({ getAvailableIcon, initialIcon }: { getAvailableIcon: (current: any) => any, initialIcon: any }) => {
+  const currentIconRef = useRef(initialIcon);
+  const [iconState, setIconState] = useState({
+    Icon: initialIcon,
+    top: 10 + Math.random() * 70,
+    left: 5 + Math.random() * 85,
+    isVisible: true,
+    key: 0
+  });
+
+  useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    const cycle = () => {
+      // 1. 사라지기 시작
+      setIconState(prev => ({ ...prev, isVisible: false }));
+      
+      // 2. 1초(사라지는 애니메이션 시간) 후 위치 변경 및 다시 나타나기
+      timeoutId = setTimeout(() => {
+        // 상태 업데이트 함수 외부에서 아이콘을 새로 뽑아서 React Strict Mode 중복 실행 문제 방지
+        const nextIcon = getAvailableIcon(currentIconRef.current);
+        currentIconRef.current = nextIcon;
+        
+        const top = 10 + Math.random() * 70;
+        const left = 5 + Math.random() * 85;
+        
+        setIconState(prev => ({ Icon: nextIcon, top, left, isVisible: true, key: prev.key + 1 }));
+
+        // 3. 3~5초간 보여진 후 다시 cycle 반복
+        const visibleDuration = 3000 + Math.random() * 2000;
+        timeoutId = setTimeout(cycle, visibleDuration);
+      }, 1000); // fade-out transition duration
+    };
+
+    // 처음 마운트 시 3~5초 후 첫 번째 사이클 시작
+    const initialDuration = 3000 + Math.random() * 2000;
+    timeoutId = setTimeout(cycle, initialDuration);
+
+    return () => clearTimeout(timeoutId);
+  }, [getAvailableIcon]);
+
+  return (
+    <div
+      className={`absolute transition-opacity duration-1000 ease-in-out ${iconState.isVisible ? 'opacity-100 animate-twinkle' : 'opacity-0'}`}
+      style={{ top: `${iconState.top}%`, left: `${iconState.left}%` }}
+    >
+      <iconState.Icon size={24} className="text-white" />
+    </div>
+  );
+};
+
+const RandomHeroIconsContainer = () => {
+  const activeIconsRef = useRef<Set<any>>(new Set([ALL_HERO_ICONS[0], ALL_HERO_ICONS[1], ALL_HERO_ICONS[2]]));
+
+  const getAvailableIcon = (currentIcon: any) => {
+    const available = ALL_HERO_ICONS.filter(icon => !activeIconsRef.current.has(icon) || icon === currentIcon);
+    const chosen = available[Math.floor(Math.random() * available.length)];
+    
+    if (currentIcon) {
+      activeIconsRef.current.delete(currentIcon);
+    }
+    activeIconsRef.current.add(chosen);
+    
+    return chosen;
+  };
+
+  return (
+    <>
+      <RandomHeroIcon getAvailableIcon={getAvailableIcon} initialIcon={ALL_HERO_ICONS[0]} />
+      <RandomHeroIcon getAvailableIcon={getAvailableIcon} initialIcon={ALL_HERO_ICONS[1]} />
+      <RandomHeroIcon getAvailableIcon={getAvailableIcon} initialIcon={ALL_HERO_ICONS[2]} />
+    </>
+  );
+};
 
 function getInsuranceInfo(birthdateStr: string) {
   if (birthdateStr.length !== 8) return null;
@@ -309,19 +403,14 @@ export default function App() {
             {/* HERO HERO-BG WITH PARALLAX IMPACT */}
             <section className="relative h-[480px] bg-slate-950 text-white flex flex-col items-center justify-center text-center px-5 relative overflow-hidden">
               {/* background graphic overlays to match sparkles and lights */}
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/60 via-slate-900 to-black opacity-95"></div>
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/60 via-slate-900 to-black opacity-95 overflow-hidden">
+                {/* Randomly Floating and Twinkling Icons without Duplicates */}
+                <RandomHeroIconsContainer />
+              </div>
 
               {/* Dynamic light spot */}
               <div className="absolute -left-16 -top-16 w-80 h-80 bg-brand-green-neon/20 rounded-full blur-3xl animate-pulse-slow"></div>
               <div className="absolute -right-16 -bottom-16 w-80 h-80 bg-brand-blue-light/10 rounded-full blur-3xl animate-pulse-slow"></div>
-
-              {/* Sparkle icons floating in theme */}
-              <div className="absolute left-8 top-12 opacity-40 animate-bounce">
-                <Sparkles size={24} className="text-white" />
-              </div>
-              <div className="absolute right-12 bottom-[140px] opacity-30 animate-bounce delay-150">
-                <Sparkles size={18} className="text-brand-green-light" />
-              </div>
 
               {/* Title group */}
               <div className="relative z-10 space-y-3 max-w-md">

@@ -59,7 +59,7 @@ export function ProcessSection({ onClaimClick }: ProcessSectionProps) {
       step: 'STEP 4',
       title: '보장분석 리포트 제공',
       icon: <ShieldCheck className="text-white" size={20} />,
-      color: 'bg-brand-green-neon',
+      color: 'bg-brand-blue',
       details: [
         '최종 정리된 나만의 원클릭 리포트 영구 저장',
         '매월 세이브 가능한 가계 소득 리스트 증명서 제공',
