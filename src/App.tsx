@@ -10,6 +10,7 @@ import {
   Car,
   Home,
   Heart,
+  Flame,
   Zap,
   FileText
 } from 'lucide-react';
@@ -328,7 +329,7 @@ export default function App() {
               {/* Title group */}
               <div className="relative z-10 space-y-3 max-w-md">
                 <span className="text-[11px] font-sans font-extrabold tracking-widest text-white/85 bg-white/10 px-3 py-1.5 rounded-full uppercase border border-white/5 inline-block">
-                  BOHUM STORE SPECIAL
+                  FINTOS INSUCARE CENTER
                 </span>
                 <h1 className="font-display font-black text-3xl sm:text-4xl leading-tight tracking-tight">
                   보험가입, 잘한걸까?<br />
@@ -348,9 +349,9 @@ export default function App() {
                     <h2 className="font-sans font-bold text-lg text-white">보험분석 결과 대기</h2>
                   </div>
                   {/* blinking live indicator */}
-                  <div className="flex items-center gap-1 bg-red-500/20 text-red-300 font-bold px-2 py-0.5 rounded text-[9px]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
-                    <span>STANDBY</span>
+                  <div className="flex items-center gap-1 bg-yellow-500/20 text-yellow-400 font-bold px-2 py-0.5 rounded text-[9px]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-ping"></span>
+                    <span>STAND BY</span>
                   </div>
                 </div>
               </div>
@@ -833,11 +834,10 @@ export default function App() {
                     {/* Main Action submit button */}
                     <button
                       type="submit"
-                      className="w-full md:w-1/2 mx-auto h-14 bg-brand-blue text-white rounded-xl font-bold text-sm tracking-wide shadow-lg shadow-brand-blue/15 hover:bg-brand-blue-hover active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 mt-2 cursor-pointer"
+                      className="w-full md:w-1/2 mx-auto h-12 bg-brand-blue text-white rounded-xl font-bold text-sm tracking-wide shadow-lg shadow-brand-blue/15 hover:bg-brand-blue-hover active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 mt-2 cursor-pointer"
                     >
                       <ShieldCheck size={18} />
                       <span>보험케어 상담하기</span>
-                      <ArrowRight size={15} />
                     </button>
                   </>
                 )}
@@ -873,7 +873,7 @@ export default function App() {
                   </div>
                   <div className="space-y-1">
                     <strong className="text-xs font-bold text-neutral-dark block leading-normal">중복가입 정리로<br />불필요 구멍 정리</strong>
-                    <p className="text-[10px] text-neutral-gray leading-relaxed">자기도 모르게 중 가입되어 수술 세이빙이 안 되거나 벌금이 이중 정산되는 내역 탈출</p>
+                    <p className="text-[10px] text-neutral-gray leading-relaxed">중복가입되어 있는 보장 내용을 정리하고 부족한 부분을 채워 맞춤 플랜으로 재설계</p>
                   </div>
                 </div>
 
@@ -893,7 +893,7 @@ export default function App() {
                   </div>
                   <div className="space-y-1">
                     <strong className="text-xs font-bold text-neutral-dark block leading-normal">내 실 소득 상황에<br />맞는 맞춤 세팅</strong>
-                    <p className="text-[10px] text-neutral-gray leading-relaxed">가계 유지 가능한 예산율(소득 대비 7% 안팎)로 무해지 포트폴리오 정밀 설계</p>
+                    <p className="text-[10px] text-neutral-gray leading-relaxed">가계 유지 가능한 예산율 소득 대비 7% 안팎으로 무해지 포트폴리오 정밀 설계</p>
                   </div>
                 </div>
               </div>
@@ -907,7 +907,7 @@ export default function App() {
             </section>
 
             {/* Before / After section modular */}
-            <BeforeAfterSection />
+            <BeforeAfterSection onConsultClick={() => handleChipToggle('item4')} />
 
             {/* FINAL CONVERSION PERSUADE WRAPPER */}
             <section className="py-14 px-5 bg-white text-center space-y-6">
@@ -957,7 +957,7 @@ export default function App() {
                         눈으로 직접 확인하세요.
                       </h2>
                       <p className="text-xs text-neutral-gray leading-relaxed">
-                        신청 즉시 가입 보고가 생성되며, 카카오 등기를 거쳐 담당 수석의 안심 유선 코디가 무상으로 병행 지원됩니다.
+                        신청 즉시 보험 가입 내역서가 생성되며, 담당 수석이 보험 가입 내역 및 보고서를 카카오톡 및 문자메시지로 보내드립니다.
                       </p>
                     </div>
 
@@ -1227,20 +1227,16 @@ export default function App() {
               <div className="pt-4">
                 <button
                   type="button"
-                  onClick={() => {
-                    const targetElement = document.getElementById('signup-form-anchor');
-                    if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-blue-hover text-white px-8 py-4 rounded-xl font-bold text-xs shadow-lg shadow-brand-blue/10 active:scale-95 transition-all"
+                  onClick={() => handleChipToggle('item4')}
+                  className="flex justify-center w-1/2 mx-auto items-center gap-2 bg-brand-blue hover:bg-brand-blue-hover text-white px-8 py-4 rounded-xl font-bold text-sm shadow-lg shadow-brand-blue/10 active:scale-95 transition-all"
                 >
-                  <span>지금 간이 분석 신청 시작</span>
-                  <ArrowRight size={14} />
+                  <span>내보험 점검 상담</span>
                 </button>
               </div>
             </section>
 
             {/* Process Section modular */}
-            <ProcessSection />
+            <ProcessSection onClaimClick={() => handleChipToggle('item3')} />
 
             {/* PARTNER NETWORKS / EXPERT BRAND GRID */}
             <section className="py-12 px-5 bg-neutral-bg border-t border-neutral-border space-y-7">
@@ -1259,7 +1255,10 @@ export default function App() {
 
               {/* Life Insu Grid */}
               <div className="space-y-3 font-sans">
-                <p className="text-xs font-bold text-brand-blue text-center">생명보험사</p>
+                <p className="text-s font-bold text-brand-blue text-center flex justify-center items-center gap-1">
+                  <Heart size={14} className="text-brand-blue fill-brand-blue" />
+                  생명보험사
+                </p>
                 <div className="bg-white rounded-xl p-4.5 grid grid-cols-4 gap-2.5 items-center border border-neutral-border">
                   {PARTNERS_LIFE.map((p) => (
                     <button
@@ -1275,7 +1274,10 @@ export default function App() {
 
               {/* Nonlife Insu Grid */}
               <div className="space-y-3 font-sans">
-                <p className="text-xs font-bold text-brand-green text-center font-bold">손해보험사</p>
+                <p className="text-s font-bold text-brand-green text-center font-bold flex justify-center items-center gap-1">
+                  <Flame size={14} className="text-brand-green fill-brand-green" />
+                  손해보험사
+                </p>
                 <div className="bg-white rounded-xl p-4.5 grid grid-cols-4 gap-2.5 items-center border border-neutral-border">
                   {PARTNERS_NONLIFE.map((p) => (
                     <button
@@ -1356,6 +1358,10 @@ export default function App() {
       <PartnerProductModal
         partner={selectedPartner}
         onClose={() => setSelectedPartner(null)}
+        onConsultClick={() => {
+          setSelectedPartner(null);
+          handleChipToggle('item1');
+        }}
       />
 
     </div>

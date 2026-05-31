@@ -1,13 +1,25 @@
 import React from 'react';
-import { X, Landmark, BadgePercent, Sparkles, TrendingUp, CalendarDays } from 'lucide-react';
+import { X, Landmark, BadgePercent, Sparkles, TrendingUp, CalendarDays, Heart, Flame } from 'lucide-react';
 import { PartnerCompany } from '../types';
 
 interface PartnerProductModalProps {
   partner: PartnerCompany | null;
   onClose: () => void;
+  onConsultClick?: () => void;
 }
 
-export function PartnerProductModal({ partner, onClose }: PartnerProductModalProps) {
+export function PartnerProductModal({ partner, onClose, onConsultClick }: PartnerProductModalProps) {
+  const randomDiscount = React.useMemo(() => {
+    if (!partner) return 15;
+    let hash = 0;
+    for (let i = 0; i < partner.id.length; i++) {
+      hash = partner.id.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    const min = 6;
+    const max = 15;
+    return (Math.abs(hash) % (max - min + 1)) + min;
+  }, [partner]);
+
   if (!partner) return null;
 
   return (
@@ -18,10 +30,11 @@ export function PartnerProductModal({ partner, onClose }: PartnerProductModalPro
           partner.type === 'life' ? 'bg-brand-blue' : 'bg-brand-green'
         } flex justify-between items-center relative overflow-hidden`}>
           <div className="absolute right-0 top-0 opacity-10 translate-x-3 translate-y-2">
-            <Landmark size={80} />
+            {partner.type === 'life' ? <Heart size={80} className="fill-white" /> : <Flame size={80} className="fill-white" />}
           </div>
           <div className="relative z-10 space-y-1">
-            <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-bold">
+            <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-bold flex items-center gap-1 w-fit">
+              {partner.type === 'life' ? <Heart size={12} className="fill-white" /> : <Flame size={12} className="fill-white" />}
               {partner.type === 'life' ? '우수 생명보험사협약' : '신뢰 손해보험사협약'}
             </span>
             <h3 className="font-bold text-lg">{partner.name}화재/생명 추천 상품</h3>
@@ -60,7 +73,7 @@ export function PartnerProductModal({ partner, onClose }: PartnerProductModalPro
             <div className="p-3 bg-brand-green-light/10 rounded-xl border border-brand-green/10">
               <span className="text-neutral-muted text-[10px] block">동종업계 평균 할인율</span>
               <strong className="text-brand-green font-display text-sm font-black mt-1 block">
-                최대 -15%
+                최대 -{randomDiscount}%
               </strong>
             </div>
           </div>
@@ -68,9 +81,18 @@ export function PartnerProductModal({ partner, onClose }: PartnerProductModalPro
           <div className="p-3.5 bg-yellow-50/60 rounded-xl border border-yellow-200/50 flex gap-2 items-start text-xs text-yellow-800 leading-normal">
             <BadgePercent size={18} className="shrink-0 text-yellow-600 mt-0.5" />
             <p>
-              * InsureAnalysis 연계 상담 시 중복 특약 정리 가이드를 받으시면 <strong>이중 보험료 누출 없이 정식 가입</strong>이 직접 지원됩니다.
+              *보험분석 상담 연계 시 중복 특약 정리 가이드를 받으시면 <strong>이중 보험료 누출 없이 정식 가입</strong>이 직접 지원됩니다.
             </p>
           </div>
+          
+          <button
+            onClick={() => {
+              if (onConsultClick) onConsultClick();
+            }}
+            className="w-full h-12 mt-4 bg-brand-blue hover:bg-brand-blue-hover text-white rounded-xl font-bold text-sm shadow-md transition-all active:scale-95 flex items-center justify-center gap-2"
+          >
+            <span>보험분석 상담하기</span>
+          </button>
         </div>
 
         {/* Footer */}

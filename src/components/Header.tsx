@@ -20,9 +20,6 @@ export function Header({ onContactClick }: HeaderProps) {
           <span className="font-display text-lg font-extrabold tracking-tight bg-gradient-to-r from-brand-blue to-brand-blue-hover bg-clip-text text-transparent">
             핀토스 보험케어
           </span>
-          <span className="text-[10px] bg-brand-green text-white font-bold px-1.5 py-0.5 rounded-full hidden sm:inline">
-            내 보험 바로알기
-          </span>
         </button>
         
         <div className="flex items-center gap-2">

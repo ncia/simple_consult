@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { ArrowDown, Check, Coins, TrendingDown, BadgeAlert, Sparkles, Image as ImageIcon, Eye } from 'lucide-react';
 
-export function BeforeAfterSection() {
+interface BeforeAfterSectionProps {
+  onConsultClick?: () => void;
+}
+
+export function BeforeAfterSection({ onConsultClick }: BeforeAfterSectionProps) {
   const [activeTab, setActiveTab] = useState<'before' | 'after'>('after');
 
 
@@ -166,9 +170,17 @@ export function BeforeAfterSection() {
                   <div className="bg-brand-blue-pale p-3.5 rounded-xl border border-brand-blue-light flex items-start gap-2">
                     <Check size={16} className="text-brand-blue shrink-0 mt-0.5" />
                     <p className="text-xs text-brand-blue-dark leading-normal">
-                      불필요 변액 자산을 해약 및 통합하여 자산 안정을 잡았습니다. <strong>보험 리밸런싱</strong>을 통해 매월 약 31만원 상당의 보험료를 절감하면서 필요한 핵심 보장은 든든하게 점검해 드렸습니다!
+                      불필요한 변액 자산을 해약 및 통합하여 자산 안정을 잡았습니다. <strong>보험 리밸런싱</strong>을 통해 매월 약 31만원 상당의 보험료를 절감하면서 필요한 핵심 보장은 든든하게 점검해 드렸습니다!
                     </p>
                   </div>
+                  
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); if (onConsultClick) onConsultClick(); }}
+                    className="w-1/2 mx-auto h-12 mt-3 bg-brand-blue hover:bg-brand-blue-hover text-white rounded-xl font-bold text-sm shadow-md transition-all active:scale-95 flex items-center justify-center gap-2"
+                  >
+                    <span>보험 리모델링 상담</span>
+                  </button>
                 </div>
               </div>
             </div>

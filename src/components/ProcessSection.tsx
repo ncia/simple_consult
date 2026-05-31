@@ -8,8 +8,11 @@ interface ProcessStep {
   color: string;
   details: string[];
 }
+interface ProcessSectionProps {
+  onClaimClick?: () => void;
+}
 
-export function ProcessSection() {
+export function ProcessSection({ onClaimClick }: ProcessSectionProps) {
   const [activeStep, setActiveStep] = useState<number>(0);
   const [showProcessRaw, setShowProcessRaw] = useState(false);
   const lastInteractionTimeRef = useRef<number>(0);
@@ -95,16 +98,6 @@ export function ProcessSection() {
           </p>
         </div>
 
-        {/* Toggle between interactive design or original infographic */}
-        <div className="flex justify-end">
-          <button
-            onClick={() => setShowProcessRaw(!showProcessRaw)}
-            className="flex items-center gap-1.5 text-xs text-brand-green-light hover:underline bg-white/5 px-3 py-1.5 rounded-lg font-semibold transition"
-          >
-            {showProcessRaw ? <Eye size={12} /> : <ImageIcon size={12} />}
-            <span>{showProcessRaw ? '인터랙티브 가이드 보기' : '원본 인포그래픽 이미지 보기'}</span>
-          </button>
-        </div>
 
         {showProcessRaw ? (
           /* Show official process illustration map */
@@ -197,8 +190,10 @@ export function ProcessSection() {
           <p className="text-brand-blue-light text-xs font-bold">🎯 불편하고 복잡한 청구절차는 이제 그만!</p>
           <h3 className="text-base font-extrabold text-white">청구지원 서비스까지 함께 완벽하게 받아보세요</h3>
           
-          <button className="relative z-10 mt-4 w-full max-w-[320px] mx-auto h-12 bg-white/15 hover:bg-white/25 text-white rounded-xl font-bold text-sm backdrop-blur-md border border-white/20 shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer">
-            🧾 보험금 청구 하기
+          <button 
+            onClick={onClaimClick}
+            className="relative z-10 mt-4 w-full max-w-[320px] mx-auto h-12 bg-white/15 hover:bg-white/25 text-white rounded-xl font-bold text-sm backdrop-blur-md border border-white/20 shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer">
+            🧾 보험금 청구하기
           </button>
         </div>
       </div>
