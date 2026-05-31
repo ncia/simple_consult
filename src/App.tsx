@@ -1228,7 +1228,7 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => handleChipToggle('item4')}
-                  className="flex justify-center w-1/2 mx-auto items-center gap-2 bg-brand-blue hover:bg-brand-blue-hover text-white px-8 py-4 rounded-xl font-bold text-sm shadow-lg shadow-brand-blue/10 active:scale-95 transition-all"
+                  className="flex justify-center w-full md:w-1/2 mx-auto items-center gap-2 bg-brand-blue hover:bg-brand-blue-hover text-white px-8 py-4 rounded-xl font-bold text-sm shadow-lg shadow-brand-blue/10 active:scale-95 transition-all"
                 >
                   <span>내보험 점검 상담</span>
                 </button>

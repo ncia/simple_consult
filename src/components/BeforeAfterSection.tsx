@@ -177,7 +177,7 @@ export function BeforeAfterSection({ onConsultClick }: BeforeAfterSectionProps) 
                   <button
                     type="button"
                     onClick={(e) => { e.stopPropagation(); if (onConsultClick) onConsultClick(); }}
-                    className="w-1/2 mx-auto h-12 mt-3 bg-brand-blue hover:bg-brand-blue-hover text-white rounded-xl font-bold text-sm shadow-md transition-all active:scale-95 flex items-center justify-center gap-2"
+                    className="w-full md:w-1/2 mx-auto h-12 mt-3 bg-brand-blue hover:bg-brand-blue-hover text-white rounded-xl font-bold text-sm shadow-md transition-all active:scale-95 flex items-center justify-center gap-2"
                   >
                     <span>보험 리모델링 상담</span>
                   </button>
